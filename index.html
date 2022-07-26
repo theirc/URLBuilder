@@ -1,0 +1,200 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+        <title>Campaign URL Builder</title>
+        <link rel="stylesheet" href="index.css">
+        <script src="index.js"></script>
+        <link rel="shortcut icon" href="https://help.rescue.org/files/irc/irc-favicon_0.ico" type="image/vnd.microsoft.icon" />
+    </head>
+    <body>
+        <div class="main">
+            <div class="container">
+                <div class="left-panel">
+                    <div class="logo">
+                        <img src="https://irc.hosted.jacksonriverdev.com/files/irc/irc-logo.png" alt="The International Rescue Committee">
+                    </div>
+                </div>
+                <div class="right-panel">
+                    <h1>Campaign URL Builder</h1>
+                    <div class="builder">
+                        <h2>Enter the website URL and campaign information</h2>
+                        <p>Fill out all fields marked with an asterisk (*), and the campaign URL will be generated for you.</p>
+                        <div class="builder-content">
+                            <div class="multi-field">
+                                <label for="adsets">Ad Set & Channels</label>
+                                <select name="adset_channels" id="adsets" class="adset-options">
+                                    <option disabled selected value=""> -- Select an option -- </option>
+                                    <optgroup label="KAP (Paid Display & Search)">
+                                        <option value="gs_ppc_">Paid Adwords</option>
+                                        <option value="gs_se_ppc_">Gmail Sponsored email</option>
+                                        <option value="gd_ppc_">Google Display Network GDN</option>
+                                        <option value="gd_da_">Google Discovery Ads</option>
+                                        <option value="gg_ppc_">Google Grant</option>
+                                        <option value="yt_ppc_">Google You Tube</option>
+                                        <option value="bg_ppc_">Bing</option>
+                                        <option value="ad_ppc_miq_">MediaIQ</option>
+                                        <option value="eb_ppc_miq_">eBay</option>
+                                        <option value="spot_ppc_">Spotify</option>
+                                        <option value="mj_email_">Mother Jones</option>
+                                        <option value="gs_pmax_">Google - Performance Max</option>
+                                    </optgroup>
+                                    <optgroup label="Email Campaigns Tracking">
+                                        <option value="em_">Acoustic EMAIL additional ms codes</option>
+                                        <option value="em_">Pardot Email add link with tracking</option>
+                                    </optgroup>
+                                    <optgroup label="GOTT (Paid Social)">
+                                        <option value="fb_ppc_">Facebook</option>
+                                        <option value="pn_ppc_">Pinterest</option>
+                                        <option value="tw_ppc_">Twitter</option>
+                                        <option value="in_ppc_">Instagram</option>
+                                    </optgroup>
+                                    <optgroup label="Onsite Elements - links on the communications site">
+                                        <option value="ws_hero_">Onsite Donation Hero</option>
+                                        <option value="ws_banr_">Onsite Banner</option>
+                                        <option value="ws_modl_">Onsite Modal</option>
+                                        <option value="ws_ftr_">Onsite Sticky Footer</option>
+                                        <option value="ws_crisis_page_">Topic page (white button RedBanner)</option>
+                                        <option value="ws_unga_women_">Onsite CTA bottom of article</option>
+                                        <option value="ws_article_">Onsite CTA bottom of article</option>
+                                        <option value="ws_article_h2h_">Onsite CTA - How to Help article</option>
+                                        <option value="ws_resq_top_nav_btn_">Onsite Top Nav</option>
+                                        <option value="ws_resq_stat_ftr_btn_">Onsite Static Footer</option>
+                                    </optgroup>
+                                    <optgroup label="Social Post URLs for Comms External Push">
+                                        <option value="fb_post_">Facebook Post</option>
+                                        <option value="tw_post_">Twitter Post</option>
+                                        <option value="in_post_">Instagram Post</option>
+                                    </optgroup>
+                                    <optgroup label="Celebrity Endorsements — 'IRC Voices'">
+                                        <option value="fb_post_voices_">FB Post IRC Voices</option>
+                                        <option value="tw_post_voices_">TW Post IRC Voices</option>
+                                        <option value="in_post_voices_">IG Post IRC Voices</option>
+                                        <option value="li_post_voices_">LI Post IRC Voices</option>
+                                        <option value="ss_irc_voices_mitchell_">Generic IRC Share Toolkit</option>
+                                        <option value="ss_irc_voices_hrc_">Hilary Clinton Share (Rescue.org/HRC)</option>
+                                        <option value="irc_voices_rm_">Rami Malek (Rescue.org/Rami)</option>
+                                        <option value="ss_irc_voices_givTuesMashUp_">Giving Tuesday Mash Up Vanity URL</option>
+                                        <option value="in_post_voices_cornell_">IG Post Toni Cornell</option>
+                                        <option value="ss_irc_voices_">Ukraine Celeb Social Share</option>
+                                    </optgroup>
+                                    <!-- <optgroup label=" Corporate PartnerName Website Sponsored / Referral Traffic (No Spend — can also use for Press Release Links, etc.)">
+                                        <option value="se_caa_">caa</option>
+                                        <option value="ref_GlobalCitizenLive_">GlobalCitizenLive</option>
+                                        <option value="ref_tripAdvisor_">tripAdvisor</option>
+                                        <option value="ref_Bloomberg_">Bloomberg</option>
+                                        <option value="ref_SamHarris_">SamHarris</option>
+                                        <option value="ref_HoganLovells_">HoganLovells</option>
+                                        <option value="ref_Warner_">Warner</option>
+                                        <option value="ref_7All_mankind_">7 For All Mankind</option>
+                                        <option value="ref_7All_mankind_eu_">7 For All Mankind</option>
+                                        <option value="ref_concert_share_">FY22 Concert</option>
+                                    </optgroup> -->
+                                    <!-- <optgroup label=" Corporate PartnerName Sponsored Email - Campaign Promo email sent on behalf of IRC (No Spend)">
+                                        <option value="#REF!">HBO</option>
+                                        <option value="ref">HBO Rescue.org/MaraThrone</option>
+                                        <option value="se_gaming_ipp_">gaming_ipp</option>
+                                        <option value="ref_bat_employee_">British American Tobacco</option>
+                                        <option value="se_golubcapital_employee_">Rescue.org/golubcapital</option>
+                                        <option value="ref_j&j_employee_">Johnson & Johnson</option>
+                                        <option value="ref_j&j_public_">Johnson & Johnson</option>
+                                        <option value="ref_wm_employee_">Warner Media</option>
+                                        <option value="se_gaming_ipp_">gaming_ipp</option>
+                                        <option value="ref_">Verizon</option>
+                                        <option value="ref_nbc_event_">NBCU/Buzznog Event</option>
+                                        <option value="ref_nbc_event_">nbc_event</option>
+                                    </optgroup> -->
+                                    <!-- <optgroup label=" Corporate PartnerName Ad - Spondored Ad">
+                                        <option value="sponsored_ad_modelo_">modelo</option>
+                                        <option value="ref_hbo_vid_"></option>
+                                        <option value="furl_entrel_authbio_">Rescue.org/Support-Yemen</option>
+                                        <option value="se_gaming_ipp_">WholesomeGames</option>
+                                        <option value="sponsored_ad_nytimes_">nytimes</option>
+                                        <option value="ref_cbs_60_min_">CBS 60 minutes</option>
+                                        <option value="ev_stars_in_house_">Stars in the House Telethon</option>
+                                    </optgroup> -->
+                                    <optgroup label="Others">
+                                        <option value="">Custom mscode</option>
+                                    </optgroup>
+                                </select>
+                                <p class="helper-text" id="website-url-helper-text">Select desired Ad set & Channel</p>
+                            </div>
+                        </div>
+                        <div class="builder-content">
+                            <div class="multi-field">
+                                <label for="website-url">Website URL<sup class="required">*</sup></label>
+                                <input class="multi-input" type="text" id="website-url" value="" required>
+                                <p class="error_msg"></p>
+                                <p class="helper-text" id="website-url-helper-text">The full website URL (e.g. https://www.example.com)</p>
+                            </div>
+                        </div>
+                        <div class="builder-content">
+                            <div class="multi-field">
+                                <label for="ms-codes">MS-Codes<sup class="required">*</sup></label>
+                                <input class="multi-input" type="text" id="ms-codes" value="" required readonly>
+                                <p class="error_msg"></p>
+                                <p class="helper-text" id="ms-codes-helper-text">The ads ms-code.</p>
+                            </div>
+                        </div>
+                        <div class="builder-content">
+                            <div class="multi-field">
+                                <label for="ms-campaign">MS-Campaign<sup class="required">*</sup></label>
+                                <input class="multi-input" type="text" id="ms-campaign" value="" required>
+                                <p class="error_msg"></p>
+                                <p class="helper-text" id="ms-campaign-helper-text">The ads ms campaign id.</p>
+                            </div>
+                        </div>
+                        <div class="builder-content">
+                            <div class="multi-field">
+                                <label for="market-month">Market & Month<sup class="required">*</sup></label>
+                                <input class="multi-input" type="text" id="market-month" value="" required>
+                                <p class="error_msg"></p>
+                                <p class="helper-text" id="market-month-helper-text">Market and month (3 character month).</p>
+                            </div>
+                        </div>
+                        <div class="builder-content">
+                            <div class="multi-field">
+                                <label for="utm-medium">UTM Medium</label>
+                                <input class="multi-input" type="text" id="utm-medium" value="">
+                                <p class="error_msg"></p>
+                                <p class="helper-text" id="utm-source-helper-text">Leave blank for google search + bing adwords auto-tag.</p>
+                            </div>
+                        </div>
+                        <div class="builder-content">
+                            <div class="multi-field">
+                                <label for="utm-source">UTM Source</label>
+                                <input class="multi-input" type="text" id="utm-source" value="">
+                                <p class="error_msg"></p>
+                                <p class="helper-text" id="utm-source-helper-text">Leave blank for google search + bing adwords auto-tag.</p>
+                            </div>
+                        </div>
+                        <div class="builder-content">
+                            <div class="multi-field">
+                                <label for="utm-campaign">UTM Campaign</label>
+                                <input class="multi-input" type="text" id="utm-campaign" value="">
+                                <p class="error_msg"></p>
+                                <p class="helper-text" id="utm-campaign-helper-text">fy21_campaign Name. Leave blank for google search + bing adwords auto-tag</p>
+                            </div>
+                        </div>
+                        <div class="builder-content">
+                            <div class="multi-field">
+                                <label for="utm-content">UTM Content</label>
+                                <input class="multi-input" type="text" id="utm-content" value="">
+                                <p class="error_msg"></p>
+                                <p class="helper-text" id="utm-content-helper-text">What ad, theme or segment was used.</p>
+                            </div>
+                        </div>
+                        <div class="result">
+                            <textarea id="url_codes" readonly>Fill out required fields above and click "Generate URL" button.</textarea>
+                            <!-- <button class="copy-text" id="copy-text">Copy</button> -->
+                        </div>
+                        <button class="copy-text" id="copy-text">Copy</button>
+                        <div class="builder-btn">
+                            <button class="generate-btn" id="generate-button">Generate URL</button>
+                        </div>
+                        <div id="gen_error_msg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
