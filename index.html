@@ -24,7 +24,7 @@
                                 <label for="adsets">Ad Set & Channels</label>
                                 <select name="adset_channels" id="adsets" class="adset-options">
                                     <option disabled selected value=""> -- Select an option -- </option>
-                                    <optgroup label="KAP (Paid Display & Search)">
+                                    <optgroup label="Paid Display & Search">
                                         <option value="gs_ppc_">Paid Adwords</option>
                                         <option value="gs_se_ppc_">Gmail Sponsored email</option>
                                         <option value="gd_ppc_">Google Display Network GDN</option>
@@ -39,14 +39,15 @@
                                         <option value="gs_pmax_">Google - Performance Max</option>
                                     </optgroup>
                                     <optgroup label="Email Campaigns Tracking">
-                                        <option value="em_">Acoustic EMAIL additional ms codes</option>
+                                        <!-- <option value="em_">Acoustic EMAIL additional ms codes</option> -->
                                         <option value="em_">Pardot Email add link with tracking</option>
                                     </optgroup>
-                                    <optgroup label="GOTT (Paid Social)">
+                                    <optgroup label="Paid Social">
                                         <option value="fb_ppc_">Facebook</option>
                                         <option value="pn_ppc_">Pinterest</option>
                                         <option value="tw_ppc_">Twitter</option>
                                         <option value="in_ppc_">Instagram</option>
+                                        <option value="tt_ppc">TikTok</option>
                                     </optgroup>
                                     <optgroup label="Onsite Elements - links on the communications site">
                                         <option value="ws_hero_">Onsite Donation Hero</option>
@@ -64,6 +65,7 @@
                                         <option value="fb_post_">Facebook Post</option>
                                         <option value="tw_post_">Twitter Post</option>
                                         <option value="in_post_">Instagram Post</option>
+                                        <option value="tt_post">TikTok</option>
                                     </optgroup>
                                     <optgroup label="Celebrity Endorsements — 'IRC Voices'">
                                         <option value="fb_post_voices_">FB Post IRC Voices</option>
@@ -71,10 +73,10 @@
                                         <option value="in_post_voices_">IG Post IRC Voices</option>
                                         <option value="li_post_voices_">LI Post IRC Voices</option>
                                         <option value="ss_irc_voices_mitchell_">Generic IRC Share Toolkit</option>
-                                        <option value="ss_irc_voices_hrc_">Hilary Clinton Share (Rescue.org/HRC)</option>
-                                        <option value="irc_voices_rm_">Rami Malek (Rescue.org/Rami)</option>
-                                        <option value="ss_irc_voices_givTuesMashUp_">Giving Tuesday Mash Up Vanity URL</option>
-                                        <option value="in_post_voices_cornell_">IG Post Toni Cornell</option>
+                                        <!-- <option value="ss_irc_voices_hrc_">Hilary Clinton Share (Rescue.org/HRC)</option> -->
+                                        <!-- <option value="irc_voices_rm_">Rami Malek (Rescue.org/Rami)</option> -->
+                                        <!-- <option value="ss_irc_voices_givTuesMashUp_">Giving Tuesday Mash Up Vanity URL</option> -->
+                                        <!-- <option value="in_post_voices_cornell_">IG Post Toni Cornell</option> -->
                                         <option value="ss_irc_voices_">Ukraine Celeb Social Share</option>
                                     </optgroup>
                                     <!-- <optgroup label=" Corporate PartnerName Website Sponsored / Referral Traffic (No Spend — can also use for Press Release Links, etc.)">
@@ -124,7 +126,7 @@
                                 <label for="website-url">Website URL<sup class="required">*</sup></label>
                                 <input class="multi-input" type="text" id="website-url" value="" required>
                                 <p class="error_msg"></p>
-                                <p class="helper-text" id="website-url-helper-text">The full website URL (e.g. https://www.example.com)</p>
+                                <p class="helper-text" id="website-url-helper-text">The full website URL (e.g. https://help.rescue.org or https://www.rescue.org)</p>
                             </div>
                         </div>
                         <div class="builder-content">
@@ -146,7 +148,16 @@
                         <div class="builder-content">
                             <div class="multi-field">
                                 <label for="market-month">Market & Month<sup class="required">*</sup></label>
-                                <input class="multi-input" type="text" id="market-month" value="" required>
+                                <select name="market_month" id="mktmth" class="adset-options">
+                                    <option disabled selected value=""> -- Select Market -- </option>
+                                    <option value="_mmus">US</option>
+                                    <option value="_demk">DE</option>
+                                    <option value="_nm">RM</option>
+                                    <option value="_ukmk">UK</option>
+                                    <option value="_semk">SE</option>
+                                    <option value="_mmsk">SK</option>
+                                </select>
+                                <input class="multi-input" type="hidden" id="market-month" value="" required>
                                 <p class="error_msg"></p>
                                 <p class="helper-text" id="market-month-helper-text">Market and month (3 character month).</p>
                             </div>

@@ -6,11 +6,13 @@ window.onload = function() {
     const getGenErr = document.querySelector('#gen_error_msg');
     const getURL = document.querySelector('#website-url');
     const getCopyButton = document.querySelector('#copy-text');
+    const getMarket_Month = document.querySelector('#mktmth');
 
 
     let errorMsg = 'whitespace not allowed';
     let errorMsg2 = 'This field is required';
     let errorMsg3 = 'Please fix all error(s) and click on "Generate URL" button';
+    let errorMsg4 = 'MS-Code must end with an underscore';
 
     // concatenation formula
     const calcResult = function(fieldValues) {
@@ -70,6 +72,17 @@ window.onload = function() {
         }
     }
 
+    // Auto populate market and month
+    const month = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+    const getDate = new Date();
+    let getCurrentMonth = month[getDate.getMonth()];
+    let getMarketField = document.querySelector('#market-month');
+    console.log(getCurrentMonth)
+    getMarket_Month.addEventListener('change', function() {
+        console.log(getMarket_Month.value + "_" + getCurrentMonth);
+        getMarketField.value = getMarket_Month.value + "_" + getCurrentMonth;
+    })
+
     // getField.addEventListener('input', function() {
     //     const getValue = getField.value;
     //     const getSibling = getField.nextElementSibling;
@@ -109,6 +122,18 @@ window.onload = function() {
             }
         })
     }
+
+    // ms-code custom input validation
+
+    getField.addEventListener('input', function() {
+        let customInput = getField.value;
+        if(customInput.endsWith('_')) {
+            inputValid(getField);
+        } else {
+            inputInvalid(getField);
+            getField.nextElementSibling.innerHTML = errorMsg4
+        }
+    })
 
     // Required fields validation
     const validateRequired = function() {
