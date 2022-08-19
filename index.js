@@ -81,6 +81,12 @@ window.onload = function() {
     getMarket_Month.addEventListener('change', function() {
         console.log(getMarket_Month.value + "_" + getCurrentMonth);
         getMarketField.value = getMarket_Month.value + "_" + getCurrentMonth;
+        getMarketField.removeAttribute('required');
+        if(getMarketField.classList.contains('invalid')) {
+            getMarketField.classList.remove('invalid');
+            getMarketField.nextElementSibling.innerHTML = '';
+            getMarketField.nextElementSibling.style.display = 'none';
+        }
     })
 
     // getField.addEventListener('input', function() {
@@ -205,6 +211,7 @@ window.onload = function() {
         getMsCode.removeAttribute('required');
         if(getMsCode.classList.contains('invalid')) {
             getMsCode.classList.remove('invalid');
+            getMsCode.classList.add('valid');
             getMsCode.nextElementSibling.innerHTML = '';
             getMsCode.nextElementSibling.style.display = 'none';
         }
