@@ -7,6 +7,10 @@ window.onload = function() {
     const getURL = document.querySelector('#website-url');
     const getCopyButton = document.querySelector('#copy-text');
     const getMarket_Month = document.querySelector('#mktmth');
+    const getMonth = document.querySelector('#market_month');
+    const getMS_Campaign = document.querySelector('#ms-campaign-list');
+    const getUTM_Medium = document.querySelector('#utm-medium-list');
+    let fiscalYear = 'fy22'; // This value should be updated at the begining of every fiscal year. (Ususally on October 1st)
 
 
     let errorMsg = 'whitespace not allowed';
@@ -72,40 +76,76 @@ window.onload = function() {
         }
     }
 
+    const hiddenInputValidate = function(el) {
+        el.removeAttribute('required');
+        if(el.classList.contains('invalid')) {
+            el.classList.remove('invalid');
+            el.nextElementSibling.innerHTML = '';
+            el.nextElementSibling.style.display = 'none';
+        }
+    }
+
     // Auto populate market and month
     const month = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
     const getDate = new Date();
     let getCurrentMonth = month[getDate.getMonth()];
     let getMarketField = document.querySelector('#market-month');
-    console.log(getCurrentMonth)
-    getMarket_Month.addEventListener('change', function() {
-        console.log(getMarket_Month.value + "_" + getCurrentMonth);
-        getMarketField.value = getMarket_Month.value + "_" + getCurrentMonth;
-        getMarketField.removeAttribute('required');
-        if(getMarketField.classList.contains('invalid')) {
-            getMarketField.classList.remove('invalid');
-            getMarketField.nextElementSibling.innerHTML = '';
-            getMarketField.nextElementSibling.style.display = 'none';
+    let mktMthArray = [];
+    let mergeMktMth = [getMarket_Month, getMonth];
+    let combinedValue;
+
+    for(let i = 0; i < mergeMktMth.length; i++) {
+        mergeMktMth[i].addEventListener('change', function() {
+            mktMthArray.push(mergeMktMth[i].value);
+            if(mktMthArray.length === 2) {
+                combinedValue = mktMthArray.join('_');
+                getMarketField.value = combinedValue;
+                hiddenInputValidate(getMarketField);
+            }
+        })
+    }
+    // console.log(getCurrentMonth)
+    // getMarket_Month.addEventListener('change', function() {
+    //     getMarketField.value = getMarket_Month.value + "_" + getCurrentMonth;
+    //     hiddenInputValidate(getMarketField);
+    // });
+
+    // Auto populate MS-Campaign
+    getMS_Campaign.addEventListener('change', function() {
+        let getCampaignField = document.querySelector('#ms-campaign');
+        const getOptGroup = document.querySelector('#adsets');
+        const optGroupLabel = getDropDown.options[getDropDown.selectedIndex].parentElement.label;
+        const getUTMCampaignField = document.querySelector('#utm-campaign');
+
+        getCampaignField.value = fiscalYear + "_" + getMS_Campaign.value;
+        hiddenInputValidate(getCampaignField);
+
+        // auto populate UTM Campagin
+        if((optGroupLabel !== 'Paid Display & Search') && (optGroupLabel !== 'Onsite Elements - links on the communications site') && getOptGroup.value) {
+            getUTMCampaignField.value = getCampaignField.value;
+            getUTMCampaignField.setAttribute('readonly', 'yes');
+            getUTMCampaignField.classList.add('valid');
+        } else {
+            getUTMCampaignField.removeAttribute('readonly', 'yes');
+            // getUTMCampaignField.classList.remove('valid');
         }
+    });
+
+    // Auto populate UTM Medium
+    getUTM_Medium.addEventListener('change', function() {
+        let getUTM_Medium_Field = document.querySelector('#utm-medium');
+        getUTM_Medium_Field.value = getUTM_Medium.value;
+        // let textValue = getUTM_Medium.options[getUTM_Medium.selectedIndex].text;
+        // if(textValue === 'Custom Input') {
+        //     getUTM_Medium_Field.style.marginTop = '20px';
+        //     getUTM_Medium_Field.setAttribute('type', 'text');
+        // } else {
+        //     getUTM_Medium_Field.setAttribute('type', 'hidden');
+        //     getUTM_Medium_Field.value = getUTM_Medium.value;
+
+        // }
     })
 
-    // getField.addEventListener('input', function() {
-    //     const getValue = getField.value;
-    //     const getSibling = getField.nextElementSibling;
-    //     if(checkWhiteSpace(getValue) == true) {
-    //         if(getSibling.classList.contains('error_msg')) {
-    //             inputInvalid(getField);
-    //         }
-    //     } 
-    //     else if(checkWhiteSpace(getValue) == false) {
-    //         if(getValue != '') {
-    //             inputValid(getField);
-    //         }
-    //         else if(getValue == ""){
-    //             restoreDefault(getField);
-    //         }
-    //     }
-    // });
 
     for(let i = 0; i < getInputFields.length; i++) {
         getInputFields[i].addEventListener('input', function() {
@@ -205,7 +245,11 @@ window.onload = function() {
     getDropDown.addEventListener('change', function() {
         let optionText = getDropDown.options[getDropDown.selectedIndex].text;
         let optionValue = getDropDown.value;
-
+        let msCampaignField = document.querySelector('#ms-campaign');
+        let optionGroupLabelValue = getDropDown.options[getDropDown.selectedIndex].parentElement.label;
+        let UTMCampaignField = document.querySelector('#utm-campaign');
+        console.log(getDropDown.options[getDropDown.selectedIndex].parentElement.label)
+    
 
         getMsCode.setAttribute('value', optionValue);
         getMsCode.removeAttribute('required');
@@ -221,6 +265,19 @@ window.onload = function() {
             getMsCode.setAttribute('required', '');
         } else {
             getMsCode.setAttribute('readonly', 'yes');
+        }
+
+        // Check MS Campaign / UTM Campaign
+        if((optionGroupLabelValue !== 'Paid Display & Search') && (optionGroupLabelValue !== 'Onsite Elements - links on the communications site') && optionValue) {
+            if(msCampaignField.value) {
+                UTMCampaignField.value = msCampaignField.value;
+                UTMCampaignField.setAttribute('readonly','yes');
+                UTMCampaignField.classList.add('valid');
+            }
+        } else {
+            UTMCampaignField.removeAttribute('readonly', 'yes');
+            UTMCampaignField.value = '';
+            UTMCampaignField.classList.remove('valid');
         }
     });
 
@@ -276,6 +333,25 @@ window.onload = function() {
         if(getCopyButton.textContent.toLowerCase().includes(initialText.toLowerCase())) {
             getCopyButton.textContent = 'Copy'
         } 
-    })
-    
+    });
+
+    //Navigation 
+    const navigateMenu = function() {
+        const getMenuItems = document.querySelectorAll('.navlink');
+        for(let i = 0; i < getMenuItems.length; i++) {
+            getMenuItems[i].addEventListener('click', function(e) {
+                let currentElement = document.querySelector('.active');
+                currentElement.classList.remove('active');
+                this.classList.add('active');
+                let getURL = this.getAttribute('href');
+                let getSection = getURL.slice(1);
+                let getCurrentActiveSection = document.querySelector('.tab-content.showContent');
+                let getNewActive = document.querySelector('#' + getSection);
+                getCurrentActiveSection.classList.remove('showContent');
+                getNewActive.classList.add('showContent');
+
+            })
+        }
+    }
+    navigateMenu();
 }
