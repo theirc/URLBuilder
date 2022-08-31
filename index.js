@@ -280,8 +280,12 @@ window.onload = function() {
             }
         } else {
             // UTMCampaignField.removeAttribute('readonly', 'yes');
-            UTMCampaignField.value = '';
-            UTMCampaignField.classList.remove('valid');
+            // UTMCampaignField.value = '';
+            // UTMCampaignField.classList.remove('valid');
+            if(getMS_Campaign.options[getMS_Campaign.selectedIndex].text !== 'Custom Input') {
+                UTMCampaignField.value = '';
+                UTMCampaignField.classList.remove('valid');
+            }
         }
     });
 
