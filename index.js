@@ -122,6 +122,9 @@ window.onload = function() {
             getCampaignField.setAttribute('type', 'text');
             getCampaignField.setAttribute('required','');
             getCampaignField.style.marginTop = '20px';
+            if(getCampaignField.classList.contains('valid')) {
+                getCampaignField.classList.remove('valid');
+            }
         } else {
             getCampaignField.setAttribute('type', 'hidden');
             getCampaignField.style.marginTop = '0';
