@@ -10,6 +10,7 @@ window.onload = function() {
     const getMonth = document.querySelector('#market_month');
     const getMS_Campaign = document.querySelector('#ms-campaign-list');
     const getUTM_Medium = document.querySelector('#utm-medium-list');
+    const getMsCampaignInputField = document.querySelector('#ms-campaign');
     let fiscalYear = 'fy22'; // This value should be updated at the begining of every fiscal year. (Ususally on October 1st)
 
 
@@ -104,46 +105,48 @@ window.onload = function() {
             }
         })
     }
-    // console.log(getCurrentMonth)
-    // getMarket_Month.addEventListener('change', function() {
-    //     getMarketField.value = getMarket_Month.value + "_" + getCurrentMonth;
-    //     hiddenInputValidate(getMarketField);
-    // });
 
     // Auto populate MS-Campaign
     getMS_Campaign.addEventListener('change', function() {
         let getCampaignField = document.querySelector('#ms-campaign');
         const getOptGroup = document.querySelector('#adsets');
-        const optGroupLabel = getDropDown.options[getDropDown.selectedIndex].parentElement.label;
+        const getMsCampaignText = getMS_Campaign.options[getMS_Campaign.selectedIndex].text;
+        // const optGroupLabel = getDropDown.options[getDropDown.selectedIndex].parentElement.label;
         const getUTMCampaignField = document.querySelector('#utm-campaign');
 
         getCampaignField.value = fiscalYear + "_" + getMS_Campaign.value;
         hiddenInputValidate(getCampaignField);
 
+        if(getMsCampaignText === 'Custom Input') {
+            getCampaignField.value = '';
+            getCampaignField.setAttribute('type', 'text');
+            getCampaignField.setAttribute('required','');
+            getCampaignField.style.marginTop = '20px';
+        } else {
+            getCampaignField.setAttribute('type', 'hidden');
+            getCampaignField.style.marginTop = '0';
+        }
+
         // auto populate UTM Campagin
-        if((optGroupLabel !== 'Paid Display & Search') && (optGroupLabel !== 'Onsite Elements - links on the communications site') && getOptGroup.value) {
+        // if((optGroupLabel !== 'Paid Display & Search') && (optGroupLabel !== 'Onsite Elements - links on the communications site') && getOptGroup.value) {
+        if((getOptGroup.value !== 'gs_ppc_') && (getOptGroup.value !== 'gs_se_ppc_') && (getOptGroup.value !== 'gd_ppc_') && (getOptGroup.value !== 'gd_da_') && (getOptGroup.value !== 'gg_ppc_') && (getOptGroup.value !== 'yt_ppc_') && (getOptGroup.value !== 'bg_ppc_') && (getOptGroup.value !== 'ws_hero_') && (getOptGroup.value !== 'ws_banr_') && (getOptGroup.value !== 'ws_modl_') && (getOptGroup.value !== 'ws_ftr_') && (getOptGroup.value !== 'ws_crisis_page_') && (getOptGroup.value !== 'ws_article_') && (getOptGroup.value !== 'ws_article_') && (getOptGroup.value !== 'ws_article_h2h_') && (getOptGroup.value !== 'ws_resq_top_nav_btn_') && (getOptGroup.value !== 'ws_resq_stat_ftr_btn_') && (getOptGroup.value !== 'ss_irc_voices_mitchell_') && (getOptGroup.value !== 'default')) {
             getUTMCampaignField.value = getCampaignField.value;
-            getUTMCampaignField.setAttribute('readonly', 'yes');
             getUTMCampaignField.classList.add('valid');
         } else {
-            getUTMCampaignField.removeAttribute('readonly', 'yes');
-            // getUTMCampaignField.classList.remove('valid');
+
         }
+    });
+
+    // MS Campaign custom input
+    getMsCampaignInputField.addEventListener('input', function() {
+        const getUTMfield = document.querySelector('#utm-campaign');
+        getUTMfield.value = getMsCampaignInputField.value;
     });
 
     // Auto populate UTM Medium
     getUTM_Medium.addEventListener('change', function() {
         let getUTM_Medium_Field = document.querySelector('#utm-medium');
         getUTM_Medium_Field.value = getUTM_Medium.value;
-        // let textValue = getUTM_Medium.options[getUTM_Medium.selectedIndex].text;
-        // if(textValue === 'Custom Input') {
-        //     getUTM_Medium_Field.style.marginTop = '20px';
-        //     getUTM_Medium_Field.setAttribute('type', 'text');
-        // } else {
-        //     getUTM_Medium_Field.setAttribute('type', 'hidden');
-        //     getUTM_Medium_Field.value = getUTM_Medium.value;
-
-        // }
     })
 
 
@@ -248,7 +251,7 @@ window.onload = function() {
         let msCampaignField = document.querySelector('#ms-campaign');
         let optionGroupLabelValue = getDropDown.options[getDropDown.selectedIndex].parentElement.label;
         let UTMCampaignField = document.querySelector('#utm-campaign');
-        console.log(getDropDown.options[getDropDown.selectedIndex].parentElement.label)
+        // console.log(getDropDown.options[getDropDown.selectedIndex].parentElement.label)
     
 
         getMsCode.setAttribute('value', optionValue);
@@ -268,14 +271,15 @@ window.onload = function() {
         }
 
         // Check MS Campaign / UTM Campaign
-        if((optionGroupLabelValue !== 'Paid Display & Search') && (optionGroupLabelValue !== 'Onsite Elements - links on the communications site') && optionValue) {
+        // if((optionGroupLabelValue !== 'Paid Display & Search') && (optionGroupLabelValue !== 'Onsite Elements - links on the communications site') && optionValue) {
+            if((optionValue !== 'gs_ppc_') && (optionValue !== 'gs_se_ppc_') && (optionValue !== 'gd_ppc_') && (optionValue !== 'gd_da_') && (optionValue !== 'gg_ppc_') && (optionValue !== 'yt_ppc_') && (optionValue !== 'bg_ppc_') && (optionValue !== 'ws_hero_') && (optionValue !== 'ws_banr_') && (optionValue !== 'ws_modl_') && (optionValue !== 'ws_ftr_') && (optionValue !== 'ws_crisis_page_') && (optionValue !== 'ws_article_') && (optionValue !== 'ws_article_') && (optionValue !== 'ws_article_h2h_') && (optionValue !== 'ws_resq_top_nav_btn_') && (optionValue !== 'ws_resq_stat_ftr_btn_') && (optionValue !== 'ss_irc_voices_mitchell_') && (optionValue !== 'default')) {
             if(msCampaignField.value) {
                 UTMCampaignField.value = msCampaignField.value;
-                UTMCampaignField.setAttribute('readonly','yes');
+                // UTMCampaignField.setAttribute('readonly','yes');
                 UTMCampaignField.classList.add('valid');
             }
         } else {
-            UTMCampaignField.removeAttribute('readonly', 'yes');
+            // UTMCampaignField.removeAttribute('readonly', 'yes');
             UTMCampaignField.value = '';
             UTMCampaignField.classList.remove('valid');
         }
