@@ -11,7 +11,35 @@ window.onload = function() {
     const getMS_Campaign = document.querySelector('#ms-campaign-list');
     const getUTM_Medium = document.querySelector('#utm-medium-list');
     const getMsCampaignInputField = document.querySelector('#ms-campaign');
-    let fiscalYear = 'fy22'; // This value should be updated at the begining of every fiscal year. (Ususally on October 1st)
+    // let fiscalYear = 'fy22'; // This value should be updated at the begining of every fiscal year. (Ususally on October 1st)
+    let fiscalYearValue = 23
+    let fiscalYear = 'fy' + fiscalYearValue; 
+
+
+    const currentDate = new Date();
+    const getRecentMonth = currentDate.getMonth();
+    const getRecentDate = currentDate.getUTCDate();
+    const getRecentYear = currentDate.getFullYear().toString();
+
+
+    const updateFiscalYear = () => {
+        fiscalYearValue = getRecentYear.slice(2);
+    }
+
+    if(getRecentMonth === 9 && getRecentDate === 1 ) {
+        updateFiscalYear();
+    } else {
+        
+    }
+
+    const updateAdsets = () => {
+        const getSpan = document.querySelectorAll('.fiscal-year');
+        for(let i = 0; i < getSpan.length; i++) {
+            getSpan[i].innerHTML = fiscalYear + '_';
+        }
+    }
+
+    updateAdsets();
 
 
     let errorMsg = 'whitespace not allowed';
@@ -97,14 +125,23 @@ window.onload = function() {
 
     for(let i = 0; i < mergeMktMth.length; i++) {
         mergeMktMth[i].addEventListener('change', function() {
-            mktMthArray.push(mergeMktMth[i].value);
-            if(mktMthArray.length === 2) {
+            let getElementId = mergeMktMth[i].getAttribute('id');
+
+            if(getElementId === 'mktmth') {
+                mktMthArray[0] = mergeMktMth[i].value;
+            }
+            else if(getElementId === 'market_month') {
+                mktMthArray[1] = mergeMktMth[i].value;
+            }
+            // mktMthArray.push(mergeMktMth[i].value);
+            // if(mktMthArray.length === 2) {
                 combinedValue = mktMthArray.join('_');
                 getMarketField.value = combinedValue;
                 hiddenInputValidate(getMarketField);
-            }
+            // }
         })
     }
+
 
     // Auto populate MS-Campaign
     getMS_Campaign.addEventListener('change', function() {
@@ -118,7 +155,7 @@ window.onload = function() {
         hiddenInputValidate(getCampaignField);
 
         if(getMsCampaignText === 'Custom Input') {
-            getCampaignField.value = '';
+            getCampaignField.value = fiscalYear + '_' + '';
             getCampaignField.setAttribute('type', 'text');
             getCampaignField.setAttribute('required','');
             getCampaignField.style.marginTop = '20px';
@@ -257,20 +294,34 @@ window.onload = function() {
         // console.log(getDropDown.options[getDropDown.selectedIndex].parentElement.label)
     
 
-        getMsCode.setAttribute('value', optionValue);
-        getMsCode.removeAttribute('required');
-        if(getMsCode.classList.contains('invalid')) {
-            getMsCode.classList.remove('invalid');
-            getMsCode.classList.add('valid');
-            getMsCode.nextElementSibling.innerHTML = '';
-            getMsCode.nextElementSibling.style.display = 'none';
+        // getMsCode.setAttribute('value', optionValue);
+        // getMsCode.removeAttribute('required');
+        // if(getMsCode.classList.contains('invalid')) {
+        //     getMsCode.classList.remove('invalid');
+        //     getMsCode.classList.add('valid');
+        //     getMsCode.nextElementSibling.innerHTML = '';
+        //     getMsCode.nextElementSibling.style.display = 'none';
+        // }
+        const populateMSCode = () => {
+            getMsCode.setAttribute('value', optionValue);
+            getMsCode.removeAttribute('required');
+            if(getMsCode.classList.contains('invalid')) {
+                getMsCode.classList.remove('invalid');
+                getMsCode.classList.add('valid');
+                getMsCode.nextElementSibling.innerHTML = '';
+                getMsCode.nextElementSibling.style.display = 'none';
+            }
         }
+
+        populateMSCode();
 
         if(optionText === 'Custom mscode') {
             getMsCode.removeAttribute('readonly');
             getMsCode.setAttribute('required', '');
+            getMsCode.value = "";
         } else {
             getMsCode.setAttribute('readonly', 'yes');
+            getMsCode.value = optionValue;
         }
 
         // Check MS Campaign / UTM Campaign
