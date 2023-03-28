@@ -63,6 +63,20 @@ body {
       outline: none;
   }
   
+  .save-input {
+      width: 50%;
+      height: 30px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 2px solid #666666;
+      margin-bottom: 20px;
+  }
+  
+  .url-save-note {
+      font-size: 14px;
+      font-weight: 600;
+  }
+  
   input[readonly], textarea[readonly] {
       background-color: #E9E9E9 !important;
   }
@@ -137,7 +151,7 @@ body {
       border-radius: 5px;
   }
   
-  .copy-text {
+  .copy-text, .save-btn {
       width: 100px;
       height: 30px;
       cursor: pointer;
@@ -145,6 +159,10 @@ body {
       outline: none;
       border: 1px solid #000;
       border-radius: 5px;
+      display: none;
+  }
+  
+  #save-input-name, .url-save-note {
       display: none;
   }
   

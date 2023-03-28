@@ -11,9 +11,14 @@ window.onload = function() {
     const getMS_Campaign = document.querySelector('#ms-campaign-list');
     const getUTM_Medium = document.querySelector('#utm-medium-list');
     const getMsCampaignInputField = document.querySelector('#ms-campaign');
+    const saveButton = document.querySelector('#save-button');
+    const saveLabel = document.querySelector('.url-save-note');
+    const saveName = document.querySelector('#save-input-name');
     // let fiscalYear = 'fy22'; // This value should be updated at the begining of every fiscal year. (Ususally on October 1st)
     let fiscalYearValue = 23
     let fiscalYear = 'fy' + fiscalYearValue; 
+
+    console.log(saveName);
 
 
     const currentDate = new Date();
@@ -46,6 +51,7 @@ window.onload = function() {
     let errorMsg2 = 'This field is required';
     let errorMsg3 = 'Please fix all error(s) and click on "Generate URL" button';
     let errorMsg4 = 'MS-Code must end with an underscore';
+    let savedUrlMsg = 'Generated URL have been saved';
 
     // concatenation formula
     const calcResult = function(fieldValues) {
@@ -269,6 +275,9 @@ window.onload = function() {
                 result = calcResult(getInputFields);
                 concatnated.innerHTML = result;
                 getCopyButton.style.display = 'block';
+                saveLabel.style.display = 'block';
+                saveName.style.display = 'block';
+                saveButton.style.display = 'block';
                 getGenErr.innerHTML = '';
             } else {
                 // console.log('err2')
@@ -416,4 +425,29 @@ window.onload = function() {
         }
     }
     navigateMenu();
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz8k_T9cCI5M5t-J0vnoxpGOrqHfs0gb3xo-zm7yMVD1uOkmEvcZq44yR7qwg13RUV9Fw/exec'
+    // const form = document.forms['submit-to-google-sheet']
+    const form = document.querySelector('#submit-to-google-sheet');
+    const getlabel = document.querySelector('#url_saved_message');
+
+    form.addEventListener('submit', e => {
+        saveButton.disabled = true;
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        // .then(response => console.log('Success!', response))
+        // .catch(error => console.error('Error!', error.message))
+        .then(response => {
+            // console.log('Success!', response)
+            saveButton.disabled = false
+            getlabel.innerHTML = savedUrlMsg;
+            setTimeout(() => {
+                getlabel.style.display = 'none';
+            }, 5000);
+        })
+        .catch(error => {
+            console.error('Error', error.message)
+            saveButton.disabled = false
+        })
+    })
 }

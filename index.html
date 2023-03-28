@@ -233,15 +233,23 @@
                                 <p class="helper-text" id="utm-content-helper-text">What ad, theme or segment was used.</p>
                             </div>
                         </div>
+                        <form name="submit-to-google-sheet" id="submit-to-google-sheet">
                         <div class="result">
-                            <textarea id="url_codes" readonly>Fill out required fields above and click "Generate URL" button.</textarea>
+                            <textarea name="Link" id="url_codes" readonly>Fill out required fields above and click "Generate URL" button.</textarea>
                             <!-- <button class="copy-text" id="copy-text">Copy</button> -->
                         </div>
+                        <!-- <button class="copy-text" id="copy-text">Copy</button> -->
+                        <p class="url-save-note">Enter a name and click on the save button to save URL</p>
+                        <input class="save-input" id="save-input-name" name="Name" required>
+                        <p id="url_saved_message"></p>
+                        <button class="save-btn" id="save-button">Save</button>
+                        </form>
                         <button class="copy-text" id="copy-text">Copy</button>
                         <div class="builder-btn">
                             <button class="generate-btn" id="generate-button">Generate URL</button>
                         </div>
                         <div id="gen_error_msg"></div>
+
                     </div>
                     <div id="sectionB" class="tab-content">
                         <div class="section-content">
