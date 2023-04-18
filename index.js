@@ -1,5 +1,6 @@
 window.onload = function() {
     const getButton = document.querySelector('#generate-button');
+    const getBulkGenerateBtn = document.querySelector('#bulk-generate-button');
     const getField = document.querySelector('#ms-codes');
     const getInputFields = document.querySelectorAll('.multi-input');
     const concatnated = document.querySelector('#url_codes');
@@ -14,11 +15,17 @@ window.onload = function() {
     const saveButton = document.querySelector('#save-button');
     const saveLabel = document.querySelector('.url-save-note');
     const saveName = document.querySelector('#save-input-name');
+    const bulkUrl = document.querySelector('#bulk-url');
+    const getDropDown = document.querySelector('#adsets');
+    const getMsCode = document.querySelector('#ms-codes');
+    const getInputName = document.querySelector('#save-bulk-input');
+    const saveBulkButton = document.querySelector('#save-bulk-button');
+    const saveBulkLabel = document.querySelector('.url-save-bulk-note');
+    const resetNote = document.querySelector('.reset-note');
     // let fiscalYear = 'fy22'; // This value should be updated at the begining of every fiscal year. (Ususally on October 1st)
     let fiscalYearValue = 23
     let fiscalYear = 'fy' + fiscalYearValue; 
-
-    console.log(saveName);
+    // console.log(adSets)
 
 
     const currentDate = new Date();
@@ -52,6 +59,7 @@ window.onload = function() {
     let errorMsg3 = 'Please fix all error(s) and click on "Generate URL" button';
     let errorMsg4 = 'MS-Code must end with an underscore';
     let savedUrlMsg = 'Generated URL have been saved';
+    let savedBulkUrlMsg = 'Generated URLs have been saved';
 
     // concatenation formula
     const calcResult = function(fieldValues) {
@@ -250,71 +258,38 @@ window.onload = function() {
         }
     }
 
-    
-    const validateAll = function() {
-        let notValid = 0;
-        for(let i = 0; i <getInputFields.length; i++) {
-            if(getInputFields[i].classList.contains('invalid')) {
-                notValid++;
+    ///////////////////
+       // Bulk URL option
+
+    const disableCustomAdset = function() {
+        for (let i = 0; i < getDropDown.options.length; i++) {
+            if(!getDropDown.options[i].value){
+                getDropDown.options[i].setAttribute('disabled', '');
             }
-        }
-        if(notValid == 0) {
-            return true;
-        } else {
-            // alert('fix errors');
-            getGenErr.innerHTML = errorMsg3;
         }
     }
 
-    getButton.addEventListener('click', function() {
-        let result = '';
-  
-        if(validateRequired()){
-            if(validateAll()) {
-
-                result = calcResult(getInputFields);
-                concatnated.innerHTML = result;
-                getCopyButton.style.display = 'block';
-                saveLabel.style.display = 'block';
-                saveName.style.display = 'block';
-                saveButton.style.display = 'block';
-                getGenErr.innerHTML = '';
-            } else {
-                // console.log('err2')
-                getGenErr.innerHTML = errorMsg3;
+    const enableCustomAdset = function() {
+        for (let i = 0; i < getDropDown.options.length; i++) {
+            if(!getDropDown.options[i].value){
+                getDropDown.options[i].removeAttribute('disabled');
             }
-        } else {
-            // console.log('err1')
-            getGenErr.innerHTML = errorMsg3;
         }
+    }
 
-    });
-
-    // Drop down options
-    const getDropDown = document.querySelector('#adsets');
-    const getMsCode = document.querySelector('#ms-codes');
-
-    getDropDown.addEventListener('change', function() {
+    const populateSingleMsCode = function() {
+        // Drop down options - Adsets & Channel for single URL
+        getDropDown.addEventListener('change', function() {
         let optionText = getDropDown.options[getDropDown.selectedIndex].text;
         let optionValue = getDropDown.value;
         let msCampaignField = document.querySelector('#ms-campaign');
         let optionGroupLabelValue = getDropDown.options[getDropDown.selectedIndex].parentElement.label;
         let UTMCampaignField = document.querySelector('#utm-campaign');
-        // console.log(getDropDown.options[getDropDown.selectedIndex].parentElement.label)
-    
 
-        // getMsCode.setAttribute('value', optionValue);
-        // getMsCode.removeAttribute('required');
-        // if(getMsCode.classList.contains('invalid')) {
-        //     getMsCode.classList.remove('invalid');
-        //     getMsCode.classList.add('valid');
-        //     getMsCode.nextElementSibling.innerHTML = '';
-        //     getMsCode.nextElementSibling.style.display = 'none';
-        // }
         const populateMSCode = () => {
-            getMsCode.setAttribute('value', optionValue);
-            getMsCode.removeAttribute('required');
-            if(getMsCode.classList.contains('invalid')) {
+        getMsCode.setAttribute('value', optionValue);
+        getMsCode.removeAttribute('required');
+        if(getMsCode.classList.contains('invalid')) {
                 getMsCode.classList.remove('invalid');
                 getMsCode.classList.add('valid');
                 getMsCode.nextElementSibling.innerHTML = '';
@@ -335,22 +310,229 @@ window.onload = function() {
 
         // Check MS Campaign / UTM Campaign
         // if((optionGroupLabelValue !== 'Paid Display & Search') && (optionGroupLabelValue !== 'Onsite Elements - links on the communications site') && optionValue) {
-            if((optionValue !== 'gs_ppc_') && (optionValue !== 'gs_se_ppc_') && (optionValue !== 'gd_ppc_') && (optionValue !== 'gd_da_') && (optionValue !== 'gg_ppc_') && (optionValue !== 'yt_ppc_') && (optionValue !== 'bg_ppc_') && (optionValue !== 'ws_hero_') && (optionValue !== 'ws_banr_') && (optionValue !== 'ws_modl_') && (optionValue !== 'ws_ftr_') && (optionValue !== 'ws_crisis_page_') && (optionValue !== 'ws_article_') && (optionValue !== 'ws_article_') && (optionValue !== 'ws_article_h2h_') && (optionValue !== 'ws_resq_top_nav_btn_') && (optionValue !== 'ws_resq_stat_ftr_btn_') && (optionValue !== 'ss_irc_voices_mitchell_') && (optionValue !== 'default')) {
+        if((optionValue !== 'gs_ppc_') && (optionValue !== 'gs_se_ppc_') && (optionValue !== 'gd_ppc_') && (optionValue !== 'gd_da_') && (optionValue !== 'gg_ppc_') && (optionValue !== 'yt_ppc_') && (optionValue !== 'bg_ppc_') && (optionValue !== 'ws_hero_') && (optionValue !== 'ws_banr_') && (optionValue !== 'ws_modl_') && (optionValue !== 'ws_ftr_') && (optionValue !== 'ws_crisis_page_') && (optionValue !== 'ws_article_') && (optionValue !== 'ws_article_') && (optionValue !== 'ws_article_h2h_') && (optionValue !== 'ws_resq_top_nav_btn_') && (optionValue !== 'ws_resq_stat_ftr_btn_') && (optionValue !== 'ss_irc_voices_mitchell_') && (optionValue !== 'default')) {
             if(msCampaignField.value) {
                 UTMCampaignField.value = msCampaignField.value;
                 // UTMCampaignField.setAttribute('readonly','yes');
                 UTMCampaignField.classList.add('valid');
             }
         } else {
-            // UTMCampaignField.removeAttribute('readonly', 'yes');
-            // UTMCampaignField.value = '';
-            // UTMCampaignField.classList.remove('valid');
+
             if(getMS_Campaign.options[getMS_Campaign.selectedIndex].text !== 'Custom Input') {
-                UTMCampaignField.value = '';
-                UTMCampaignField.classList.remove('valid');
+                    UTMCampaignField.value = '';
+                    UTMCampaignField.classList.remove('valid');
+                }
             }
+        });
+    };
+
+    const populateBulkMsCode = function() {
+        getDropDown.addEventListener('change', function() {
+            let len = getDropDown.options.length;
+            let selectedOptions = [];
+            // let displayedOptions = [];
+            let opt;
+
+            for (let i = 0; i < len; i++) {
+                opt = getDropDown.options[i];
+                if(opt.selected) {
+                    selectedOptions.push(opt.value + '');
+                }
+            }
+
+            getMsCode.value = selectedOptions.join('\n');
+        });
+    };
+
+    const resetMSandAdset = function() {
+        getMsCode.value = '';
+        getDropDown.selectedIndex = 0;
+    }
+
+    populateSingleMsCode();
+    
+
+    bulkUrl.addEventListener('change', function() {
+        if(bulkUrl.checked) {
+            getField.setAttribute('rows', '10');
+            getDropDown.setAttribute('multiple', '');
+            getDropDown.style.height = '250px';
+            disableCustomAdset();
+            getButton.classList.add('noShow');
+            getBulkGenerateBtn.classList.remove('noShow');
+            getMsCode.setAttribute('required', '');
+            if(getMsCode.classList.contains('valid')) {
+                getMsCode.classList.remove('valid');
+            }
+            concatnated.innerHTML = '';
+            resetNote.style.display = 'none';
+
+           // Drop down options - Adsets & Channel for bulk URLS
+           resetMSandAdset();
+           populateBulkMsCode();
+
+           saveName.style.display = 'none';
+           saveButton.style.display = 'none';
+           saveLabel.style.display = 'none';
+           getCopyButton.style.display = 'none';
+
+        } else {
+            getField.setAttribute('rows', '2');
+            getDropDown.removeAttribute('multiple');
+            getDropDown.removeAttribute('style');
+            enableCustomAdset();
+            getButton.classList.remove('noShow');
+            getBulkGenerateBtn.classList.add('noShow');
+            getMsCode.setAttribute('required', '');
+            if(getMsCode.classList.contains('valid')) {
+                getMsCode.classList.remove('valid');
+            }
+            concatnated.innerHTML = '';
+            resetNote.style.display = 'none';
+
+            // Drop down options - Adsets & Channel for single URL
+            resetMSandAdset();
+            populateSingleMsCode();
+
+            saveBulkLabel.style.display = 'none';
+            bulkSaveBtn.style.display = 'none';
+            getInputName.style.display = 'none';
+            getCopyButton.style.display = 'none';
         }
     });
+
+    
+    const validateAll = function() {
+        let notValid = 0;
+        for(let i = 0; i <getInputFields.length; i++) {
+            if(getInputFields[i].classList.contains('invalid')) {
+                notValid++;
+            }
+        }
+        if(notValid == 0) {
+            return true;
+        } else {
+            // alert('fix errors');
+            getGenErr.innerHTML = errorMsg3;
+        }
+    }
+
+    // Generate single URL
+    const singleMsCampaignData = document.querySelector('#ms_campaign_data');
+    const singleMsCodeData = document.querySelector('#ms_code_data');
+    getButton.addEventListener('click', function() {
+        let result = '';
+  
+        if(validateRequired()){
+            if(validateAll()) {
+
+                result = calcResult(getInputFields);
+                concatnated.innerHTML = result;
+                singleMsCodeData.value = getField.value;
+                singleMsCampaignData.value = getMS_Campaign.value;
+                getCopyButton.style.display = 'block';
+                saveLabel.style.display = 'block';
+                saveName.style.display = 'block';
+                saveButton.style.display = 'block';
+                resetNote.style.display = 'block';
+                getGenErr.innerHTML = '';
+            } else {
+                // console.log('err2')
+                getGenErr.innerHTML = errorMsg3;
+            }
+        } else {
+            // console.log('err1')
+            getGenErr.innerHTML = errorMsg3;
+        }
+
+    });
+
+    // Generate bulk URL
+
+    // const getInputName = document.querySelector('#save-bulk-input');
+    // const saveBulkButton = document.querySelector('#save-bulk-button');
+    // const saveBulkLabel = document.querySelector('.url-save-bulk-note');
+
+        // concatenation formula for bulk URLs
+        const calcBulkResult = function(fieldValues, alt) {
+            for(let i = 0; i < fieldValues.length; i++) {
+                concat =  fieldValues[0].value + "?" + "ms=" + alt + fieldValues[2].value + fieldValues[3].value + "&" + "initialms=" + alt + fieldValues[2].value + fieldValues[3].value;
+    
+                if(fieldValues[4].value) {
+                    concat += ("&utm_medium=" + fieldValues[4].value);
+                }
+                if(fieldValues[5].value) {
+                    concat += ("&utm_source=" + fieldValues[5].value);
+                }
+                if(fieldValues[6].value) {
+                    concat += ("&utm_campaign=" + fieldValues[6].value);
+                }
+                if(fieldValues[7].value) {
+                    concat += ("&utm_content=" + fieldValues[7].value);
+                }
+    
+                return concat;
+            }
+        }
+
+
+
+    const getBulkMsCodes = function() {
+        var msarray = [];
+        for(let i = 0; i < getDropDown.options.length; i++) {
+            if(getDropDown.options[i].selected) {
+                msarray.push(getDropDown.options[i].value);
+            }
+        }
+        return msarray;
+    }
+    getBulkGenerateBtn.addEventListener('click', function() {
+        if(validateRequired()){
+            if(validateAll()) {
+
+                msCodeValues = getBulkMsCodes();
+
+                const bulkUrls = function() {
+                    let allUrls = [];
+                    for(let i = 0; i < msCodeValues.length; i++) {
+                        allUrls.push(calcBulkResult(getInputFields, msCodeValues[i]));
+                    }
+                    return allUrls;
+                }
+
+                let results = bulkUrls();
+                concatnated.setAttribute('rows', results.length + 5);
+                concatnated.innerHTML = results.join('\r\n\r\n');
+                getCopyButton.style.display = 'block';
+
+                const getBulkDropdown = document.querySelector('#generated-bulk-urls');
+                for(result in results) {
+                    getBulkDropdown.add(new Option( results[result] ));
+                }
+
+                // Auto populate MS Campaign for google sheet
+                const msCampaignData = document.querySelector('#ms_campaign_bulk_data');
+                
+                msCampaignData.value = getMS_Campaign.value;
+
+                getCopyButton.style.display = 'block';
+                getInputName.style.display = 'block';
+                saveBulkButton.style.display = 'block';
+                saveBulkLabel.style.display = 'block';
+                resetNote.style.display = 'block';
+                getGenErr.innerHTML = '';
+                
+            } else {
+                getGenErr.innerHTML = errorMsg3;
+            }
+        } else {
+            getGenErr.innerHTML = errorMsg3;
+        }
+    })
+ 
+
+
+
 
     //URL validation
     function isValidURL(string) {
@@ -426,7 +608,16 @@ window.onload = function() {
     }
     navigateMenu();
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbz8k_T9cCI5M5t-J0vnoxpGOrqHfs0gb3xo-zm7yMVD1uOkmEvcZq44yR7qwg13RUV9Fw/exec'
+    const getMarket = document.querySelector('#mktmth');
+    
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz8k_T9cCI5M5t-J0vnoxpGOrqHfs0gb3xo-zm7yMVD1uOkmEvcZq44yR7qwg13RUV9Fw/exec';
+    const scriptURLUS = 'https://script.google.com/macros/s/AKfycbygVQiK9ueCtOolnQcrxX-VlJTkde7_s6UxtBbA43sdjYL4_-qepph3zJDdZNo31motTw/exec';
+    const scriptURLDE = 'https://script.google.com/macros/s/AKfycbz3G3nM1CiHUWH4U1UvWscAS575RleUuVVQNOxbhv0V-4m3GwnCeM7BWqK2F97s-_Ch5A/exec';
+    const scriptURLUK = 'https://script.google.com/macros/s/AKfycbxI_A6zhD9BHaXNVxPfy0H24YpK7avGDJDsb1K-hdFOmBIQhN6MQM7X5ZNa4BNpJptMkQ/exec';
+    const scriptURLRM = 'https://script.google.com/macros/s/AKfycby5ooL9PNTQifW9ks3qn9jARoaR-yIF_OIzuveiS0zxtlCofAiogYnwbAY1jQObBU7W-A/exec';
+    const scriptURLSE = 'https://script.google.com/macros/s/AKfycbw1AJk8PETZMTA3akDhciUFOb3Uu0UFCAGHh1ZsH4w95e66kG6O_Lg_EiOmV4ZOZLYE_w/exec';
+    const scriptURLSK = 'https://script.google.com/macros/s/AKfycbzHZTfBqt4tM3v7vIBFOOImoMYhR1acXKb25JmGWWYQP1BR0DTCyvHT8Gc_tmbWy3RNZQ/exec';
     // const form = document.forms['submit-to-google-sheet']
     const form = document.querySelector('#submit-to-google-sheet');
     const getlabel = document.querySelector('#url_saved_message');
@@ -434,20 +625,252 @@ window.onload = function() {
     form.addEventListener('submit', e => {
         saveButton.disabled = true;
         e.preventDefault()
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        // .then(response => console.log('Success!', response))
-        // .catch(error => console.error('Error!', error.message))
-        .then(response => {
-            // console.log('Success!', response)
-            saveButton.disabled = false
-            getlabel.innerHTML = savedUrlMsg;
-            setTimeout(() => {
-                getlabel.style.display = 'none';
-            }, 5000);
-        })
-        .catch(error => {
-            console.error('Error', error.message)
-            saveButton.disabled = false
-        })
-    })
+    const getMarket = document.querySelector('#mktmth');
+        if(getMarket.value == '_demk') {
+            fetch(scriptURLDE, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                saveButton.disabled = false
+                getlabel.innerHTML = savedUrlMsg;
+                setTimeout(() => {
+                    getlabel.style.display = 'none';
+                }, 5000);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error', error.message)
+                saveButton.disabled = false
+            })
+        }
+
+        else if(getMarket.value == '_ukmk') {
+            fetch(scriptURLUK, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                saveButton.disabled = false
+                getlabel.innerHTML = savedUrlMsg;
+                setTimeout(() => {
+                    getlabel.style.display = 'none';
+                }, 5000);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error', error.message)
+                saveButton.disabled = false
+            })
+        }
+
+        else if(getMarket.value == '_nm') {
+            fetch(scriptURLRM, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                saveButton.disabled = false
+                getlabel.innerHTML = savedUrlMsg;
+                setTimeout(() => {
+                    getlabel.style.display = 'none';
+                }, 5000);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error', error.message)
+                saveButton.disabled = false
+            })
+        }
+
+        else if(getMarket.value == '_semk') {
+            fetch(scriptURLSE, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                saveButton.disabled = false
+                getlabel.innerHTML = savedUrlMsg;
+                setTimeout(() => {
+                    getlabel.style.display = 'none';
+                }, 5000);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error', error.message)
+                saveButton.disabled = false
+            })
+        }
+
+        else if(getMarket.value == '_mmsk') {
+            fetch(scriptURLSK, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                saveButton.disabled = false
+                getlabel.innerHTML = savedUrlMsg;
+                setTimeout(() => {
+                    getlabel.style.display = 'none';
+                }, 5000);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error', error.message)
+                saveButton.disabled = false
+            })
+        } else {
+            fetch(scriptURLUS, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                saveButton.disabled = false
+                getlabel.innerHTML = savedUrlMsg;
+                setTimeout(() => {
+                    getlabel.style.display = 'none';
+                }, 5000);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error', error.message)
+                saveButton.disabled = false
+            })
+        }
+
+    });
+
+    // for bulk URLS
+
+    const bulkSaveBtn = document.querySelector('#save-bulk-button');
+
+    const bulkUrlForm = document.querySelector('#submit-bulk-to-google-sheet');
+    const getBulkDropdown = document.querySelector('#generated-bulk-urls');
+    let urlList;
+    const fetchURLs = function() {
+        let urlarray = []
+        for(let i= 0; i < getBulkDropdown.options.length; i++) {
+            urlarray.push(getBulkDropdown.options[i].value);
+        }
+        return urlarray;
+    }
+     
+    bulkUrlForm.addEventListener('submit', e => {
+
+        urlList = fetchURLs();
+        
+        for(let i = 0; i < urlList.length; i++) {
+            let getLink = document.querySelector('#bulkLink');
+            getLink.value = urlList[i];
+            const getBulkMSCode = document.querySelector('#ms_code_bulk_data');
+            let singleURL = urlList[i].slice(urlList[i].indexOf('ms='));
+            let singleParam = singleURL.split('fy')[0];
+            let singleMsCode = singleParam.split('=')[1];
+            getBulkMSCode.value = singleMsCode;
+            bulkSaveBtn.disabled = true;
+            e.preventDefault();
+
+            if(getMarket.value == '_demk') {
+                fetch(scriptURLDE, { method: 'POST', body: new FormData(bulkUrlForm) })
+                .then(response => {
+                    bulkSaveBtn.disabled = false
+                    getlabel.innerHTML = savedBulkUrlMsg;
+                    setTimeout(() => {
+                        getlabel.style.display = 'none';
+                    }, 5000);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Error', error.message)
+                    bulkSaveBtn.disabled = false
+                })
+            }
+
+            else if(getMarket.value == '_ukmk') {
+                fetch(scriptURLUK, { method: 'POST', body: new FormData(bulkUrlForm) })
+                .then(response => {
+                    bulkSaveBtn.disabled = false
+                    getlabel.innerHTML = savedBulkUrlMsg;
+                    setTimeout(() => {
+                        getlabel.style.display = 'none';
+                    }, 5000);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Error', error.message)
+                    bulkSaveBtn.disabled = false
+                })
+            }
+
+            else if(getMarket.value == '_nm') {
+                fetch(scriptURLRM, { method: 'POST', body: new FormData(bulkUrlForm) })
+                .then(response => {
+                    bulkSaveBtn.disabled = false
+                    getlabel.innerHTML = savedBulkUrlMsg;
+                    setTimeout(() => {
+                        getlabel.style.display = 'none';
+                    }, 5000);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Error', error.message)
+                    bulkSaveBtn.disabled = false
+                })
+            }
+
+            else if(getMarket.value == '_semk') {
+                fetch(scriptURLSE, { method: 'POST', body: new FormData(bulkUrlForm) })
+                .then(response => {
+                    bulkSaveBtn.disabled = false
+                    getlabel.innerHTML = savedBulkUrlMsg;
+                    setTimeout(() => {
+                        getlabel.style.display = 'none';
+                    }, 5000);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Error', error.message)
+                    bulkSaveBtn.disabled = false
+                })
+            }
+
+            else if(getMarket.value == '_mmsk') {
+                fetch(scriptURLSK, { method: 'POST', body: new FormData(bulkUrlForm) })
+                .then(response => {
+                    bulkSaveBtn.disabled = false
+                    getlabel.innerHTML = savedBulkUrlMsg;
+                    setTimeout(() => {
+                        getlabel.style.display = 'none';
+                    }, 5000);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Error', error.message)
+                    bulkSaveBtn.disabled = false
+                })
+            } else {
+                fetch(scriptURLUS, { method: 'POST', body: new FormData(bulkUrlForm) })
+                .then(response => {
+                    bulkSaveBtn.disabled = false
+                    getlabel.innerHTML = savedBulkUrlMsg;
+                    setTimeout(() => {
+                        getlabel.style.display = 'none';
+                    }, 5000);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Error', error.message)
+                    bulkSaveBtn.disabled = false
+                }) 
+            }
+
+        }
+        
+    });
 }

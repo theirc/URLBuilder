@@ -23,10 +23,14 @@
                     <div id="sectionA" class="builder tab-content showContent">
                         <h2>Enter the website URL and campaign information</h2>
                         <p>Fill out all fields marked with an asterisk (*), and the campaign URL will be generated for you.</p>
+                        <div class="bulk">
+                            <span>Select checkbox to generate bulk URLs</span>
+                            <input class="bulk-url" type="checkbox" name="bulk-url" id="bulk-url">
+                        </div>
                         <div class="builder-content">
                             <div class="multi-field">
                                 <label for="adsets">Ad Set & Channels</label>
-                                <select name="adset_channels" id="adsets" class="adset-options">
+                                <select name="adset_channel" id="adsets" class="adset-options">
                                     <option disabled selected value="default"> -- Select an option -- </option>
                                     <optgroup label="Paid Display & Search">
                                         <option value="gs_ppc_">Paid Adwords</option>
@@ -51,7 +55,7 @@
                                         <option value="pn_ppc_">Pinterest</option>
                                         <option value="tw_ppc_">Twitter</option>
                                         <option value="in_ppc_">Instagram</option>
-                                        <option value="tt_ppc">TikTok</option>
+                                        <option value="tt_ppc_">TikTok</option>
                                         <option value="li_ppc_">LinkedIn</option>
                                         <option value="rd_ppc_">Reddit</option>
                                     </optgroup>
@@ -104,7 +108,8 @@
                         <div class="builder-content">
                             <div class="multi-field">
                                 <label for="ms-codes">MS-Codes<sup class="required">*</sup></label>
-                                <input class="multi-input" type="text" id="ms-codes" value="" required readonly>
+                                <!-- <input class="multi-input" type="text" id="ms-codes" name="ms-codes" value="" required readonly> -->
+                                <textarea class="multi-input" rows="2" id="ms-codes" name="ms-codes[]" required readonly></textarea>
                                 <p class="error_msg"></p>
                                 <p class="helper-text" id="ms-codes-helper-text">The ads ms-code.</p>
                             </div>
@@ -241,12 +246,26 @@
                         <!-- <button class="copy-text" id="copy-text">Copy</button> -->
                         <p class="url-save-note">Enter a name and click on the save button to save URL</p>
                         <input class="save-input" id="save-input-name" name="Name" required>
+                        <input id="ms_campaign_data" name="Ms_Campaign" hidden value="">
+                        <input id="ms_code_data" name="Ms_Code" hidden value="">
                         <p id="url_saved_message"></p>
                         <button class="save-btn" id="save-button">Save</button>
+                        
                         </form>
+                        <form name="submit-bulk-to-google-sheet" id="submit-bulk-to-google-sheet">
+                            <p class="url-save-bulk-note">Enter a name and click on the "Save all URL's" button to save URLs</p>
+                            <input class="save-input" id="save-bulk-input" name="Name" required>
+                            <select id="generated-bulk-urls" hidden></select>
+                            <input id="ms_campaign_bulk_data" name="Ms_Campaign" hidden value="">
+                            <input id="ms_code_bulk_data" name="Ms_Code" hidden value="">
+                            <input id="bulkLink" name="Link" hidden value="">
+                            <button class="save-bulk-button" id="save-bulk-button">Save all URL's</button>
+                        </form>
+                        <p class="reset-note">Note: form will reset automatically when save is complete</p>
                         <button class="copy-text" id="copy-text">Copy</button>
                         <div class="builder-btn">
                             <button class="generate-btn" id="generate-button">Generate URL</button>
+                            <button class="generate-btn noShow" id="bulk-generate-button">Generate Bulk URLs</button>
                         </div>
                         <div id="gen_error_msg"></div>
 

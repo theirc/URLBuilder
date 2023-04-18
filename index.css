@@ -72,7 +72,7 @@ body {
       margin-bottom: 20px;
   }
   
-  .url-save-note {
+  .url-save-note, .url-save-bulk-note {
       font-size: 14px;
       font-weight: 600;
   }
@@ -162,7 +162,28 @@ body {
       display: none;
   }
   
-  #save-input-name, .url-save-note {
+  .bulk {
+      margin-bottom: 20px;
+  }
+  
+  .reset-note {
+      font-size: 14px;
+      font-weight: 600;
+      display: none;
+  }
+  
+  .save-bulk-button {
+      width: 150px;
+      height: 30px;
+      cursor: pointer;
+      background-color: #fff;
+      outline: none;
+      border: 1px solid #000;
+      border-radius: 5px;
+      display: none;
+  }
+  
+  #save-input-name, #save-bulk-input, #save-bulk-button, .url-save-note, .url-save-bulk-note {
       display: none;
   }
   
@@ -354,5 +375,15 @@ body {
   
      #sectionB .section-content {
           margin: 0 2%;
+      }
+  
+      .noShow {
+          display: none;
+      }
+  
+      #ms-codes {
+          min-height: unset;
+          height: unset;
+          padding: 10px 10px 0 10px;
       }
   }
