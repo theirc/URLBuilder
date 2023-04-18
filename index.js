@@ -53,6 +53,10 @@ window.onload = function() {
 
     updateAdsets();
 
+    window.onbeforeunload = function () {
+        window.scrollTo(0,0);
+    };
+
 
     let errorMsg = 'whitespace not allowed';
     let errorMsg2 = 'This field is required';
