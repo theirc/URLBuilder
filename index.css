@@ -162,6 +162,22 @@ body {
       display: none;
   }
   
+  .bulk-select-instructions {
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 20px;
+  }
+  
+  #bulk-select-instructions {
+      display: none;
+  }
+  
+  .bulk-select-instructions li {
+      font-weight: 600;
+      font-size: 14px;
+  }
+  
   .bulk {
       margin-bottom: 20px;
   }

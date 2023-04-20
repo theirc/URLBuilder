@@ -22,6 +22,7 @@ window.onload = function() {
     const saveBulkButton = document.querySelector('#save-bulk-button');
     const saveBulkLabel = document.querySelector('.url-save-bulk-note');
     const resetNote = document.querySelector('.reset-note');
+    const bulkUrlInstruction = document.querySelector('#bulk-select-instructions');
     // let fiscalYear = 'fy22'; // This value should be updated at the begining of every fiscal year. (Ususally on October 1st)
     let fiscalYearValue = 23
     let fiscalYear = 'fy' + fiscalYearValue; 
@@ -370,6 +371,7 @@ window.onload = function() {
             }
             concatnated.innerHTML = '';
             resetNote.style.display = 'none';
+            bulkUrlInstruction.style.display = 'block';
 
            // Drop down options - Adsets & Channel for bulk URLS
            resetMSandAdset();
@@ -393,6 +395,7 @@ window.onload = function() {
             }
             concatnated.innerHTML = '';
             resetNote.style.display = 'none';
+            bulkUrlInstruction.style.display = 'none';
 
             // Drop down options - Adsets & Channel for single URL
             resetMSandAdset();
