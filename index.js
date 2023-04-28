@@ -436,7 +436,8 @@ window.onload = function() {
                 result = calcResult(getInputFields);
                 concatnated.innerHTML = result;
                 singleMsCodeData.value = getField.value;
-                singleMsCampaignData.value = getMS_Campaign.value;
+                // singleMsCampaignData.value = getMS_Campaign.value;
+                singleMsCampaignData.value = getMsCampaignInputField.value;
                 getCopyButton.style.display = 'block';
                 saveLabel.style.display = 'block';
                 saveName.style.display = 'block';
@@ -520,7 +521,8 @@ window.onload = function() {
                 // Auto populate MS Campaign for google sheet
                 const msCampaignData = document.querySelector('#ms_campaign_bulk_data');
                 
-                msCampaignData.value = getMS_Campaign.value;
+                // msCampaignData.value = getMS_Campaign.value;
+                msCampaignData.value = getMsCampaignInputField.value;
 
                 getCopyButton.style.display = 'block';
                 getInputName.style.display = 'block';
