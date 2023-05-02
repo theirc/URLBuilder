@@ -117,11 +117,7 @@ body {
       font-weight: 900;
   }
   
-  /* .multi-input {
-      border: 2px solid #666666;
-      border-radius: 5px;
-      outline: none;
-  } */
+  
   .multi-input:focus {
       border: 2px solid #FDC513;
   }
@@ -322,9 +318,6 @@ body {
       flex-basis: 30%;
   }
   
-  .adset_word {
-      /* border-bottom: 1px solid black; */
-  }
   
   .adset_word, .adset_description, .adsets_header, .adsets_header_description, .adsets_eoy {
       padding: 15px;
@@ -429,23 +422,6 @@ body {
       max-width: 600px;
      }
   
-     /* .market_month {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-column-gap: 10px;
-     } */
-  
-     #mktmth, #market_month {
-      /* width: 48%; */
-     }
-  
-     #mktmth {
-      /* margin-right: 1.5%; */
-     }
-  
-     #market_month {
-      /* margin-left: 1.5%; */
-     }
   
      #sectionB .section-content {
           margin: 0 2%;
