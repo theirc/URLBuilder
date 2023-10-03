@@ -37,6 +37,7 @@ window.onload = function() {
 
     const updateFiscalYear = () => {
         fiscalYearValue = Number(getRecentYear.slice(2)) + 1;
+        fiscalYear = 'fy' + fiscalYearValue; 
     }
 
     if(getRecentMonth === 9 && getRecentDate === 1 ) {
