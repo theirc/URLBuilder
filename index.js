@@ -40,7 +40,7 @@ window.onload = function() {
         fiscalYear = 'fy' + fiscalYearValue; 
     }
 
-    if(getRecentMonth === 9 && getRecentDate === 1 ) {
+    if(getRecentMonth === 9 && getRecentDate >= 1 ) {
         updateFiscalYear();
     } else {
         
