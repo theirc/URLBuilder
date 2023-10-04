@@ -40,9 +40,18 @@ window.onload = function() {
         fiscalYear = 'fy' + fiscalYearValue; 
     }
 
-    if(getRecentMonth === 9 && getRecentDate >= 1 ) {
+    const currentFiscalYear = () => {
+        fiscalYearValue = Number(getRecentYear.slice(2));
+        fiscalYear = 'fy' + fiscalYearValue; 
+    }
+
+    if(getRecentMonth >= 9 && getRecentMonth <= 11 ) {
         updateFiscalYear();
-    } else {
+    } 
+    else if(getRecentMonth >= 0 && getRecentMonth < 9) {
+        currentFiscalYear();
+    }
+    else {
         
     }
 
