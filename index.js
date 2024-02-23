@@ -197,6 +197,7 @@ window.onload = function () {
       getMS_Campaign.options[getMS_Campaign.selectedIndex].text;
     // const optGroupLabel = getDropDown.options[getDropDown.selectedIndex].parentElement.label;
     const getUTMCampaignField = document.querySelector("#utm-campaign");
+    const dataType = getOptGroup.options[getOptGroup.selectedIndex].getAttribute('data-type');
 
     getCampaignField.value = fiscalYear + "_" + getMS_Campaign.value;
     hiddenInputValidate(getCampaignField);
@@ -215,29 +216,8 @@ window.onload = function () {
     }
 
     // auto populate UTM Campagin
-    // if((optGroupLabel !== 'Paid Display & Search') && (optGroupLabel !== 'Onsite Elements - links on the communications site') && getOptGroup.value) {
     if (
-      getOptGroup.value !== "gs_ppc_" &&
-      getOptGroup.value !== "txt_" &&
-      getOptGroup.value !== "dm_furl_" &&
-      getOptGroup.value !== "gs_se_ppc_" &&
-      getOptGroup.value !== "gd_ppc_" &&
-      getOptGroup.value !== "gd_da_" &&
-      getOptGroup.value !== "gg_ppc_" &&
-      getOptGroup.value !== "yt_ppc_" &&
-      getOptGroup.value !== "bg_ppc_" &&
-      getOptGroup.value !== "ws_hero_" &&
-      getOptGroup.value !== "ws_banr_" &&
-      getOptGroup.value !== "ws_modl_" &&
-      getOptGroup.value !== "ws_ftr_" &&
-      getOptGroup.value !== "ws_crisis_page_" &&
-      getOptGroup.value !== "ws_article_" &&
-      getOptGroup.value !== "ws_article_" &&
-      getOptGroup.value !== "ws_article_h2h_" &&
-      getOptGroup.value !== "ws_resq_top_nav_btn_" &&
-      getOptGroup.value !== "ws_resq_stat_ftr_btn_" &&
-      getOptGroup.value !== "ss_irc_voices_mitchell_" &&
-      getOptGroup.value !== "default"
+      dataType === "autoPopulate"
     ) {
       getUTMCampaignField.value = getCampaignField.value;
       getUTMCampaignField.classList.add("valid");
@@ -350,6 +330,7 @@ window.onload = function () {
       let optionGroupLabelValue =
         getDropDown.options[getDropDown.selectedIndex].parentElement.label;
       let UTMCampaignField = document.querySelector("#utm-campaign");
+      const dataType = getDropDown.options[getDropDown.selectedIndex].getAttribute('data-type');
 
       const populateMSCode = () => {
         getMsCode.setAttribute("value", optionValue);
@@ -374,29 +355,8 @@ window.onload = function () {
       }
 
       // Check MS Campaign / UTM Campaign
-      // if((optionGroupLabelValue !== 'Paid Display & Search') && (optionGroupLabelValue !== 'Onsite Elements - links on the communications site') && optionValue) {
       if (
-        optionValue !== "gs_ppc_" &&
-        optionValue !== "txt_" &&
-        optionValue !== "dm_furl_" &&
-        optionValue !== "gs_se_ppc_" &&
-        optionValue !== "gd_ppc_" &&
-        optionValue !== "gd_da_" &&
-        optionValue !== "gg_ppc_" &&
-        optionValue !== "yt_ppc_" &&
-        optionValue !== "bg_ppc_" &&
-        optionValue !== "ws_hero_" &&
-        optionValue !== "ws_banr_" &&
-        optionValue !== "ws_modl_" &&
-        optionValue !== "ws_ftr_" &&
-        optionValue !== "ws_crisis_page_" &&
-        optionValue !== "ws_article_" &&
-        optionValue !== "ws_article_" &&
-        optionValue !== "ws_article_h2h_" &&
-        optionValue !== "ws_resq_top_nav_btn_" &&
-        optionValue !== "ws_resq_stat_ftr_btn_" &&
-        optionValue !== "ss_irc_voices_mitchell_" &&
-        optionValue !== "default"
+      dataType === "autoPopulate"
       ) {
         if (msCampaignField.value) {
           UTMCampaignField.value = msCampaignField.value;
