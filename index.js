@@ -22,6 +22,7 @@ window.onload = function () {
   const saveBulkButton = document.querySelector("#save-bulk-button");
   const saveBulkLabel = document.querySelector(".url-save-bulk-note");
   const resetNote = document.querySelector(".reset-note");
+  let selectedOptionsUTMCampaign = {};
   const bulkUrlInstruction = document.querySelector(
     "#bulk-select-instructions"
   );
@@ -95,6 +96,7 @@ window.onload = function () {
         concat += "&utm_source=" + fieldValues[5].value;
       }
       if (fieldValues[6].value) {
+
         concat += "&utm_campaign=" + fieldValues[6].value;
       }
       if (fieldValues[7].value) {
@@ -190,6 +192,7 @@ window.onload = function () {
   }
 
   // Auto populate MS-Campaign
+  const populateSingleUTMCampaign = function() {
   getMS_Campaign.addEventListener("change", function () {
     let getCampaignField = document.querySelector("#ms-campaign");
     const getOptGroup = document.querySelector("#adsets");
@@ -231,6 +234,7 @@ window.onload = function () {
       }
     }
   });
+}
 
   // MS Campaign custom input
   getMsCampaignInputField.addEventListener("input", function () {
@@ -426,14 +430,67 @@ window.onload = function () {
     });
   };
 
+  const populateBulkUTMCampaign = function() {
+      const getMSCampaignDropDown = document.querySelector('#ms-campaign-list');
+      const getUTMCampaignTextArea = document.querySelector('#utm-campaign');
+      getMSCampaignDropDown.addEventListener("change", function() {
+          getMSCodeList = document.querySelector('#ms-codes');
+          // console.log(getMSCodeList.value);
+          if(!getMSCodeList.value) {
+              console.log('None');
+          } else {
+              const getAdSetsDropDown = document.querySelector('#adsets');
+              let len = getAdSetsDropDown.options.length;
+              // let selectedOptionsUTMCampaign = {};
+              let selectedOpt;
+              let UTMvalues = '';
+              for(let i = 0; i < len; i++) {
+                  
+                  selectedOpt = getAdSetsDropDown[i];
+                  if(selectedOpt.selected) {
+                      const keyName = selectedOpt.value;
+                      if(selectedOpt.getAttribute('data-type') === 'autoPopulate') {
+                          selectedOptionsUTMCampaign[keyName] = fiscalYear + "_" + getMSCampaignDropDown.options[getMSCampaignDropDown.selectedIndex].text;
+                      } else {
+                          selectedOptionsUTMCampaign[keyName] = 'Leave Blank';
+                      }
+                  }
+              }
+             
+
+              for (const property in selectedOptionsUTMCampaign) {
+                  UTMvalues += `${property} : ${selectedOptionsUTMCampaign[property]} \n`;
+              }
+
+              getUTMCampaignTextArea.value = UTMvalues;
+          }
+      });
+  }
+
+  
+
   const resetMSandAdset = function () {
-    getMsCode.value = "";
-    getDropDown.selectedIndex = 0;
+      const getUTMCampaignTextArea = document.querySelector('#utm-campaign');
+      const getMSCampaignDropDown = document.querySelector('#ms-campaign-list');
+      const getMSCampaignField = document.querySelector('#ms-campaign');
+      getMSCampaignDropDown.selectedIndex = 0;
+      getUTMCampaignTextArea.value = "";
+      getMSCampaignField.value = '';
+      getMsCode.value = "";
+      getDropDown.selectedIndex = 0;
   };
 
+  const resetUTMCampaign = function() {
+      selectedOptionsUTMCampaign = {};
+  }
+
   populateSingleMsCode();
+  populateSingleUTMCampaign();
 
   bulkUrl.addEventListener("change", function () {
+      bulkUTMCampaign = document.querySelector('#utm-campaign');
+      const getUtmSource = document.querySelector('#utm-source');
+      const getUtmMedium = document.querySelector('#utm-medium-list');
     if (bulkUrl.checked) {
       getField.setAttribute("rows", "10");
       getDropDown.setAttribute("multiple", "");
@@ -441,6 +498,16 @@ window.onload = function () {
       disableCustomAdset();
       getButton.classList.add("noShow");
       getBulkGenerateBtn.classList.remove("noShow");
+      // getUtmSource.setAttribute("readonly", "readonly");
+      getUtmSource.setAttribute("disabled", "disabled");
+      getUtmMedium.setAttribute('disabled', 'disabled');
+
+      // For UTM Campaign
+      bulkUTMCampaign.setAttribute("rows", "10");
+      bulkUTMCampaign.setAttribute("multiple", "");
+      bulkUTMCampaign.style.height = "250px";
+      bulkUTMCampaign.setAttribute("readonly", "readonly");
+
       getMsCode.setAttribute("required", "");
       if (getMsCode.classList.contains("valid")) {
         getMsCode.classList.remove("valid");
@@ -452,6 +519,8 @@ window.onload = function () {
       // Drop down options - Adsets & Channel for bulk URLS
       resetMSandAdset();
       populateBulkMsCode();
+      populateBulkUTMCampaign();
+      resetUTMCampaign();
 
       saveName.style.display = "none";
       saveButton.style.display = "none";
@@ -464,6 +533,16 @@ window.onload = function () {
       enableCustomAdset();
       getButton.classList.remove("noShow");
       getBulkGenerateBtn.classList.add("noShow");
+      // getUtmSource.removeAttribute('readonly');
+      getUtmSource.removeAttribute('disabled');
+      getUtmMedium.removeAttribute('disabled');
+
+      // For UTM Campaign
+      bulkUTMCampaign.setAttribute("rows", "2");
+      bulkUTMCampaign.removeAttribute("multiple");
+      bulkUTMCampaign.removeAttribute("style");
+      bulkUTMCampaign.removeAttribute('readonly');
+
       getMsCode.setAttribute("required", "");
       if (getMsCode.classList.contains("valid")) {
         getMsCode.classList.remove("valid");
@@ -475,6 +554,8 @@ window.onload = function () {
       // Drop down options - Adsets & Channel for single URL
       resetMSandAdset();
       populateSingleMsCode();
+      populateSingleUTMCampaign();
+      resetUTMCampaign();
 
       saveBulkLabel.style.display = "none";
       bulkSaveBtn.style.display = "none";
@@ -534,7 +615,40 @@ window.onload = function () {
   // const saveBulkLabel = document.querySelector('.url-save-bulk-note');
 
   // concatenation formula for bulk URLs
-  const calcBulkResult = function (fieldValues, alt) {
+  // const calcBulkResult = function (fieldValues, alt) {
+  //   for (let i = 0; i < fieldValues.length; i++) {
+  //     concat =
+  //       fieldValues[0].value +
+  //       "?" +
+  //       "ms=" +
+  //       alt +
+  //       fieldValues[2].value +
+  //       fieldValues[3].value +
+  //       "&" +
+  //       "initialms=" +
+  //       alt +
+  //       fieldValues[2].value +
+  //       fieldValues[3].value;
+
+  //     if (fieldValues[4].value) {
+  //       concat += "&utm_medium=" + fieldValues[4].value;
+  //     }
+  //     if (fieldValues[5].value) {
+  //       concat += "&utm_source=" + fieldValues[5].value;
+  //     }
+  //     if (fieldValues[6].value) {
+  //       concat += "&utm_campaign=" + fieldValues[6].value;
+  //     }
+  //     if (fieldValues[7].value) {
+  //       concat += "&utm_content=" + fieldValues[7].value;
+  //     }
+
+  //     return concat;
+  //   }
+  // };
+
+   // concatenation formula for bulk URLs
+  const calcBulkResult = function (fieldValues, alt, alt2, source, medium) {
     for (let i = 0; i < fieldValues.length; i++) {
       concat =
         fieldValues[0].value +
@@ -549,14 +663,18 @@ window.onload = function () {
         fieldValues[2].value +
         fieldValues[3].value;
 
-      if (fieldValues[4].value) {
-        concat += "&utm_medium=" + fieldValues[4].value;
+      if (medium !== 'blank' && medium !== 'custom') {
+        concat += "&utm_medium=" + fieldValues[4].value + medium;
       }
-      if (fieldValues[5].value) {
-        concat += "&utm_source=" + fieldValues[5].value;
+
+      if (source !== 'blank' && source !== 'custom') {
+        concat += "&utm_source=" + fieldValues[5].value + source;
       }
       if (fieldValues[6].value) {
-        concat += "&utm_campaign=" + fieldValues[6].value;
+          if(alt2 !== 'Leave Blank') {
+              concat += "&utm_campaign=" + alt2;
+          }
+      //   concat += "&utm_campaign=" + fieldValues[6].value;
       }
       if (fieldValues[7].value) {
         concat += "&utm_content=" + fieldValues[7].value;
@@ -566,25 +684,48 @@ window.onload = function () {
     }
   };
 
-  const getBulkMsCodes = function () {
-    var msarray = [];
-    for (let i = 0; i < getDropDown.options.length; i++) {
-      if (getDropDown.options[i].selected) {
-        msarray.push(getDropDown.options[i].value);
-      }
-    }
-    return msarray;
-  };
+  // const getBulkMsCodes = function () {
+  //   var msarray = [];
+  //   for (let i = 0; i < getDropDown.options.length; i++) {
+  //     if (getDropDown.options[i].selected) {
+  //       msarray.push(getDropDown.options[i].value);
+  //     }
+  //   }
+  //   return msarray;
+  // };
+
   getBulkGenerateBtn.addEventListener("click", function () {
     if (validateRequired()) {
       if (validateAll()) {
-        msCodeValues = getBulkMsCodes();
+      //   msCodeValues = getBulkMsCodes();
 
         const bulkUrls = function () {
           let allUrls = [];
-          for (let i = 0; i < msCodeValues.length; i++) {
-            allUrls.push(calcBulkResult(getInputFields, msCodeValues[i]));
+
+          // for (let i = 0; i < msCodeValues.length; i++) {
+          //   allUrls.push(calcBulkResult(getInputFields, msCodeValues[i]));
+          // }
+
+          let source = '';
+          let medium = '';
+
+          for (let key in selectedOptionsUTMCampaign) {
+            const getAdsetsDropDown = document.querySelector("#adsets");
+            let len = getAdsetsDropDown.options.length;
+            let opt;
+            for (let i = 0; i < len; i++) {
+              opt = getAdsetsDropDown.options[i];
+              if (opt.selected) {
+                if(opt.value === key) {
+                  source = opt.getAttribute('data-source');
+                  medium = opt.getAttribute('data-medium');
+                }
+                
+              }
+            }
+              allUrls.push(calcBulkResult(getInputFields, key, selectedOptionsUTMCampaign[key], source, medium));
           }
+
           return allUrls;
         };
 

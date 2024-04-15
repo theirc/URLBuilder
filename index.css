@@ -438,4 +438,9 @@ body {
           height: unset;
           padding: 10px 10px 0 10px;
       }
+  
+      #utm-campaign {
+          min-height: unset;
+          padding: 12px 8px 12px 8px;
+      }
   }

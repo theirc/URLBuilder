@@ -44,76 +44,76 @@
                                 <select name="adset_channel" id="adsets" class="adset-options">
                                     <option disabled selected value="default" data-type="nonPopulate"> -- Select an option -- </option>
                                     <optgroup label="Paid Display & Search">
-                                        <option value="gs_ppc_" data-type="nonPopulate">Paid Adwords</option>
-                                        <option value="gs_se_ppc_" data-type="nonPopulate">Gmail Sponsored email</option>
-                                        <option value="gd_ppc_" data-type="nonPopulate">Google Display Network GDN</option>
-                                        <option value="gd_da_" data-type="nonPopulate">Google Discovery Ads</option>
-                                        <option value="gg_ppc_" data-type="nonPopulate">Google Grant</option>
-                                        <option value="yt_ppc_" data-type="nonPopulate">Google You Tube</option>
-                                        <option value="bg_ppc_" data-type="nonPopulate">Bing</option>
-                                        <option value="ad_ppc_miq_" data-type="autoPopulate">MediaIQ</option>
-                                        <option value="eb_ppc_miq_" data-type="autoPopulate">eBay</option>
-                                        <option value="spot_ppc_" data-type="autoPopulate">Spotify</option>
-                                        <option value="mj_email_" data-type="autoPopulate">Mother Jones</option>
-                                        <option value="nyt_aud_" data-type="autoPopulate">NYT Podcasts</option>
-                                        <option value="gs_pmax_" data-type="autoPopulate">Google - Performance Max</option>
-                                        <option value="yh_ppc_" data-type="autoPopulate">Yahoo - Display</option>
-                                        <option value="yh_vid_" data-type="autoPopulate">Yahoo - Video</option>
-                                        <option value="viant_ctv_" data-type="autoPopulate">Viant - CTV</option>
-                                        <option value="viant_ppc_" data-type="autoPopulate">Viant - Display</option>
-                                        <option value="pan_aud_" data-type="autoPopulate">Pandora - Audio Ads</option>
-                                        <option value="al_ppc_" data-type="autoPopulate">Ad Lib</option>
-                                        <option value="at_ppc_" data-type="autoPopulate">AdTheorent</option>
-                                        <option value="jvx_ppc" data-type="autoPopulate">Jivox</option>
-                                        <option value="tap_ppc_" data-type="autoPopulate">Tapjoy</option>
+                                        <option value="gs_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Paid Adwords</option>
+                                        <option value="gs_se_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Gmail Sponsored email</option>
+                                        <option value="gd_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Google Display Network GDN</option>
+                                        <option value="gd_da_" data-type="nonPopulate" data-source="blank" data-medium="blank">Google Discovery Ads</option>
+                                        <option value="gg_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Google Grant</option>
+                                        <option value="yt_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Google You Tube</option>
+                                        <option value="bg_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Bing</option>
+                                        <option value="ad_ppc_miq_" data-type="autoPopulate" data-source="mediaiq" data-medium="display">MediaIQ</option>
+                                        <option value="eb_ppc_miq_" data-type="autoPopulate" data-source="ebay" data-medium="display">eBay</option>
+                                        <option value="spot_ppc_" data-type="autoPopulate" data-source="spotify" data-medium="display">Spotify</option>
+                                        <option value="mj_email_" data-type="autoPopulate" data-source="motherjones" data-medium="display">Mother Jones</option>
+                                        <option value="nyt_aud_" data-type="autoPopulate" data-source="nyt" data-medium="audio">NYT Podcasts</option>
+                                        <option value="gs_pmax_" data-type="autoPopulate" data-source="blank" data-medium="blank">Google - Performance Max</option>
+                                        <option value="yh_ppc_" data-type="autoPopulate" data-source="yahoo" data-medium="display">Yahoo - Display</option>
+                                        <option value="yh_vid_" data-type="autoPopulate" data-source="yahoo" data-medium="video">Yahoo - Video</option>
+                                        <option value="viant_ctv_" data-type="autoPopulate" data-source="ctv" data-medium="display">Viant - CTV</option>
+                                        <option value="viant_ppc_" data-type="autoPopulate" data-source="viant" data-medium="display">Viant - Display</option>
+                                        <option value="pan_aud_" data-type="autoPopulate" data-source="pandora" data-medium="audio">Pandora - Audio Ads</option>
+                                        <option value="al_ppc_" data-type="autoPopulate" data-source="adlib" data-medium="display">Ad Lib</option>
+                                        <option value="at_ppc_" data-type="autoPopulate" data-source="adtheorent" data-medium="display">AdTheorent</option>
+                                        <option value="jvx_ppc" data-type="autoPopulate" data-source="jivox" data-medium="display">Jivox</option>
+                                        <option value="tap_ppc_" data-type="autoPopulate" data-source="tapjoy" data-medium="display">Tapjoy</option>
                                     </optgroup>
                                     <optgroup label="Advocacy">
-                                        <option value="txt_" data-type="nonPopulate">SMS</option>
+                                        <option value="txt_" data-type="nonPopulate" data-source="blank" data-medium="blank">SMS</option>
                                     </optgroup>
                                     <optgroup label="Offline">
-                                        <option value="dm_furl_" data-type="nonPopulate">Direct Mail</option>
+                                        <option value="dm_furl_" data-type="nonPopulate" data-source="direct_mail" data-medium="print">Direct Mail</option>
                                     </optgroup>
                                     <optgroup label="Email Campaigns Tracking">
-                                        <option value="em_" data-type="autoPopulate">Pardot Email add link with tracking</option>
+                                        <option value="em_" data-type="autoPopulate" data-source="pardot" data-medium="email">Pardot Email add link with tracking</option>
                                     </optgroup>
                                     <optgroup label="Paid Social">
-                                        <option value="fb_ppc_" data-type="autoPopulate">Facebook</option>
-                                        <option value="pn_ppc_" data-type="autoPopulate">Pinterest</option>
-                                        <option value="tw_ppc_" data-type="autoPopulate">Twitter</option>
-                                        <option value="in_ppc_" data-type="autoPopulate">Instagram</option>
-                                        <option value="tt_ppc_" data-type="autoPopulate">TikTok</option>
-                                        <option value="li_ppc_" data-type="autoPopulate">LinkedIn</option>
-                                        <option value="rd_ppc_" data-type="autoPopulate">Reddit</option>
+                                        <option value="fb_ppc_" data-type="autoPopulate" data-source="facebook" data-medium="display">Facebook</option>
+                                        <option value="pn_ppc_" data-type="autoPopulate" data-source="pinterest" data-medium="display">Pinterest</option>
+                                        <option value="tw_ppc_" data-type="autoPopulate" data-source="twitter" data-medium="display">Twitter</option>
+                                        <option value="in_ppc_" data-type="autoPopulate" data-source="instagram" data-medium="display">Instagram</option>
+                                        <option value="tt_ppc_" data-type="autoPopulate" data-source="tiktok" data-medium="display">TikTok</option>
+                                        <option value="li_ppc_" data-type="autoPopulate" data-source="linkedin" data-medium="display">LinkedIn</option>
+                                        <option value="rd_ppc_" data-type="autoPopulate" data-source="reddit" data-medium="display">Reddit</option>
                                     </optgroup>
                                     <optgroup label="Onsite Elements - links on the communications site">
-                                        <option value="ws_hero_" data-type="nonPopulate">Onsite Donation Hero</option>
-                                        <option value="ws_banr_" data-type="nonPopulate">Onsite Banner</option>
-                                        <option value="ws_modl_" data-type="nonPopulate">Onsite Modal</option>
-                                        <option value="ws_ftr_" data-type="nonPopulate">Onsite Sticky Footer</option>
-                                        <option value="ws_crisis_page_" data-type="nonPopulate">Topic page (white button RedBanner)</option>
+                                        <option value="ws_hero_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Donation Hero</option>
+                                        <option value="ws_banr_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Banner</option>
+                                        <option value="ws_modl_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Modal</option>
+                                        <option value="ws_ftr_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Sticky Footer</option>
+                                        <option value="ws_crisis_page_" data-type="nonPopulate" data-source="blank" data-medium="blank">Topic page (white button RedBanner)</option>
                                         <!-- <option value="ws_unga_women_" data-type="autoPopulate">Onsite CTA bottom of article</option> -->
-                                        <option value="ws_article_" data-type="nonPopulate">Onsite CTA Article</option>
+                                        <option value="ws_article_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite CTA Article</option>
                                         <!-- <option value="ws_article_h2h_">Onsite CTA - How to Help article</option> -->
-                                        <option value="ws_resq_top_nav_btn_" data-type="nonPopulate">Onsite Top Nav</option>
-                                        <option value="ws_resq_stat_ftr_btn_" data-type="nonPopulate">Onsite Static Footer</option>
+                                        <option value="ws_resq_top_nav_btn_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Top Nav</option>
+                                        <option value="ws_resq_stat_ftr_btn_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Static Footer</option>
                                     </optgroup>
                                     <optgroup label="Social Post URLs for Comms External Push">
-                                        <option value="fb_post_" data-type="autoPopulate">Facebook Post</option>
-                                        <option value="tw_post_" data-type="autoPopulate">Twitter Post</option>
-                                        <option value="in_post_" data-type="autoPopulate">Instagram Post</option>
-                                        <option value="tt_post" data-type="autoPopulate">TikTok</option>
+                                        <option value="fb_post_" data-type="autoPopulate" data-source="facebook" data-medium="social">Facebook Post</option>
+                                        <option value="tw_post_" data-type="autoPopulate" data-source="twitter" data-medium="social">Twitter Post</option>
+                                        <option value="in_post_" data-type="autoPopulate" data-source="instagram" data-medium="social">Instagram Post</option>
+                                        <option value="tt_post" data-type="autoPopulate" data-source="tiktok" data-medium="social">TikTok</option>
                                     </optgroup>
                                     <optgroup label="Celebrity Endorsements — 'IRC Voices'">
-                                        <option value="fb_post_voices_" data-type="autoPopulate">FB Post IRC Voices</option>
-                                        <option value="tw_post_voices_" data-type="autoPopulate">TW Post IRC Voices</option>
-                                        <option value="in_post_voices_" data-type="autoPopulate">IG Post IRC Voices</option>
-                                        <option value="li_post_voices_" data-type="autoPopulate">LI Post IRC Voices</option>
-                                        <option value="ss_irc_voices_mitchell_" data-type="nonPopulate">Generic IRC Share Toolkit</option>
-                                        <option value="ss_irc_voices_" data-type="autoPopulate">Ukraine Celeb Social Share</option>
+                                        <option value="fb_post_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">FB Post IRC Voices</option>
+                                        <option value="tw_post_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">TW Post IRC Voices</option>
+                                        <option value="in_post_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">IG Post IRC Voices</option>
+                                        <option value="li_post_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">LI Post IRC Voices</option>
+                                        <option value="ss_irc_voices_mitchell_" data-type="nonPopulate" data-source="custom" data-medium="custom">Generic IRC Share Toolkit</option>
+                                        <option value="ss_irc_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">Ukraine Celeb Social Share</option>
                                     </optgroup>
                                     <optgroup label="Corporate Partners">
-                                        <option value="ref_bloomberg_" data-type="autoPopulate">Bloomberg</option>
-                                        <option value="ref_tripadvisor_" data-type="autoPopulate">Trip advisor</option>
+                                        <option value="ref_bloomberg_" data-type="autoPopulate" data-source="custom" data-medium="custom">Bloomberg</option>
+                                        <option value="ref_tripadvisor_" data-type="autoPopulate" data-source="custom" data-medium="custom">Trip advisor</option>
                                     </optgroup>
 
                                     <optgroup label="Others">
@@ -259,7 +259,8 @@
                         <div class="builder-content">
                             <div class="multi-field">
                                 <label for="utm-campaign">UTM Campaign</label>
-                                <input class="multi-input" type="text" id="utm-campaign" value="">
+                                <!-- <input class="multi-input" type="text" id="utm-campaign" value=""> -->
+                                <textarea class="multi-input" rows="2" id="utm-campaign" name="utm-campaign[]"></textarea>
                                 <p class="error_msg"></p>
                                 <p class="helper-text" id="utm-campaign-helper-text">fy21_campaign Name. Leave blank for google search + bing adwords auto-tag</p>
                             </div>
