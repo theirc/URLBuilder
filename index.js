@@ -335,6 +335,24 @@ window.onload = function () {
         getDropDown.options[getDropDown.selectedIndex].parentElement.label;
       let UTMCampaignField = document.querySelector("#utm-campaign");
       const dataType = getDropDown.options[getDropDown.selectedIndex].getAttribute('data-type');
+      let getUTMMedium = document.querySelector('#utm-medium-list');
+      let getUTMSource = document.querySelector('#utm-source');
+      let getUTMContent = document.querySelector('#utm-content');
+
+      console.log(optionGroupLabelValue);
+      if(optionGroupLabelValue === 'Onsite Elements - links on the communications site') {
+        
+        // let getUTMCampaign = document.querySelector('#utm-campaign');
+        getUTMMedium.disabled = true;
+        UTMCampaignField.setAttribute('readonly', 'readonly');
+        getUTMSource.setAttribute('readonly', 'readonly');
+        getUTMContent.setAttribute('readonly', 'readonly');
+      } else {
+        getUTMMedium.disabled = false;
+        UTMCampaignField.removeAttribute('readonly');
+        getUTMSource.removeAttribute('readonly');
+        getUTMContent.removeAttribute('readonly');
+      }
 
       const populateMSCode = () => {
         getMsCode.setAttribute("value", optionValue);
