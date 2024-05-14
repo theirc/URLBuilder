@@ -26,6 +26,17 @@ window.onload = function () {
   const bulkUrlInstruction = document.querySelector(
     "#bulk-select-instructions"
   );
+  let urlType = 'Single';
+
+  bulkUrl.addEventListener('change', function() {
+    if(bulkUrl.checked) {
+      urlType = 'Bulk';
+    } else {
+      urlType = 'Single';
+    }
+  });
+
+
   // let fiscalYear = 'fy22'; // This value should be updated at the begining of every fiscal year. (Ususally on October 1st)
   let fiscalYearValue = 23;
   let fiscalYear = "fy" + fiscalYearValue;
@@ -339,20 +350,20 @@ window.onload = function () {
       let getUTMSource = document.querySelector('#utm-source');
       let getUTMContent = document.querySelector('#utm-content');
 
-      console.log(optionGroupLabelValue);
-      if(optionGroupLabelValue === 'Onsite Elements - links on the communications site') {
-        
-        // let getUTMCampaign = document.querySelector('#utm-campaign');
-        getUTMMedium.disabled = true;
-        UTMCampaignField.setAttribute('readonly', 'readonly');
-        getUTMSource.setAttribute('readonly', 'readonly');
-        getUTMContent.setAttribute('readonly', 'readonly');
-      } else {
-        getUTMMedium.disabled = false;
-        UTMCampaignField.removeAttribute('readonly');
-        getUTMSource.removeAttribute('readonly');
-        getUTMContent.removeAttribute('readonly');
-      }
+     if(urlType === 'Single') {
+        if(optionGroupLabelValue === 'Onsite Elements - links on the communications site') {
+          
+          getUTMMedium.disabled = true;
+          UTMCampaignField.setAttribute('readonly', 'readonly');
+          getUTMSource.setAttribute('readonly', 'readonly');
+          getUTMContent.setAttribute('readonly', 'readonly');
+        } else{
+          getUTMMedium.disabled = false;
+          UTMCampaignField.removeAttribute('readonly');
+          getUTMSource.removeAttribute('readonly');
+          getUTMContent.removeAttribute('readonly');
+        }
+     }
 
       const populateMSCode = () => {
         getMsCode.setAttribute("value", optionValue);
