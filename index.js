@@ -29,10 +29,47 @@ window.onload = function () {
   let urlType = 'Single';
 
   bulkUrl.addEventListener('change', function() {
+    let adsets = document.querySelectorAll('#adsets option');
+    let pardotOnly = document.querySelectorAll('.pardot-only');
+    let market = document.querySelector('#mktmth');
+    let month = document.querySelector('#market_month');
+    let mktmth = document.querySelector('#market-month');
     if(bulkUrl.checked) {
       urlType = 'Bulk';
+    
+      adsets.forEach(opt => {
+        if(opt.value == 'em_') {
+          opt.disabled = true;
+        } 
+      });
+
+      pardotOnly.forEach(opt => {
+        if(opt.style.display == 'block') {
+          opt.style.display = 'none';
+        }
+      });
+
+      if(market.disabled) {
+        market.disabled = false;
+      }
+
+      if(month.disabled) {
+        month.disabled = false;
+      }
+
+      if(!mktmth.hasAttribute('required')){
+        mktmth.setAttribute('required', 'required');
+      }
+
     } else {
       urlType = 'Single';
+
+      adsets.forEach(opt => {
+        if(opt.value == 'em_') {
+          opt.disabled = false;
+        } 
+      });
+
     }
   });
 
@@ -84,6 +121,30 @@ window.onload = function () {
   let savedUrlMsg = "Generated URL have been saved";
   let savedBulkUrlMsg = "Generated URLs have been saved";
 
+
+  // Show / Hide pardot fields
+  getDropDown.addEventListener('change', function() {
+    let getText = getDropDown.options[getDropDown.selectedIndex].text;
+    let getPardotFields = document.querySelectorAll('.pardot-only');
+    let getMktMthYr = document.querySelector('#market-month');
+    let getMktMthDropdown = document.querySelector('#mktmth');
+    let getMktYrDropdown = document.querySelector('#market_month');
+
+    for(let i = 0; i < getPardotFields.length; i++) {
+      if(getText == 'Pardot Email add link with tracking') {
+        getPardotFields[i].style.display = 'block';
+        getMktMthYr.removeAttribute('required');
+        getMktMthDropdown.disabled = true;
+        getMktYrDropdown.disabled = true;
+      } else {
+        getPardotFields[i].style.display = 'none';
+        getMktMthYr.setAttribute('required', 'required');
+        getMktMthDropdown.disabled = false;
+        getMktYrDropdown.disabled = false;
+      }
+    }
+  });
+
   // concatenation formula
   const calcResult = function (fieldValues) {
     for (let i = 0; i < fieldValues.length; i++) {
@@ -117,6 +178,92 @@ window.onload = function () {
       return concat;
     }
   };
+
+
+
+// # of Email in Series
+const getEmailSeries = document.querySelector('#email_in_series_list');
+getEmailSeries.addEventListener('change', function() {
+  const getInput = document.querySelector('#email_in_series');
+
+  getInput.value = getEmailSeries.value;
+  getInput.removeAttribute('required');
+  if(getInput.nextElementSibling.style.display == 'block') {
+    getInput.nextElementSibling.style.display = 'none';
+  }
+});
+
+// Email Send Audience
+const getEmailSendAudience = document.querySelector('#email_audience_list');
+getEmailSendAudience.addEventListener('change', function() {
+  const getInput = document.querySelector('#email_audience');
+  getInput.value = getEmailSendAudience.value;
+})
+
+
+// concatenation formula for Pardot
+  const calcPardotResult = function() {
+    let partodConcat;
+    const urlField = document.querySelector('#website-url');
+    const mscodeField = document.querySelector('#ms-codes');
+    const mscampaignField = document.querySelector('#ms-campaign');
+    const numberOfEmailinSeries = document.querySelector('#email_in_series');
+    const emailAudience = document.querySelector('#email_audience');
+    const emailSegmentCheckbox = document.querySelector('#email-segment-checkbox');
+    const emailSegment = document.querySelector('#email_segment');
+    const giftStringCheckbox = document.querySelector('#gift-string-checkbox');
+    const giftString = document.querySelector('#gift-string');
+    const formStringCheckbox = document.querySelector('#form-string-checkbox');
+    const formString = document.querySelector('#form-string');
+    const utmMedium = document.querySelector('#utm-medium');
+    const utmSource = document.querySelector('#utm-source');
+    const utmCampaign = document.querySelector('#utm-campaign');
+    const utmContent = document.querySelector('#utm-content');
+
+    partodConcat = 
+    urlField.value + 
+    "?" +
+    "ms=" +
+    mscodeField.value +
+    mscampaignField.value +
+    numberOfEmailinSeries.value;
+
+    if(emailAudience.value) {
+      partodConcat += emailAudience.value;
+    }
+
+    if(utmSource.value) {
+      partodConcat += "&utm_source=" + utmSource.value;
+    }
+
+    if(utmMedium.value) {
+      partodConcat += "&utm_medium=" + utmMedium.value;
+    }
+
+    if(utmCampaign.value) {
+      partodConcat += "&utm_campaign=" + utmCampaign.value;
+    }
+
+    if(utmContent.value) {
+      partodConcat += "&utm_content=" + utmContent.value;
+    }
+
+
+    if(emailSegmentCheckbox.checked) {
+      partodConcat += "&es=" + emailSegment.value;
+    }
+    
+    if(giftStringCheckbox.checked) {
+      partodConcat += "gs=" + giftString.value;
+    }
+
+    if(formStringCheckbox.checked) {
+      partodConcat += "af=" + formString.value;
+    }
+
+    return partodConcat;
+
+  }
 
   // Check for white space(s) in input fields
   function checkWhiteSpace(str) {
@@ -250,7 +397,12 @@ window.onload = function () {
   // MS Campaign custom input
   getMsCampaignInputField.addEventListener("input", function () {
     const getUTMfield = document.querySelector("#utm-campaign");
-    getUTMfield.value = getMsCampaignInputField.value;
+    const getAdsets = document.querySelector('#adsets');
+    let getText = getAdsets.options[getAdsets.selectedIndex].text;
+    if(getText != 'Pardot Email add link with tracking') {
+      getUTMfield.value = getMsCampaignInputField.value;
+    }
+    // getUTMfield.value = getMsCampaignInputField.value;
   });
 
   // Auto populate UTM Medium
@@ -613,10 +765,30 @@ window.onload = function () {
   const singleMsCodeData = document.querySelector("#ms_code_data");
   getButton.addEventListener("click", function () {
     let result = "";
+    let getAdset = document.querySelector('#adsets');
+    let dropDownText = getAdset.options[getAdset.selectedIndex].text;
 
     if (validateRequired()) {
       if (validateAll()) {
-        result = calcResult(getInputFields);
+
+        if(dropDownText == 'Pardot Email add link with tracking') {
+          let getEmailSeries = document.querySelector('#email_in_series');
+
+          if(getEmailSeries.hasAttribute('required')) {
+            getEmailSeries.nextElementSibling.innerHTML = errorMsg2;
+            getEmailSeries.nextElementSibling.style.display = 'block';
+            getEmailSeries.focus();
+            return;
+          } else {
+            result = calcPardotResult();
+          }
+
+          
+        } else {
+          result = calcResult(getInputFields);
+        }
+
+        // result = calcResult(getInputFields);
         concatnated.innerHTML = result;
         singleMsCodeData.value = getField.value;
         // singleMsCampaignData.value = getMS_Campaign.value;
