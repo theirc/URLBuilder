@@ -134,13 +134,13 @@ window.onload = function () {
       if(getText == 'Pardot Email add link with tracking') {
         getPardotFields[i].style.display = 'block';
         getMktMthYr.removeAttribute('required');
-        getMktMthDropdown.disabled = true;
-        getMktYrDropdown.disabled = true;
+        // getMktMthDropdown.disabled = true;
+        // getMktYrDropdown.disabled = true;
       } else {
         getPardotFields[i].style.display = 'none';
         getMktMthYr.setAttribute('required', 'required');
-        getMktMthDropdown.disabled = false;
-        getMktYrDropdown.disabled = false;
+        // getMktMthDropdown.disabled = false;
+        // getMktYrDropdown.disabled = false;
       }
     }
   });
@@ -219,6 +219,7 @@ getEmailSendAudience.addEventListener('change', function() {
     const utmSource = document.querySelector('#utm-source');
     const utmCampaign = document.querySelector('#utm-campaign');
     const utmContent = document.querySelector('#utm-content');
+    const mktmth = document.querySelector('#market-month');
 
     partodConcat = 
     urlField.value + 
@@ -230,6 +231,10 @@ getEmailSendAudience.addEventListener('change', function() {
 
     if(emailAudience.value) {
       partodConcat += emailAudience.value;
+    }
+
+    if(mktmth.value) {
+      partodConcat += mktmth.value;
     }
 
     if(utmSource.value) {
