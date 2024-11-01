@@ -403,8 +403,11 @@ getEmailSendAudience.addEventListener('change', function() {
   getMsCampaignInputField.addEventListener("input", function () {
     const getUTMfield = document.querySelector("#utm-campaign");
     const getAdsets = document.querySelector('#adsets');
-    let getText = getAdsets.options[getAdsets.selectedIndex].text;
-    if(getText != 'Pardot Email add link with tracking') {
+    // let getText = getAdsets.options[getAdsets.selectedIndex].text;
+    let getSelectedOption = getAdsets.options[getAdsets.selectedIndex];
+    let getOptGroup = getSelectedOption.parentElement;
+
+    if((getOptGroup.label != 'Email Campaigns Tracking') && (getOptGroup.label != 'Onsite Elements - links on the communications site')) {
       getUTMfield.value = getMsCampaignInputField.value;
     }
     // getUTMfield.value = getMsCampaignInputField.value;
@@ -511,6 +514,7 @@ getEmailSendAudience.addEventListener('change', function() {
         if(optionGroupLabelValue === 'Onsite Elements - links on the communications site') {
           
           getUTMMedium.disabled = true;
+          UTMCampaignField.value = '';
           UTMCampaignField.setAttribute('readonly', 'readonly');
           getUTMSource.setAttribute('readonly', 'readonly');
           getUTMContent.setAttribute('readonly', 'readonly');
@@ -519,6 +523,10 @@ getEmailSendAudience.addEventListener('change', function() {
           UTMCampaignField.removeAttribute('readonly');
           getUTMSource.removeAttribute('readonly');
           getUTMContent.removeAttribute('readonly');
+        }
+
+        if(optionGroupLabelValue === 'Email Campaigns Tracking') {
+          UTMCampaignField.value = '';
         }
      }
 
