@@ -1,0 +1,227 @@
+body {
+    background: #ffffff;
+    font-family: "akzidenz-grotesk", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+    margin: 0 auto;
+}
+
+.maincontainer {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1440px;
+    padding: 0 5% 0 4%;
+    /* margin-bottom: 40px; */
+}
+
+.maincontainer .container {
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, .1);
+    padding: 0 2% 10% 2%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    /* margin-bottom: 50px; */
+}
+
+.input-text, .pick-list, .urloutput, .emailoutput {
+    padding: .5rem .75rem;
+    border-radius: 6px;
+    border: 1px solid rgb(209, 213, 219);
+    /* width: 98%; */
+    /* height: 42px; */
+    font-size: 16px;
+    cursor: text;
+    color: #000;
+}
+
+#gen_error_msg {
+    font-size: 12px;
+    color: #CC181E;
+    font-weight: 700;
+}
+
+
+.save-input {
+    width: 50%;
+    height: 30px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid #666666;
+    margin-bottom: 20px;
+}
+
+#save-input-name, #save-button, #copy-text, .reset-note, .url-save-note, #emailnameCopy{
+    display: none;
+}
+
+.reset-note {
+    font-size: 18;
+    font-weight: 700;
+}
+
+.copy-text {
+    margin-bottom: 30px;
+}
+
+.input-text, .urloutput, .emailoutput {
+    /* width: 98%; */
+    width: 68%;
+    height: 30px;
+}
+
+.pick-list {
+    /* width: 100%; */
+    width: 70%;
+    height: 48px;
+}
+
+.e-label {
+    color: rgb(55, 65, 81);
+    font-weight: 500;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    display: block;
+    margin-bottom: .25rem;
+}
+
+.invalid {
+    border: 2px solid #CC181E !important;
+}
+
+.valid {
+    border: 2px solid green !important;
+}
+
+.input-text:focus, .pick-list:focus {
+    border: 2px solid #FDC513;
+}
+
+.input-text:focus-visible, .pick-list:focus-visible {
+    outline: none;
+}
+
+.link-to-instructions a,
+.link-to-instructions a:active,
+.link-to-instructions a:visited{
+    color: #000;
+    text-decoration: none;
+}
+
+.required {
+    color: #CC181E;
+    font-weight: 900;
+}
+
+.error_msg {
+    margin: 2px 0 0 14px;
+    font: inherit;
+    font-size: 12px;
+    display: none;
+    color: #CC181E;
+}
+
+.main-header {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 1.5rem;
+    color: #000;
+}
+
+.btn-gen-url {
+    padding: .5rem 1rem;
+    /* background-color: rgb(37, 99, 255); */
+    background-color: #FDC513;
+    /* color: rgb(255, 255, 255); */
+    color: #000;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+#backToTop {
+    background-color: #FDC513;
+    border: none;
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 142px;
+    color: #000;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    outline: none;
+    padding: .5rem 1rem;
+}
+
+.generate-btn {
+    margin-top: 40px;
+}
+
+hr.new {
+    border: 1px solid rgb(209, 213, 219);
+}
+
+.urloutput, .emailoutput {
+    background-color: rgb(249, 250, 251);
+}
+
+.urloutput {
+    margin-bottom: 20px;
+}
+
+.emailoutput {
+    margin-bottom: 40px;
+}
+
+table {
+    min-width: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(209, 213, 219);
+    border-collapse: collapse;
+}
+
+tr.hshade {
+    background-color: rgb(243, 244, 246);
+}
+
+tr.shade {
+    background-color: rgb(249, 250, 251);
+}
+
+tr td {
+    text-align: left;
+    padding: .5rem 1rem .5rem 1rem;
+    
+}
+
+tr th {
+    text-align: left;
+    padding: .5rem 1rem .5rem 1rem;
+    border-bottom: 1px solid rgb(209, 213, 219);
+}
+
+tr:not(:last-child) td{
+    border-bottom: 1px solid rgb(209, 213, 219);
+}
+
+.br {
+    border-right: 1px solid rgb(209, 213, 219);
+}
+
+.bl {
+    border-left: 1px solid rgb(209, 213, 219);
+}
+
+.blr {
+    border-right: 1px solid rgb(209, 213, 219);
+    border-left: 1px solid rgb(209, 213, 219);
+}

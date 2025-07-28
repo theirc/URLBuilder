@@ -14,24 +14,36 @@
                         <a href="index.html"><img src="images/irc-logo.png" alt="The International Rescue Committee"></a>
                     </div>
                     <div class="sidebar">
-                        <a class="navlink active" href='index.html'>URL Builder</a>
+                        <a class="navlink active" id="campaignUrlBuilder" href='index.html'>Campaign URL Builder</a>
+                        <a class="navlink" id="emailUrlGenerator" href='#emailUrlGenPage'>Email URL Generator</a>
                         <a class="navlink" href="#sectionB">Evergreen campaign snippets</a>
                     </div>
                     <div class="saved-urls">
-                        <p>Saved URLs</p>
+                        <p>Campaign Saved URLs</p>
                         <div class="saved-urls-links">
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=542648270" target="_blank">Germany URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=392797233" target="_blank">MM-US URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=1282499658" target="_blank">Remote-Market URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=1208132541" target="_blank">South Korea URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=3835636" target="_blank">Sweden URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?pli=1&gid=531581871#gid=531581871" target="_blank">UK URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=542648270" target="_blank">Germany Campaign URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=392797233" target="_blank">MM-US Campaign URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=1282499658" target="_blank">Remote-Market Campaign URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=1208132541" target="_blank">South Korea Campaign URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=3835636" target="_blank">Sweden Campaign URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?pli=1&gid=531581871#gid=531581871" target="_blank">UK Campaign URLs</a>
+                        </div>
+                        <p>Email Saved URLs</p>
+                        <div class="saved-urls-links">
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=375311038#gid=375311038" target="_blank">Germany Email URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=265544906#gid=265544906" target="_blank">MM-US Email URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=2000654644#gid=2000654644" target="_blank">Remote-Market Email URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=1084260793#gid=1084260793" target="_blank">South Korea Email URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=179818538#gid=179818538" target="_blank">Sweden Email URLs</a>
+                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=1557720131#gid=1557720131" target="_blank">UK Email URLs</a>
                         </div>
                     </div>
                 </div>
                 <div class="right-panel">
-                    <h1>Campaign URL Builder</h1>
+                    <div id="campaignUrlBuilderPage">
+                    <!-- <h1>Campaign URL Builder</h1> -->
                     <div id="sectionA" class="builder tab-content showContent">
+                        <h1>Campaign URL Builder</h1>
                         <h2>Enter the website URL and campaign information</h2>
                         <p>Fill out all fields marked with an asterisk (*), and the campaign URL will be generated for you.</p>
                         <div class="bulk">
@@ -634,6 +646,16 @@
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="backtotop">
+                        <button id="backToTop">Back to Top &#8593;</button>
+                    </div> -->
+
+                    <div id="emailUrlGenPage" class="tab-content">
+                        <iframe src="./email-url-gen/index.html" width="100%" height="100%" frameborder="0"></iframe>
+                    </div>
+                   
+                </div>
+
                 </div>
             </div>
         </div>

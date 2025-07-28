@@ -22,6 +22,45 @@ window.onload = function () {
   const saveBulkButton = document.querySelector("#save-bulk-button");
   const saveBulkLabel = document.querySelector(".url-save-bulk-note");
   const resetNote = document.querySelector(".reset-note");
+  const getUrlBuilderNav = document.querySelector('#campaignUrlBuilder');
+  const getEmailGenNav = document.querySelector('#emailUrlGenerator');
+  let getUrlBuilderPage = document.querySelector('#campaignUrlBuilderPage');
+  let getEmailGenPage = document.querySelector('#emailUrlGenPage');
+
+  // getUrlBuilderNav.addEventListener('click', function() {
+  //   if(getUrlBuilderNav.classList.contains('active')) {
+  //     getUrlBuilderPage.style.display = 'block';
+  //     getEmailGenPage.style.display = 'none';
+  //   }
+  // });
+
+  // getEmailGenNav.addEventListener('click', function() {
+  //   if(getEmailGenNav.classList.contains('active')) {
+  //     getUrlBuilderPage.style.display = 'none';
+  //     getEmailGenPage.style.display = 'block';
+  //   }
+  // });
+
+
+    //Back to top button
+    // const backToTop = document.querySelector('#backToTop');
+  
+    // window.addEventListener('scroll', function() {
+    //   if(window.scrollY > 20) {
+    //   // if(document.body.scrollTop > 2 || document.documentElement.scrollTop > 2) {
+    //     backToTop.style.display = 'block';
+    //   } else {
+    //     backToTop.style.display = 'none';
+    //   }
+    // });
+  
+    // backToTop.addEventListener('click', function() {
+    //   window.scrollTo({
+    //     top: 0,
+    //     behavior: "smooth"
+    //   });
+    // });
+
   let selectedOptionsUTMCampaign = {};
   const bulkUrlInstruction = document.querySelector(
     "#bulk-select-instructions"
@@ -110,6 +149,7 @@ window.onload = function () {
 
   updateAdsets();
 
+  history.scrollRestoration = 'manual';
   window.onbeforeunload = function () {
     window.scrollTo(0, 0);
   };

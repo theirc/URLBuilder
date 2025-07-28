@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <title>Email URL Generator</title>
+</head>
+<body>
+    <div class="maincontainer">
+        <div class="container">
+            <h1 class="main-header">Email URL Generator</h1>
+            <div class="link-to-instructions">
+                <a href="#builder-instructions">Click here to view instructions</a>
+            </div>
+            <div id="gen_error_msg"></div>
+            <div class="text-input">
+                <label for="full-url" class="e-label">Full URL<sup class="required">*</sup></label>
+                <input class="input-text req" type="text" id="full-url" placeholder="https://example.com" required>
+                <p class="error_msg"></p>
+                <input type="text" class="fieldValue" value="" id="main-url" hidden>
+            </div>
+            <div class="text-input">
+                <label for="fsyear" class="e-label">Fiscal Year<sup class="required">*</sup></label>
+                <select name="fiscalYear" class="pick-list req" id="fsyear" required>
+                    <option value="">Fiscal Year</option>
+                    <option value="em_fy25">FY25</option>
+                    <option value="em_fy26">FY26</option>
+                </select>
+                <p class="error_msg"></p>
+                <input type="text" class="fieldValue" value="" id="fiscal_year" hidden>
+            </div>
+            <div class="dropdown">
+                <label for="market-source-code" class="e-label"> MS-Campaign<sup class="required">*</sup></label>
+                <select name="mkt-src-code" class="pick-list req" id="market-source-code" required>
+                    <option value="" selected>Select MS-Campaign</option>
+                    <option value="asylum">asylum</option>
+                    <option value="bangladesh">bangladesh</option>
+                    <option value="border">border</option>
+                    <option value="celebration">celebration</option>
+                    <option value="childsurvival">childsurvival</option>
+                    <option value="dec">dec</option>
+                    <option value="education">education</option>
+                    <option value="election">election</option>
+                    <option value="emergency">emergency</option>
+                    <option value="eoy">eoy</option>
+                    <option value="eoy_givtues">eoy_givtues</option>
+                    <option value="eoy_match">eoy_match</option>
+                    <option value="ethiopia">ethiopia</option>
+                    <option value="execord">execord</option>
+                    <option value="family">family</option>
+                    <option value="fday">fday</option>
+                    <option value="gaza">gaza</option>
+                    <option value="gen_unres">gen_unres</option>
+                    <option value="givtues">givtues</option>
+                    <option value="grd">grd</option>
+                    <option value="inmen">inmen</option>
+                    <option value="iwd">iwd</option>
+                    <option value="lebanon">lebanon</option>
+                    <option value="libya">libya</option>
+                    <option value="match">match</option>
+                    <option value="mday">mday</option>
+                    <option value="mideast">mideast</option>
+                    <option value="myanmar">myanmar</option>
+                    <option value="nigeria">nigeria</option>
+                    <option value="ramadan">ramadan</option>
+                    <option value="refugee">refugee</option>
+                    <option value="spring">spring</option>
+                    <option value="sudan">sudan</option>
+                    <option value="sustainer">sustainer</option>
+                    <option value="syria">syria</option>
+                    <option value="taxreceipt">taxreceipt</option>
+                    <option value="ukraine">ukraine</option>
+                    <option value="wash">wash</option>
+                    <option value="watchlist">watchlist</option>
+                    <option value="winter">winter</option>
+                    <option value="women">women</option>
+                    <option value="wrd">wrd</option>
+                    <option value="yemen">yemen</option>
+                    <option value="drc">drc</option>
+                    <option value="eastafrica">eastafrica</option>
+                    <option value="somalia">somalia</option>
+                    <option value="westafrica">westafrica</option>
+                </select>
+                <p class="error_msg"></p>
+                <input type="text" class="fieldValue" value="" id="marketSourceCode" hidden>
+            </div>
+            <div class="dropdown">
+                <label for="mkt" class="e-label">Market<sup class="required">*</sup></label>
+                <select name="market" class="pick-list req" id="mkt" required>
+                    <option value="">Select Market</option>
+                    <option value="us">US</option>
+                    <option value="de">DE</option>
+                    <option value="uk">UK</option>
+                    <option value="se">SE</option>
+                    <option value="sk">SK</option>
+                    <option value="rm">RM</option>
+                </select>
+                <p class="error_msg"></p>
+                <input type="text" class="fieldValue" value="" id="marketfield" hidden>
+            </div>
+            <div class="dropdown">
+                <label for="emailType" class="e-label">Email Type<sup class="required">*</sup></label>
+                <select name="email-type" class="pick-list req" id="emailType" required>
+                    <option value="" selected>Select Type</option>
+                    <option value="Fundraising">Fundraising</option>
+                    <option value="Cultivation">Cultivation</option>
+                    <option value="Engagement">Engagement</option>
+                    <option value="Advocacy">Advocacy</option>
+                    <option value="Thank You">Thank You</option>
+                </select>
+                <p class="error_msg"></p>
+                <input type="text" class="fieldValue" id="email_type" hidden>
+            </div>
+            <div class="text-input">
+                <label for="name_of_creative" class="e-label">Name of Creative<sup class="required">*</sup>&nbsp;&nbsp;&nbsp;&nbsp;(Do not use dashes in the name)</label>
+                <input class="input-text req" type="text" id="name_of_creative" placeholder="e.g. Bangladesh" required>
+                <p class="error_msg"></p>
+                <input type="text" class="fieldValue" id="creative_name" hidden>
+            </div>
+            <div class="dropdown">
+                <label for="month" class="e-label">Month<sup class="required">*</sup></label>
+                <select name="month" class="pick-list req" id="month" required>
+                    <option value="" selected>Select Month</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
+                </select>
+                <p class="error_msg"></p>
+                <input type="text" class="fieldValue" id="gen_month" hidden>
+            </div>
+            <div class="dropdown">
+                <label for="email_version" class="e-label">Email Version/Number<sup class="required">*</sup></label>
+                <select name="email-version" class="pick-list req" id="email_version" required>
+                    <option value="" selected>Select Email Version/Number</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <p class="error_msg"></p>
+                <input type="text" class="fieldValue" id="emailVersion" hidden>
+            </div>
+            <div class="dropdown">
+                <label for="audience_segment" class="e-label">Audience Segment<sup class="required">*</sup></label>
+                <select name="aud-seg" class="pick-list req" id="audience_segment" required>
+                    <option value="" selected>Select Audience Segment</option>
+                    <option value="STM">Standard Mailable (STM)</option>
+                    <option value="STN">Standard Nonmailable (STN)</option>
+                    <option value="STE">Standard Emergency (STE)</option>
+                    <option value="STU">Standard Ukraine (STU)</option>
+                    <option value="STA">Standard Active (STA)</option>
+                    <option value="STL">Standard Lapsed (STL)</option>
+                    <option value="STX">Standard Mix (STX)</option>
+                    <option value="STT">Standard Total (STT)</option>
+                    <option value="PRO">Prospect (PRO)</option>
+                    <option value="MLM">Mid-Level Mailable (MLM)</option>
+                    <option value="MLN">Mid-Level Nonmailable (MLN)</option>
+                    <option value="MLE">Mid-Level Emergency (MLE)</option>
+                    <option value="MLU">Mid-Level Ukraine (MLU)</option>
+                    <option value="MLA">Mid-Level Active (MLA)</option>
+                    <option value="MLL">Mid-Level Lapsed (MLL)</option>
+                    <option value="MLP">Mid-Level Prospect (MLP)</option>
+                    <option value="MLX">Mid-Level Mix (MLX)</option>
+                    <option value="MLT">Mid-Level Total (MLT)</option>
+                    <option value="RGM">Sustainer Mailable (RGM)</option>
+                    <option value="RGN">Sustainer Nonmailable (RGN)</option>
+                    <option value="RGE">Sustainer Emergency (RGE)</option>
+                    <option value="RGU">Sustainer Ukraine (RGU)</option>
+                    <option value="RGA">Sustainer Active (RGA)</option>
+                    <option value="RG1">Sustainer Lapsing 1 (RG1)</option>
+                    <option value="RG2">Sustainer Lapsing 2 (RG2)</option>
+                    <option value="RGL">Sustainer Lapsed Total (RGL)</option>
+                    <option value="RGR">Sustainer Reactivation (RGR)</option>
+                    <option value="RGX">Sustainer Mix (RGX)</option>
+                    <option value="RGT">Sustainer Total (RGT)</option>
+                    <option value="AEM">All Engaged Mailable (AEM)</option>
+                    <option value="AEN">All Engaged Nonmailable (AEN)</option>
+                    <option value="AET">All Engaged Total (AET)</option>
+                    <option value="BRM">Bridge Mailable (BRM)</option>
+                    <option value="BRN">Bridge Nonmailable (BRN)</option>
+                    <option value="BRE">Bridge Emergency (BRE)</option>
+                    <option value="BRU">Bridge Ukraine (BRU)</option>
+                    <option value="BRA">Bridge Active (BRA)</option>
+                    <option value="BRL">Bridge Lapsed (BRL)</option>
+                    <option value="BRX">Bridge Mix (BRX)</option>
+                    <option value="BRT">Bridge Total (BRT)</option>
+                    <option value="RIM">RAI Mailable (RIM)</option>
+                    <option value="RIN">RaI Nonmailable (RIN)</option>
+                    <option value="RIA">RAI Active (RIA)</option>
+                    <option value="RIL">RAI Lapsed (RIL)</option>
+                    <option value="RIX">RAI Mix (RIX)</option>
+                    <option value="RIT">RAI Total (RIT)</option>
+                    <option value="ALL">All (ALL)</option>
+                    <option value="MIX">Mixed (MIX)</option>
+                    <!-- <option value="custom">custom</option> -->
+                </select>
+                <p class="error_msg"></p>
+                <input type="text" class="fieldValue" id="audienceSegment" hidden>
+            </div>
+            <div class="dropdown">
+                <label for="additional_testing_variants" class="e-label">Additional Testing Variants</label>
+                <select name="atv" class="pick-list" id="additional_testing_variants">
+                    <option value="" selected>None</option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                    <option value="d">d</option>
+                    <option value="e">e</option>
+                    <option value="f">f</option>
+                    <option value="g">g</option>
+                    <option value="h">h</option>
+                    <option value="i">i</option>
+                    <option value="j">j</option>
+                    <option value="k">k</option>
+                    <option value="l">l</option>
+                    <option value="m">m</option>
+                    <option value="n">n</option>
+                    <option value="o">o</option>
+                    <option value="p">p</option>
+                    <option value="q">q</option>
+                    <option value="r">r</option>
+                    <option value="s">s</option>
+                    <option value="t">t</option>
+                    <option value="u">u</option>
+                    <option value="v">v</option>
+                    <option value="w">w</option>
+                    <option value="x">x</option>
+                    <option value="y">y</option>
+                    <option value="z">z</option>
+                </select>
+                <input type="text" class="fieldValue" id="adv" hidden>
+            </div>
+
+            <div class="generate-btn">
+                <button class="btn-gen-url" id="btn_generate_url">Generate URL & Pardot Email Name</button>
+            </div>
+
+            <div class="horizontal-line">
+                <hr class="new">
+            </div>
+
+            <div class="results-section">
+                <h2>Generated Outputs:</h2>
+                <form name="submit-to-google-sheet" id="submit-to-google-sheet">
+                    <div class="generated-url">
+                        <h3>URL for Email:</h3>
+                        <input type="text" class="urloutput" name="Link" id="urloutput" readonly>
+                    </div>
+                    <div class="generated-email-name">
+                        <h3>Pardot Email Name:</h3>
+                        <input type="text" class="emailoutput" name="Email-Name" id="emailoutput" readonly>
+                    </div>
+                    <p class="url-save-note">Enter a name and click on the save button to save URL</p>
+                    <input class="save-input" id="save-input-name" name="Name" required>
+                    <p id="url_saved_message"></p>
+                    <button class="save-btn" id="save-button">Save</button>
+                </form>
+                <p class="reset-note">Note: form will reset automatically when save is complete</p>
+                <div>
+                    <button class="copy-text" id="copy-text">Copy URL for Email</button>
+                </div>
+                <div>
+                    <button class="copy-text-email" id="emailnameCopy">Copy Pardot Email Name</button>
+                </div>
+            </div>
+
+            <div id="builder-instructions" class="builder-instructions">
+                <h2>URL Builder Instructions</h2>
+                <table>
+                    <thead>
+                        <tr class="hshade">
+                            <th class="br">Field Name</th>
+                            <th class="blr">Purpose</th>
+                            <th class="blr">Directions</th>
+                            <th class="bl">Example</th>
+                        </tr>
+                    </thead>
+                   
+                    <tr class="shade">
+                        <td class="br">URL</td>
+                        <td class="blr">The base URL that tracking will be applied to</td>
+                        <td class="blr">The full URL that you want to track.</td>
+                        <td class="bl">https://help.rescue.org/donate</td>
+                    </tr>
+                    <tr class="noshade">
+                        <td class="br">Fiscal Year</td>
+                        <td class="blr">Fiscal Year</td>
+                        <td class="blr"></td>
+                        <td class="bl"></td>
+                    </tr>
+                    <tr class="noshade">
+                        <td class="br">Market Source Campaign</td>
+                        <td class="blr">The top-level theme of your campaign</td>
+                        <td class="blr">Select the campaign theme from the list provided.</td>
+                        <td class="bl"></td>
+                    </tr>
+                    <tr class="shade">
+                        <td class="br">Market</td>
+                        <td class="blr">Identifies the market sending the email.</td>
+                        <td class="blr">Please select your market from the drop down list</td>
+                        <td class="bl"></td>
+                    </tr>
+                    <tr class="shade">
+                        <td class="br">Email Type</td>
+                        <td class="blr">Used to categorise emails based on type e.g. fundraising</td>
+                        <td class="blr">Choose option that best describes to purpose of your email.</td>
+                        <td class="bl">Fundraising</td>
+                    </tr>
+                    <tr class="noshade">
+                        <td class="br">Name of Creative</td>
+                        <td class="blr">This is the title of the creative/email.</td>
+                        <td class="blr">Use this field to provide more details about the email topic or type.</td>
+                        <td class="bl">	Giving Tuesday Match Launch</td>
+                    </tr>
+                    <tr class="shade">
+                        <td class="br">Month</td>
+                        <td class="blr">Identifies the month when the email is sent.</td>
+                        <td class="blr">Please choose the month the email is being sent in. For supporter journey emails, choose the month when the email is first sent.</td>
+                        <td class="bl">N/A</td>
+                    </tr>
+                    <tr class="noshade">
+                        <td class="br">Email Version/Number</td>
+                        <td class="blr">This refers to the number of email creatives being sent each month and the order in which they are sent.</td>
+                        <td class="blr">Choose 03 if this is the 3rd email creative that has been sent in the month.</td>
+                        <td class="bl"></td>
+                    </tr>
+                    <tr class="shade">
+                        <td class="br">Audience Segment	</td>
+                        <td class="blr">These audiences map back to Salesforce email segmentation and identify which audience group is receiving the email.</td>
+                        <td class="blr">Select the audience that you are sending the email to. If you are blending multiple segments in one send choose the 'Mix' option for the audience group.</td>
+                        <td class="bl"></td>
+                    </tr>
+                    <tr class="noshade">
+                        <td class="br">Additional Testing Variants	</td>
+                        <td class="blr">Used for indicating a test or subsection of an audience.</td>
+                        <td class="blr">Use this field if you are running an AB test or similar. Or if you need to split your audience segmentation into smaller send groups.</td>
+                        <td class="bl"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="backtotop">
+                <button id="backToTop">Back to Top &#8593;</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
