@@ -1153,7 +1153,7 @@ getEmailSendAudience.addEventListener('change', function() {
           console.error("Error", error.message);
           saveButton.disabled = false;
         });
-    } else if (getMarket.value == "_nm") {
+    } else if (getMarket.value == "_rm") {
       fetch(scriptURLRM, { method: "POST", body: new FormData(form) })
         .then((response) => {
           saveButton.disabled = false;
@@ -1281,7 +1281,7 @@ getEmailSendAudience.addEventListener('change', function() {
             console.error("Error", error.message);
             bulkSaveBtn.disabled = false;
           });
-      } else if (getMarket.value == "_nm") {
+      } else if (getMarket.value == "_rm") {
         fetch(scriptURLRM, { method: "POST", body: new FormData(bulkUrlForm) })
           .then((response) => {
             bulkSaveBtn.disabled = false;
