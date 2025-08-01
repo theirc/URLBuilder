@@ -1097,6 +1097,24 @@ getEmailSendAudience.addEventListener('change', function() {
   };
   navigateMenu();
 
+  function stimulateNavClick() {
+    const urlAddress = window.location.href;
+    const emailGenString = 'emailUrlGenPage';
+    const everGreenString = 'sectionB';
+
+    const emailGen = document.querySelector('#emailUrlGenerator');
+    const everyGreen = document.querySelector('#everGreen');
+    if(urlAddress.includes(emailGenString)) {
+      emailGen.click();
+    }
+
+    if(urlAddress.includes(everGreenString)) {
+      everyGreen.click();
+    }
+  }
+
+  stimulateNavClick();
+
   const getMarket = document.querySelector("#mktmth");
 
   const scriptURL =
