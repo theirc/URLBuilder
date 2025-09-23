@@ -41,6 +41,9 @@ window.onload = function() {
 
     const getGenErr = document.querySelector("#gen_error_msg");
 
+    const getUtmContent = document.querySelector('#utm_content');
+    const getUtmContentInput = document.querySelector('#utm_content_value');
+
 
     
   let errorMsg = "whitespace not allowed";
@@ -78,9 +81,9 @@ function checkWhiteSpace(str) {
 }
 
 // Check for white space(s) in input fields
-function checkWhiteSpace(str) {
-return /\s/.test(str);
-}
+// function checkWhiteSpace(str) {
+// return /\s/.test(str);
+// }
 
 // Input validation(s)
   const inputInvalid = function (el) {
@@ -197,8 +200,25 @@ return /\s/.test(str);
       getNameOfCreative.nextElementSibling.style.display = 'block';
       setTimeout(() => {
         getNameOfCreative.nextElementSibling.innerHTML = '';
-      getNameOfCreative.nextElementSibling.style.display = 'none';
+        getNameOfCreative.nextElementSibling.style.display = 'none';
       }, 3000);
+    }
+  });
+
+  // Prevent dashes in UTM Content
+  getUtmContent.addEventListener('input', function() {
+    let fieldValue = getUtmContent.value;
+    let NewUpdatedValue = '';
+    if(fieldValue.includes('-')) {
+      NewUpdatedValue = fieldValue.replace(/-/g, '_');
+      getUtmContent.value = NewUpdatedValue;
+      getUtmContent.nextElementSibling.innerHTML = 'Caution: Dashes are not allowed in this field and will be automatically replaced by an underscore';
+      getUtmContent.nextElementSibling.style.display = 'block';
+      setTimeout(() => {
+        getUtmContent.nextElementSibling.innerHTML = '';
+        getUtmContent.nextElementSibling.style.display = 'none';
+      }, 3000);
+
     }
   })
 
@@ -256,6 +276,8 @@ return /\s/.test(str);
 
     populateTextInputValue(getNameOfCreative, getNameofCreativeInput);
 
+    populateTextInputValue(getUtmContent, getUtmContentInput);
+
     populateDropDownValue(getMonth, getMonthInput);
 
     populateDropDownValue(getEmailVersion, getEmailVersionInput);
@@ -268,9 +290,9 @@ return /\s/.test(str);
     // const getInputfields = document.querySelectorAll('.fieldValue');
 
     const calcUrlResults = function(fields) {
+      let concat;
         for(let i = 0; i < fields.length; i++) {
-            concat = 
-            fields[0].value +
+          let leftSection = fields[0].value +
             "?" +
             "ms=" +
             fields[1].value +
@@ -281,8 +303,9 @@ return /\s/.test(str);
             "_" +
             fields[6].value +
             fields[7].value +
-            fields[8].value +
-            "&" +
+            fields[8].value;
+
+          let rightSection = "&" +
             "utm_medium=email" +
             "&" +
             "utm_source=pardot" +
@@ -290,31 +313,16 @@ return /\s/.test(str);
             "utm_campaign=" +
             fields[2].value;
 
+
             if(fields[9].value) {
-            //    concat = concat + fields[9].value;
-            //    concat += fields[9].value;
-                concat = 
-                fields[0].value +
-                "?" +
-                "ms=" +
-                fields[1].value +
-                "_" +
-                fields[2].value +
-                "_" +
-                fields[3].value +
-                "_" +
-                fields[6].value +
-                fields[7].value +
-                fields[8].value +
-                fields[9].value +
-                "&" +
-                "utm_medium=email" +
-                "&" +
-                "utm_source=pardot" +
-                "&" +
-                "utm_campaign=" +
-                fields[2].value;
+              leftSection += fields[9].value;
             }
+
+            if(fields[10].value) {
+              rightSection += "&" + "utm_content=" + fields[10].value;
+            }
+
+            concat = leftSection + rightSection;
             return concat;
         }
     }
@@ -324,6 +332,7 @@ return /\s/.test(str);
         const getSelectedIndex = getFY.selectedIndex;
         const getSelectedOption = getFY.options[getSelectedIndex];
         const getSelectedText = getSelectedOption.text;
+        let concat;
 
         for(let i = 0; i < fields.length; i++) {
             concat = 
