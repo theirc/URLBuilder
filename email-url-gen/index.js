@@ -33,6 +33,8 @@ window.onload = function() {
 
     const getInputfields = document.querySelectorAll('.fieldValue');
 
+    console.log(getInputfields);
+
     const getMainInput = document.querySelectorAll('.input-text');
 
     const getPickLists = document.querySelectorAll('.pick-list');
@@ -44,6 +46,20 @@ window.onload = function() {
     const getUtmContent = document.querySelector('#utm_content');
     const getUtmContentInput = document.querySelector('#utm_content_value');
 
+    // const getEmailSegment = document.querySelector('#email_segment');
+    const getEmailSegment = document.querySelector('#email_segment');
+    const getEmailSegmentCheckbox = document.querySelector('#email-segment-checkbox');
+    const getEmailSegmentInput = document.querySelector('#email_segment_value');
+
+    const getGiftString = document.querySelector('#gift-string');
+    const getGiftStringCheckbox = document.querySelector('#gift-string-checkbox');
+    const getGiftStringInput = document.querySelector('#gift-string_value');
+
+    const getFormString = document.querySelector('#form-string');
+    const getFormStringCheckbox = document.querySelector('#form-string-checkbox');
+    const getFormStringInput = document.querySelector('#form-string_value');
+
+     
 
     
   let errorMsg = "whitespace not allowed";
@@ -263,6 +279,18 @@ function checkWhiteSpace(str) {
     });
    }
 
+   const populateCheckboxValue = function(p1, p2, p3) {
+    p1.addEventListener('change', function() {
+      if(p1.checked) {
+        p3.value = p2.value;
+        console.log(p3.value);
+      } else {
+        p3.value = '';
+        console.log(p3.value);
+      }
+    });
+   }
+
 
     populateTextInputValue(getFullUrl, getURLInput);
 
@@ -286,12 +314,19 @@ function checkWhiteSpace(str) {
 
     populateDropDownValue(getATV, getATVInput);
 
+    populateCheckboxValue(getEmailSegmentCheckbox, getEmailSegment, getEmailSegmentInput);
+
+    populateCheckboxValue(getGiftStringCheckbox, getGiftString, getGiftStringInput);
+
+    populateCheckboxValue(getFormStringCheckbox, getFormString, getFormStringInput);
+
     // Get input fields
     // const getInputfields = document.querySelectorAll('.fieldValue');
 
     const calcUrlResults = function(fields) {
       let concat;
         for(let i = 0; i < fields.length; i++) {
+
           let leftSection = fields[0].value +
             "?" +
             "ms=" +
@@ -320,6 +355,98 @@ function checkWhiteSpace(str) {
 
             if(fields[10].value) {
               rightSection += "&" + "utm_content=" + fields[10].value;
+            }
+
+            // Email Segment only
+            if(fields[11].value && !fields[12].value && !fields[13].value) {
+              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "ms=" +
+              fields[1].value +
+              "_" +
+              fields[2].value +
+              "_" +
+              fields[3].value +
+              "_" +
+              fields[6].value +
+              fields[7].value +
+              fields[8].value;
+            }
+            // Gift String only
+            if(!fields[11].value && fields[12].value && !fields[13].value) {
+              leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "ms=" +
+              fields[1].value +
+              "_" +
+              fields[2].value +
+              "_" +
+              fields[3].value +
+              "_" +
+              fields[6].value +
+              fields[7].value +
+              fields[8].value;
+            }
+            // Form String only
+            if(!fields[11].value && !fields[12].value && fields[13].value) {
+              leftSection = fields[0].value + "?" + "af=" + fields[13].value + "&" + "ms=" +
+              fields[1].value +
+              "_" +
+              fields[2].value +
+              "_" +
+              fields[3].value +
+              "_" +
+              fields[6].value +
+              fields[7].value +
+              fields[8].value;
+            }
+            // Email Segment and Gift String only
+            if(fields[11].value && fields[12].value && !fields[13].value) {
+              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "gs" + fields[12].value + "&" + "ms=" +
+              fields[1].value +
+              "_" +
+              fields[2].value +
+              "_" +
+              fields[3].value +
+              "_" +
+              fields[6].value +
+              fields[7].value +
+              fields[8].value;
+            }
+            // Email Segment and Form String only
+            if(fields[11].value && !fields[12].value && fields[13].value) {
+              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "af" + fields[13].value + "&" + "ms=" +
+              fields[1].value +
+              "_" +
+              fields[2].value +
+              "_" +
+              fields[3].value +
+              "_" +
+              fields[6].value +
+              fields[7].value +
+              fields[8].value;
+            }
+            // Gift String and Form String only
+            if(!fields[11].value && fields[12].value && fields[13].value) {
+              leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "af" + fields[13].value + "&" + "ms=" +
+              fields[1].value +
+              "_" +
+              fields[2].value +
+              "_" +
+              fields[3].value +
+              "_" +
+              fields[6].value +
+              fields[7].value +
+              fields[8].value;
+            }
+            // All 3
+            if(fields[11].value && fields[12].value && fields[13].value) {
+              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "gs=" + fields[12].value + "af" + fields[13].value + "&" + "ms=" +
+              fields[1].value +
+              "_" +
+              fields[2].value +
+              "_" +
+              fields[3].value +
+              "_" +
+              fields[6].value +
+              fields[7].value +
+              fields[8].value;
             }
 
             concat = leftSection + rightSection;

@@ -111,6 +111,14 @@ body {
     font-weight: 900;
 }
 
+span.e-label {
+    display: inline;
+}
+
+input[readonly], textarea[readonly] {
+    background-color: #E9E9E9 !important;
+}
+
 .error_msg {
     margin: 2px 0 0 14px;
     font: inherit;

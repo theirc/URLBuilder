@@ -276,6 +276,42 @@
                 <input type="text" class="fieldValue" id="utm_content_value" hidden>
             </div>
 
+             <div class="text-input">
+                <label for="email_segment" class="e-label">Email Segment</label>
+                <div class="pardot-check">
+                    <span class="e-label">Select checkbox to include to URL.</span>
+                        <input class="email-segment" type="checkbox" name="email-segment" id="email-segment-checkbox">
+                        <div>
+                            <input class="input-text req" type="text" id="email_segment" value="{{{Recipient.Email_Segment__c}}}" readonly>
+                        </div>
+                    </div>
+                <input type="text" class="fieldValue" id="email_segment_value" hidden>
+            </div>
+
+             <div class="text-input">
+                <label for="gift-string" class="e-label">Gift String Encrypted</label>
+                <div class="pardot-check">
+                    <span class="e-label">Select checkbox to include to URL.</span>
+                        <input class="gift-string" type="checkbox" name="gift-string" id="gift-string-checkbox">
+                        <div>
+                            <input class="input-text req" type="text" id="gift-string" value="{{Recipient.Account.Gift_String_Encrypted__c}}" readonly>
+                        </div>
+                    </div>
+                <input type="text" class="fieldValue" id="gift-string_value" hidden>
+            </div>
+
+             <div class="text-input">
+                <label for="form-string" class="e-label">Form String Encrypted</label>
+                <div class="pardot-check">
+                    <span class="e-label">Select checkbox to include to URL.</span>
+                       <input class="form-string" type="checkbox" name="form-string" id="form-string-checkbox">
+                        <div>
+                            <input class="input-text req" type="text" id="form-string" value="{{{Recipient.Form_String_Encrypted__c}}}" readonly>
+                        </div>
+                    </div>
+                <input type="text" class="fieldValue" id="form-string_value" hidden>
+            </div>
+
             <div class="generate-btn">
                 <button class="btn-gen-url" id="btn_generate_url">Generate URL & Pardot Email Name</button>
             </div>
