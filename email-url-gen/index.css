@@ -119,6 +119,14 @@ input[readonly], textarea[readonly] {
     background-color: #E9E9E9 !important;
 }
 
+.custom-input {
+    margin-top: 10px;
+}
+
+#custom-input-mscampaign {
+    display: none;
+}
+
 .error_msg {
     margin: 2px 0 0 14px;
     font: inherit;

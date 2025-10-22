@@ -33,8 +33,6 @@ window.onload = function() {
 
     const getInputfields = document.querySelectorAll('.fieldValue');
 
-    console.log(getInputfields);
-
     const getMainInput = document.querySelectorAll('.input-text');
 
     const getPickLists = document.querySelectorAll('.pick-list');
@@ -166,6 +164,8 @@ function checkWhiteSpace(str) {
     }
   };
 
+ 
+
   
   for (let i = 0; i < getMainInput.length; i++) {
     getMainInput[i].addEventListener("input", function () {
@@ -273,7 +273,7 @@ function checkWhiteSpace(str) {
    const populateDropDownValue = function(p1, p2) {
     p1.addEventListener('change', function(event) {
         const selectedValue = event.target.value;
-        if(selectedValue || selectedValue !== null || selectedValue !== '') {
+        if(selectedValue || selectedValue !== null || selectedValue !== '' || selectedValue !== 'custom') {
             p2.value = selectedValue
         }
     });
@@ -283,10 +283,8 @@ function checkWhiteSpace(str) {
     p1.addEventListener('change', function() {
       if(p1.checked) {
         p3.value = p2.value;
-        console.log(p3.value);
       } else {
         p3.value = '';
-        console.log(p3.value);
       }
     });
    }
@@ -319,6 +317,24 @@ function checkWhiteSpace(str) {
     populateCheckboxValue(getGiftStringCheckbox, getGiftString, getGiftStringInput);
 
     populateCheckboxValue(getFormStringCheckbox, getFormString, getFormStringInput);
+
+
+
+  // validate custom MS-Campaign field
+  getMarketSourceCode.addEventListener('change', function(event) {
+    const selectedValue = event.target.value;
+    let getCustomSection= document.querySelector('#custom-input-mscampaign');
+    let getCustomInput = document.querySelector('#CustomMarketSourceCode');
+    if(selectedValue === 'custom') {
+      getCustomSection.style.display = 'block';
+      getCustomInput.setAttribute('required', 'required');
+      getMarketSourceCode.classList.remove('valid');
+      // getMarketSourceCode.classList.add('invalid');
+      populateTextInputValue(getCustomInput, getMarketSourceCodeInput);
+    } else {
+      getCustomSection.style.display = 'none';
+    }
+  });
 
     // Get input fields
     // const getInputfields = document.querySelectorAll('.fieldValue');
