@@ -57,6 +57,7 @@ window.onload = function() {
     const getFormStringCheckbox = document.querySelector('#form-string-checkbox');
     const getFormStringInput = document.querySelector('#form-string_value');
 
+    const getMSCampaignCustomInput = document.querySelector('#CustomMarketSourceCode');
      
 
     
@@ -237,6 +238,23 @@ function checkWhiteSpace(str) {
 
     }
   })
+
+  // Prevent dashes in Custom MS-Campaign
+  getMSCampaignCustomInput ? getMSCampaignCustomInput.addEventListener('input', function() {
+    let fieldValue = getMSCampaignCustomInput.value;
+    let NewUpdatedValue = '';
+    if(fieldValue.includes('-')) {
+      NewUpdatedValue = fieldValue.replace(/-/g, '_');
+      getMSCampaignCustomInput.value = NewUpdatedValue;
+      getMSCampaignCustomInput.nextElementSibling.innerHTML = 'Caution: Dashes are not allowed in this field and will be automatically replaced by an underscore';
+      getMSCampaignCustomInput.nextElementSibling.style.display = 'block';
+      setTimeout(() => {
+        getMSCampaignCustomInput.nextElementSibling.innerHTML = '';
+        getMSCampaignCustomInput.nextElementSibling.style.display = 'none';
+      }, 3000);
+
+    }
+  }) : '';
 
   // Validation for required drop down options
   for(let i = 0; i < getPickLists.length; i++) {
