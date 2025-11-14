@@ -403,6 +403,10 @@ function checkWhiteSpace(str) {
               fields[6].value +
               fields[7].value +
               fields[8].value;
+
+              if(fields[9].value) {
+                leftSection += fields[9].value;
+              }
             }
             // Gift String only
             if(!fields[11].value && fields[12].value && !fields[13].value) {
@@ -416,6 +420,10 @@ function checkWhiteSpace(str) {
               fields[6].value +
               fields[7].value +
               fields[8].value;
+
+              if(fields[9].value) {
+                leftSection += fields[9].value;
+              }
             }
             // Form String only
             if(!fields[11].value && !fields[12].value && fields[13].value) {
@@ -429,10 +437,14 @@ function checkWhiteSpace(str) {
               fields[6].value +
               fields[7].value +
               fields[8].value;
+
+              if(fields[9].value) {
+                leftSection += fields[9].value;
+              }
             }
             // Email Segment and Gift String only
             if(fields[11].value && fields[12].value && !fields[13].value) {
-              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "gs" + fields[12].value + "&" + "ms=" +
+              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs" + fields[12].value + "&" + "ms=" +
               fields[1].value +
               "_" +
               fields[2].value +
@@ -442,10 +454,14 @@ function checkWhiteSpace(str) {
               fields[6].value +
               fields[7].value +
               fields[8].value;
+
+              if(fields[9].value) {
+                leftSection += fields[9].value;
+              }
             }
             // Email Segment and Form String only
             if(fields[11].value && !fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "af" + fields[13].value + "&" + "ms=" +
+              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "af" + fields[13].value + "&" + "ms=" +
               fields[1].value +
               "_" +
               fields[2].value +
@@ -455,10 +471,14 @@ function checkWhiteSpace(str) {
               fields[6].value +
               fields[7].value +
               fields[8].value;
+
+              if(fields[9].value) {
+                leftSection += fields[9].value;
+              }
             }
             // Gift String and Form String only
             if(!fields[11].value && fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "af" + fields[13].value + "&" + "ms=" +
+              leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "af" + fields[13].value + "&" + "ms=" +
               fields[1].value +
               "_" +
               fields[2].value +
@@ -468,10 +488,14 @@ function checkWhiteSpace(str) {
               fields[6].value +
               fields[7].value +
               fields[8].value;
+
+              if(fields[9].value) {
+                leftSection += fields[9].value;
+              }
             }
             // All 3
             if(fields[11].value && fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "gs=" + fields[12].value + "af" + fields[13].value + "&" + "ms=" +
+              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs=" + fields[12].value + "&" + "af" + fields[13].value + "&" + "ms=" +
               fields[1].value +
               "_" +
               fields[2].value +
@@ -481,6 +505,10 @@ function checkWhiteSpace(str) {
               fields[6].value +
               fields[7].value +
               fields[8].value;
+
+              if(fields[9].value) {
+                leftSection += fields[9].value;
+              }
             }
 
             concat = leftSection + rightSection;
