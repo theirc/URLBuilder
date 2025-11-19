@@ -461,7 +461,7 @@ function checkWhiteSpace(str) {
             }
             // Email Segment and Form String only
             if(fields[11].value && !fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "af" + fields[13].value + "&" + "ms=" +
+              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
               fields[1].value +
               "_" +
               fields[2].value +
@@ -478,7 +478,7 @@ function checkWhiteSpace(str) {
             }
             // Gift String and Form String only
             if(!fields[11].value && fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "af" + fields[13].value + "&" + "ms=" +
+              leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
               fields[1].value +
               "_" +
               fields[2].value +
@@ -495,7 +495,7 @@ function checkWhiteSpace(str) {
             }
             // All 3
             if(fields[11].value && fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs=" + fields[12].value + "&" + "af" + fields[13].value + "&" + "ms=" +
+              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
               fields[1].value +
               "_" +
               fields[2].value +
