@@ -26,6 +26,16 @@ window.onload = function () {
   const getEmailGenNav = document.querySelector('#emailUrlGenerator');
   let getUrlBuilderPage = document.querySelector('#campaignUrlBuilderPage');
   let getEmailGenPage = document.querySelector('#emailUrlGenPage');
+  let getPlatform = this.document.querySelector('#formPlatform');
+  let selectedPlatform = '';
+
+  let getText = getPlatform.options[getPlatform.selectedIndex].text;
+  getText ? selectedPlatform = getText : '';
+
+  getPlatform.addEventListener('change', function() {
+    let getText = getPlatform.options[getPlatform.selectedIndex].text;
+    getText ? selectedPlatform = getText : '';
+  });
 
   // getUrlBuilderNav.addEventListener('click', function() {
   //   if(getUrlBuilderNav.classList.contains('active')) {
@@ -187,32 +197,64 @@ window.onload = function () {
 
   // concatenation formula
   const calcResult = function (fieldValues) {
+    let concat;
     for (let i = 0; i < fieldValues.length; i++) {
-      concat =
-        fieldValues[0].value +
-        "?" +
-        "ms=" +
-        fieldValues[1].value +
-        fieldValues[2].value +
-        fieldValues[3].value +
-        "&" +
-        "initialms=" +
-        fieldValues[1].value +
-        fieldValues[2].value +
-        fieldValues[3].value;
+      if(selectedPlatform === 'Springboard') {
+        concat =
+          fieldValues[0].value +
+          "?" +
+          "ms=" +
+          fieldValues[1].value +
+          fieldValues[2].value +
+          fieldValues[3].value +
+          "&" +
+          "initialms=" +
+          fieldValues[1].value +
+          fieldValues[2].value +
+          fieldValues[3].value;
 
-      if (fieldValues[4].value) {
-        concat += "&utm_medium=" + fieldValues[4].value;
-      }
-      if (fieldValues[5].value) {
-        concat += "&utm_source=" + fieldValues[5].value;
-      }
-      if (fieldValues[6].value) {
+        if (fieldValues[4].value) {
+          concat += "&utm_medium=" + fieldValues[4].value;
+        }
+        if (fieldValues[5].value) {
+          concat += "&utm_source=" + fieldValues[5].value;
+        }
+        if (fieldValues[6].value) {
 
-        concat += "&utm_campaign=" + fieldValues[6].value;
+          concat += "&utm_campaign=" + fieldValues[6].value;
+        }
+        if (fieldValues[7].value) {
+          concat += "&utm_content=" + fieldValues[7].value;
+        }
       }
-      if (fieldValues[7].value) {
-        concat += "&utm_content=" + fieldValues[7].value;
+
+      if(selectedPlatform === 'FRU') {
+          concat =
+            fieldValues[0].value +
+            "&" +
+            "ms=" +
+            fieldValues[1].value +
+            fieldValues[2].value +
+            fieldValues[3].value +
+            "&" +
+            "initialms=" +
+            fieldValues[1].value +
+            fieldValues[2].value +
+            fieldValues[3].value;
+
+          if (fieldValues[4].value) {
+            concat += "&utm_medium=" + fieldValues[4].value;
+          }
+          if (fieldValues[5].value) {
+            concat += "&utm_source=" + fieldValues[5].value;
+          }
+          if (fieldValues[6].value) {
+
+            concat += "&utm_campaign=" + fieldValues[6].value;
+          }
+          if (fieldValues[7].value) {
+            concat += "&utm_content=" + fieldValues[7].value;
+          }
       }
 
       return concat;
@@ -261,50 +303,143 @@ getEmailSendAudience.addEventListener('change', function() {
     const utmContent = document.querySelector('#utm-content');
     const mktmth = document.querySelector('#market-month');
 
-    partodConcat = 
-    urlField.value + 
-    "?" +
-    "ms=" +
-    mscodeField.value +
-    mscampaignField.value +
-    numberOfEmailinSeries.value;
+    if(selectedPlatform === 'Springboard') {
+      partodConcat = 
+        urlField.value + 
+        "?" +
+        "ms=" +
+        mscodeField.value +
+        mscampaignField.value +
+        numberOfEmailinSeries.value;
 
-    if(emailAudience.value) {
-      partodConcat += emailAudience.value;
+        if(emailAudience.value) {
+          partodConcat += emailAudience.value;
+        }
+
+        if(mktmth.value) {
+          partodConcat += mktmth.value;
+        }
+
+        if(utmSource.value) {
+          partodConcat += "&utm_source=" + utmSource.value;
+        }
+
+        if(utmMedium.value) {
+          partodConcat += "&utm_medium=" + utmMedium.value;
+        }
+
+        if(utmCampaign.value) {
+          partodConcat += "&utm_campaign=" + utmCampaign.value;
+        }
+
+        if(utmContent.value) {
+          partodConcat += "&utm_content=" + utmContent.value;
+        }
+
+
+        if(emailSegmentCheckbox.checked) {
+          partodConcat += "&es=" + emailSegment.value;
+        }
+        
+        if(giftStringCheckbox.checked) {
+          partodConcat += "gs=" + giftString.value;
+        }
+
+        if(formStringCheckbox.checked) {
+          partodConcat += "af=" + formString.value;
+        }
     }
 
-    if(mktmth.value) {
-      partodConcat += mktmth.value;
-    }
+    if(selectedPlatform === 'FRU') {
+      partodConcat = 
+        urlField.value + 
+        "&" +
+        "ms=" +
+        mscodeField.value +
+        mscampaignField.value +
+        numberOfEmailinSeries.value;
 
-    if(utmSource.value) {
-      partodConcat += "&utm_source=" + utmSource.value;
-    }
+        if(emailAudience.value) {
+          partodConcat += emailAudience.value;
+        }
 
-    if(utmMedium.value) {
-      partodConcat += "&utm_medium=" + utmMedium.value;
-    }
+        if(mktmth.value) {
+          partodConcat += mktmth.value;
+        }
 
-    if(utmCampaign.value) {
-      partodConcat += "&utm_campaign=" + utmCampaign.value;
-    }
+        if(utmSource.value) {
+          partodConcat += "&utm_source=" + utmSource.value;
+        }
 
-    if(utmContent.value) {
-      partodConcat += "&utm_content=" + utmContent.value;
-    }
+        if(utmMedium.value) {
+          partodConcat += "&utm_medium=" + utmMedium.value;
+        }
+
+        if(utmCampaign.value) {
+          partodConcat += "&utm_campaign=" + utmCampaign.value;
+        }
+
+        if(utmContent.value) {
+          partodConcat += "&utm_content=" + utmContent.value;
+        }
 
 
-    if(emailSegmentCheckbox.checked) {
-      partodConcat += "&es=" + emailSegment.value;
+        if(emailSegmentCheckbox.checked) {
+          partodConcat += "&es=" + emailSegment.value;
+        }
+        
+        if(giftStringCheckbox.checked) {
+          partodConcat += "gs=" + giftString.value;
+        }
+
+        if(formStringCheckbox.checked) {
+          partodConcat += "af=" + formString.value;
+        }
     }
+    // partodConcat = 
+    // urlField.value + 
+    // "?" +
+    // "ms=" +
+    // mscodeField.value +
+    // mscampaignField.value +
+    // numberOfEmailinSeries.value;
+
+    // if(emailAudience.value) {
+    //   partodConcat += emailAudience.value;
+    // }
+
+    // if(mktmth.value) {
+    //   partodConcat += mktmth.value;
+    // }
+
+    // if(utmSource.value) {
+    //   partodConcat += "&utm_source=" + utmSource.value;
+    // }
+
+    // if(utmMedium.value) {
+    //   partodConcat += "&utm_medium=" + utmMedium.value;
+    // }
+
+    // if(utmCampaign.value) {
+    //   partodConcat += "&utm_campaign=" + utmCampaign.value;
+    // }
+
+    // if(utmContent.value) {
+    //   partodConcat += "&utm_content=" + utmContent.value;
+    // }
+
+
+    // if(emailSegmentCheckbox.checked) {
+    //   partodConcat += "&es=" + emailSegment.value;
+    // }
     
-    if(giftStringCheckbox.checked) {
-      partodConcat += "gs=" + giftString.value;
-    }
+    // if(giftStringCheckbox.checked) {
+    //   partodConcat += "gs=" + giftString.value;
+    // }
 
-    if(formStringCheckbox.checked) {
-      partodConcat += "af=" + formString.value;
-    }
+    // if(formStringCheckbox.checked) {
+    //   partodConcat += "af=" + formString.value;
+    // }
 
     return partodConcat;
 
@@ -1114,6 +1249,8 @@ getEmailSendAudience.addEventListener('change', function() {
   }
 
   stimulateNavClick();
+
+  // Navigation end
 
   const getMarket = document.querySelector("#mktmth");
 
