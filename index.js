@@ -37,39 +37,6 @@ window.onload = function () {
     getText ? selectedPlatform = getText : '';
   });
 
-  // getUrlBuilderNav.addEventListener('click', function() {
-  //   if(getUrlBuilderNav.classList.contains('active')) {
-  //     getUrlBuilderPage.style.display = 'block';
-  //     getEmailGenPage.style.display = 'none';
-  //   }
-  // });
-
-  // getEmailGenNav.addEventListener('click', function() {
-  //   if(getEmailGenNav.classList.contains('active')) {
-  //     getUrlBuilderPage.style.display = 'none';
-  //     getEmailGenPage.style.display = 'block';
-  //   }
-  // });
-
-
-    //Back to top button
-    // const backToTop = document.querySelector('#backToTop');
-  
-    // window.addEventListener('scroll', function() {
-    //   if(window.scrollY > 20) {
-    //   // if(document.body.scrollTop > 2 || document.documentElement.scrollTop > 2) {
-    //     backToTop.style.display = 'block';
-    //   } else {
-    //     backToTop.style.display = 'none';
-    //   }
-    // });
-  
-    // backToTop.addEventListener('click', function() {
-    //   window.scrollTo({
-    //     top: 0,
-    //     behavior: "smooth"
-    //   });
-    // });
 
   let selectedOptionsUTMCampaign = {};
   const bulkUrlInstruction = document.querySelector(
@@ -199,7 +166,7 @@ window.onload = function () {
   const calcResult = function (fieldValues) {
     let concat;
     for (let i = 0; i < fieldValues.length; i++) {
-      if(selectedPlatform === 'Springboard') {
+      if(selectedPlatform === 'Springboard' || selectedPlatform === 'Digitalist (Sweden)') {
         concat =
           fieldValues[0].value +
           "?" +
@@ -228,7 +195,7 @@ window.onload = function () {
         }
       }
 
-      if(selectedPlatform === 'FRU') {
+      if(selectedPlatform === 'FRU (US Only)') {
           concat =
             fieldValues[0].value +
             "&" +
@@ -303,7 +270,7 @@ getEmailSendAudience.addEventListener('change', function() {
     const utmContent = document.querySelector('#utm-content');
     const mktmth = document.querySelector('#market-month');
 
-    if(selectedPlatform === 'Springboard') {
+    if(selectedPlatform === 'Springboard' || selectedPlatform === 'Digitalist (Sweden)') {
       partodConcat = 
         urlField.value + 
         "?" +
@@ -350,7 +317,7 @@ getEmailSendAudience.addEventListener('change', function() {
         }
     }
 
-    if(selectedPlatform === 'FRU') {
+    if(selectedPlatform === 'FRU (US Only)') {
       partodConcat = 
         urlField.value + 
         "&" +
