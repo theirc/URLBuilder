@@ -22,73 +22,70 @@ window.onload = function () {
   const saveBulkButton = document.querySelector("#save-bulk-button");
   const saveBulkLabel = document.querySelector(".url-save-bulk-note");
   const resetNote = document.querySelector(".reset-note");
-  const getUrlBuilderNav = document.querySelector('#campaignUrlBuilder');
-  const getEmailGenNav = document.querySelector('#emailUrlGenerator');
-  let getUrlBuilderPage = document.querySelector('#campaignUrlBuilderPage');
-  let getEmailGenPage = document.querySelector('#emailUrlGenPage');
-  let getPlatform = this.document.querySelector('#formPlatform');
-  let selectedPlatform = '';
+  const getUrlBuilderNav = document.querySelector("#campaignUrlBuilder");
+  const getEmailGenNav = document.querySelector("#emailUrlGenerator");
+  let getUrlBuilderPage = document.querySelector("#campaignUrlBuilderPage");
+  let getEmailGenPage = document.querySelector("#emailUrlGenPage");
+  let geSmsGenPage = document.querySelector("#smsUrlGenPage");
+  let getPlatform = this.document.querySelector("#formPlatform");
+  let selectedPlatform = "";
 
   let getText = getPlatform.options[getPlatform.selectedIndex].text;
-  getText ? selectedPlatform = getText : '';
+  getText ? (selectedPlatform = getText) : "";
 
-  getPlatform.addEventListener('change', function() {
+  getPlatform.addEventListener("change", function () {
     let getText = getPlatform.options[getPlatform.selectedIndex].text;
-    getText ? selectedPlatform = getText : '';
+    getText ? (selectedPlatform = getText) : "";
   });
-
 
   let selectedOptionsUTMCampaign = {};
   const bulkUrlInstruction = document.querySelector(
     "#bulk-select-instructions"
   );
-  let urlType = 'Single';
+  let urlType = "Single";
 
-  bulkUrl.addEventListener('change', function() {
-    let adsets = document.querySelectorAll('#adsets option');
-    let pardotOnly = document.querySelectorAll('.pardot-only');
-    let market = document.querySelector('#mktmth');
-    let month = document.querySelector('#market_month');
-    let mktmth = document.querySelector('#market-month');
-    if(bulkUrl.checked) {
-      urlType = 'Bulk';
-    
-      adsets.forEach(opt => {
-        if(opt.value == 'em_') {
+  bulkUrl.addEventListener("change", function () {
+    let adsets = document.querySelectorAll("#adsets option");
+    let pardotOnly = document.querySelectorAll(".pardot-only");
+    let market = document.querySelector("#mktmth");
+    let month = document.querySelector("#market_month");
+    let mktmth = document.querySelector("#market-month");
+    if (bulkUrl.checked) {
+      urlType = "Bulk";
+
+      adsets.forEach((opt) => {
+        if (opt.value == "em_") {
           opt.disabled = true;
-        } 
-      });
-
-      pardotOnly.forEach(opt => {
-        if(opt.style.display == 'block') {
-          opt.style.display = 'none';
         }
       });
 
-      if(market.disabled) {
+      pardotOnly.forEach((opt) => {
+        if (opt.style.display == "block") {
+          opt.style.display = "none";
+        }
+      });
+
+      if (market.disabled) {
         market.disabled = false;
       }
 
-      if(month.disabled) {
+      if (month.disabled) {
         month.disabled = false;
       }
 
-      if(!mktmth.hasAttribute('required')){
-        mktmth.setAttribute('required', 'required');
+      if (!mktmth.hasAttribute("required")) {
+        mktmth.setAttribute("required", "required");
       }
-
     } else {
-      urlType = 'Single';
+      urlType = "Single";
 
-      adsets.forEach(opt => {
-        if(opt.value == 'em_') {
+      adsets.forEach((opt) => {
+        if (opt.value == "em_") {
           opt.disabled = false;
-        } 
+        }
       });
-
     }
   });
-
 
   // let fiscalYear = 'fy22'; // This value should be updated at the begining of every fiscal year. (Ususally on October 1st)
   let fiscalYearValue = 23;
@@ -126,7 +123,7 @@ window.onload = function () {
 
   updateAdsets();
 
-  history.scrollRestoration = 'manual';
+  history.scrollRestoration = "manual";
   window.onbeforeunload = function () {
     window.scrollTo(0, 0);
   };
@@ -138,24 +135,23 @@ window.onload = function () {
   let savedUrlMsg = "Generated URL have been saved";
   let savedBulkUrlMsg = "Generated URLs have been saved";
 
-
   // Show / Hide pardot fields
-  getDropDown.addEventListener('change', function() {
+  getDropDown.addEventListener("change", function () {
     let getText = getDropDown.options[getDropDown.selectedIndex].text;
-    let getPardotFields = document.querySelectorAll('.pardot-only');
-    let getMktMthYr = document.querySelector('#market-month');
-    let getMktMthDropdown = document.querySelector('#mktmth');
-    let getMktYrDropdown = document.querySelector('#market_month');
+    let getPardotFields = document.querySelectorAll(".pardot-only");
+    let getMktMthYr = document.querySelector("#market-month");
+    let getMktMthDropdown = document.querySelector("#mktmth");
+    let getMktYrDropdown = document.querySelector("#market_month");
 
-    for(let i = 0; i < getPardotFields.length; i++) {
-      if(getText == 'Pardot Email add link with tracking') {
-        getPardotFields[i].style.display = 'block';
-        getMktMthYr.removeAttribute('required');
+    for (let i = 0; i < getPardotFields.length; i++) {
+      if (getText == "Pardot Email add link with tracking") {
+        getPardotFields[i].style.display = "block";
+        getMktMthYr.removeAttribute("required");
         // getMktMthDropdown.disabled = true;
         // getMktYrDropdown.disabled = true;
       } else {
-        getPardotFields[i].style.display = 'none';
-        getMktMthYr.setAttribute('required', 'required');
+        getPardotFields[i].style.display = "none";
+        getMktMthYr.setAttribute("required", "required");
         // getMktMthDropdown.disabled = false;
         // getMktYrDropdown.disabled = false;
       }
@@ -166,7 +162,10 @@ window.onload = function () {
   const calcResult = function (fieldValues) {
     let concat;
     for (let i = 0; i < fieldValues.length; i++) {
-      if(selectedPlatform === 'Springboard' || selectedPlatform === 'Digitalist (Sweden)') {
+      if (
+        selectedPlatform === "Springboard" ||
+        selectedPlatform === "Digitalist (Sweden)"
+      ) {
         concat =
           fieldValues[0].value +
           "?" +
@@ -187,7 +186,6 @@ window.onload = function () {
           concat += "&utm_source=" + fieldValues[5].value;
         }
         if (fieldValues[6].value) {
-
           concat += "&utm_campaign=" + fieldValues[6].value;
         }
         if (fieldValues[7].value) {
@@ -195,176 +193,175 @@ window.onload = function () {
         }
       }
 
-      if(selectedPlatform === 'FRU (US Only)') {
-          concat =
-            fieldValues[0].value +
-            "&" +
-            "ms=" +
-            fieldValues[1].value +
-            fieldValues[2].value +
-            fieldValues[3].value +
-            "&" +
-            "initialms=" +
-            fieldValues[1].value +
-            fieldValues[2].value +
-            fieldValues[3].value;
+      if (selectedPlatform === "FRU (US Only)") {
+        concat =
+          fieldValues[0].value +
+          "&" +
+          "ms=" +
+          fieldValues[1].value +
+          fieldValues[2].value +
+          fieldValues[3].value +
+          "&" +
+          "initialms=" +
+          fieldValues[1].value +
+          fieldValues[2].value +
+          fieldValues[3].value;
 
-          if (fieldValues[4].value) {
-            concat += "&utm_medium=" + fieldValues[4].value;
-          }
-          if (fieldValues[5].value) {
-            concat += "&utm_source=" + fieldValues[5].value;
-          }
-          if (fieldValues[6].value) {
-
-            concat += "&utm_campaign=" + fieldValues[6].value;
-          }
-          if (fieldValues[7].value) {
-            concat += "&utm_content=" + fieldValues[7].value;
-          }
+        if (fieldValues[4].value) {
+          concat += "&utm_medium=" + fieldValues[4].value;
+        }
+        if (fieldValues[5].value) {
+          concat += "&utm_source=" + fieldValues[5].value;
+        }
+        if (fieldValues[6].value) {
+          concat += "&utm_campaign=" + fieldValues[6].value;
+        }
+        if (fieldValues[7].value) {
+          concat += "&utm_content=" + fieldValues[7].value;
+        }
       }
 
       return concat;
     }
   };
 
+  // # of Email in Series
+  const getEmailSeries = document.querySelector("#email_in_series_list");
+  getEmailSeries.addEventListener("change", function () {
+    const getInput = document.querySelector("#email_in_series");
 
+    getInput.value = getEmailSeries.value;
+    getInput.removeAttribute("required");
+    if (getInput.nextElementSibling.style.display == "block") {
+      getInput.nextElementSibling.style.display = "none";
+    }
+  });
 
-// # of Email in Series
-const getEmailSeries = document.querySelector('#email_in_series_list');
-getEmailSeries.addEventListener('change', function() {
-  const getInput = document.querySelector('#email_in_series');
+  // Email Send Audience
+  const getEmailSendAudience = document.querySelector("#email_audience_list");
+  getEmailSendAudience.addEventListener("change", function () {
+    const getInput = document.querySelector("#email_audience");
+    getInput.value = getEmailSendAudience.value;
+  });
 
-  getInput.value = getEmailSeries.value;
-  getInput.removeAttribute('required');
-  if(getInput.nextElementSibling.style.display == 'block') {
-    getInput.nextElementSibling.style.display = 'none';
-  }
-});
-
-// Email Send Audience
-const getEmailSendAudience = document.querySelector('#email_audience_list');
-getEmailSendAudience.addEventListener('change', function() {
-  const getInput = document.querySelector('#email_audience');
-  getInput.value = getEmailSendAudience.value;
-})
-
-
-// concatenation formula for Pardot
-  const calcPardotResult = function() {
+  // concatenation formula for Pardot
+  const calcPardotResult = function () {
     let partodConcat;
-    const urlField = document.querySelector('#website-url');
-    const mscodeField = document.querySelector('#ms-codes');
-    const mscampaignField = document.querySelector('#ms-campaign');
-    const numberOfEmailinSeries = document.querySelector('#email_in_series');
-    const emailAudience = document.querySelector('#email_audience');
-    const emailSegmentCheckbox = document.querySelector('#email-segment-checkbox');
-    const emailSegment = document.querySelector('#email_segment');
-    const giftStringCheckbox = document.querySelector('#gift-string-checkbox');
-    const giftString = document.querySelector('#gift-string');
-    const formStringCheckbox = document.querySelector('#form-string-checkbox');
-    const formString = document.querySelector('#form-string');
-    const utmMedium = document.querySelector('#utm-medium');
-    const utmSource = document.querySelector('#utm-source');
-    const utmCampaign = document.querySelector('#utm-campaign');
-    const utmContent = document.querySelector('#utm-content');
-    const mktmth = document.querySelector('#market-month');
+    const urlField = document.querySelector("#website-url");
+    const mscodeField = document.querySelector("#ms-codes");
+    const mscampaignField = document.querySelector("#ms-campaign");
+    const numberOfEmailinSeries = document.querySelector("#email_in_series");
+    const emailAudience = document.querySelector("#email_audience");
+    const emailSegmentCheckbox = document.querySelector(
+      "#email-segment-checkbox"
+    );
+    const emailSegment = document.querySelector("#email_segment");
+    const giftStringCheckbox = document.querySelector("#gift-string-checkbox");
+    const giftString = document.querySelector("#gift-string");
+    const formStringCheckbox = document.querySelector("#form-string-checkbox");
+    const formString = document.querySelector("#form-string");
+    const utmMedium = document.querySelector("#utm-medium");
+    const utmSource = document.querySelector("#utm-source");
+    const utmCampaign = document.querySelector("#utm-campaign");
+    const utmContent = document.querySelector("#utm-content");
+    const mktmth = document.querySelector("#market-month");
 
-    if(selectedPlatform === 'Springboard' || selectedPlatform === 'Digitalist (Sweden)') {
-      partodConcat = 
-        urlField.value + 
+    if (
+      selectedPlatform === "Springboard" ||
+      selectedPlatform === "Digitalist (Sweden)"
+    ) {
+      partodConcat =
+        urlField.value +
         "?" +
         "ms=" +
         mscodeField.value +
         mscampaignField.value +
         numberOfEmailinSeries.value;
 
-        if(emailAudience.value) {
-          partodConcat += emailAudience.value;
-        }
+      if (emailAudience.value) {
+        partodConcat += emailAudience.value;
+      }
 
-        if(mktmth.value) {
-          partodConcat += mktmth.value;
-        }
+      if (mktmth.value) {
+        partodConcat += mktmth.value;
+      }
 
-        if(utmSource.value) {
-          partodConcat += "&utm_source=" + utmSource.value;
-        }
+      if (utmSource.value) {
+        partodConcat += "&utm_source=" + utmSource.value;
+      }
 
-        if(utmMedium.value) {
-          partodConcat += "&utm_medium=" + utmMedium.value;
-        }
+      if (utmMedium.value) {
+        partodConcat += "&utm_medium=" + utmMedium.value;
+      }
 
-        if(utmCampaign.value) {
-          partodConcat += "&utm_campaign=" + utmCampaign.value;
-        }
+      if (utmCampaign.value) {
+        partodConcat += "&utm_campaign=" + utmCampaign.value;
+      }
 
-        if(utmContent.value) {
-          partodConcat += "&utm_content=" + utmContent.value;
-        }
+      if (utmContent.value) {
+        partodConcat += "&utm_content=" + utmContent.value;
+      }
 
+      if (emailSegmentCheckbox.checked) {
+        partodConcat += "&es=" + emailSegment.value;
+      }
 
-        if(emailSegmentCheckbox.checked) {
-          partodConcat += "&es=" + emailSegment.value;
-        }
-        
-        if(giftStringCheckbox.checked) {
-          partodConcat += "gs=" + giftString.value;
-        }
+      if (giftStringCheckbox.checked) {
+        partodConcat += "gs=" + giftString.value;
+      }
 
-        if(formStringCheckbox.checked) {
-          partodConcat += "af=" + formString.value;
-        }
+      if (formStringCheckbox.checked) {
+        partodConcat += "af=" + formString.value;
+      }
     }
 
-    if(selectedPlatform === 'FRU (US Only)') {
-      partodConcat = 
-        urlField.value + 
+    if (selectedPlatform === "FRU (US Only)") {
+      partodConcat =
+        urlField.value +
         "&" +
         "ms=" +
         mscodeField.value +
         mscampaignField.value +
         numberOfEmailinSeries.value;
 
-        if(emailAudience.value) {
-          partodConcat += emailAudience.value;
-        }
+      if (emailAudience.value) {
+        partodConcat += emailAudience.value;
+      }
 
-        if(mktmth.value) {
-          partodConcat += mktmth.value;
-        }
+      if (mktmth.value) {
+        partodConcat += mktmth.value;
+      }
 
-        if(utmSource.value) {
-          partodConcat += "&utm_source=" + utmSource.value;
-        }
+      if (utmSource.value) {
+        partodConcat += "&utm_source=" + utmSource.value;
+      }
 
-        if(utmMedium.value) {
-          partodConcat += "&utm_medium=" + utmMedium.value;
-        }
+      if (utmMedium.value) {
+        partodConcat += "&utm_medium=" + utmMedium.value;
+      }
 
-        if(utmCampaign.value) {
-          partodConcat += "&utm_campaign=" + utmCampaign.value;
-        }
+      if (utmCampaign.value) {
+        partodConcat += "&utm_campaign=" + utmCampaign.value;
+      }
 
-        if(utmContent.value) {
-          partodConcat += "&utm_content=" + utmContent.value;
-        }
+      if (utmContent.value) {
+        partodConcat += "&utm_content=" + utmContent.value;
+      }
 
+      if (emailSegmentCheckbox.checked) {
+        partodConcat += "&es=" + emailSegment.value;
+      }
 
-        if(emailSegmentCheckbox.checked) {
-          partodConcat += "&es=" + emailSegment.value;
-        }
-        
-        if(giftStringCheckbox.checked) {
-          partodConcat += "gs=" + giftString.value;
-        }
+      if (giftStringCheckbox.checked) {
+        partodConcat += "gs=" + giftString.value;
+      }
 
-        if(formStringCheckbox.checked) {
-          partodConcat += "af=" + formString.value;
-        }
+      if (formStringCheckbox.checked) {
+        partodConcat += "af=" + formString.value;
+      }
     }
-    // partodConcat = 
-    // urlField.value + 
+    // partodConcat =
+    // urlField.value +
     // "?" +
     // "ms=" +
     // mscodeField.value +
@@ -395,11 +392,10 @@ getEmailSendAudience.addEventListener('change', function() {
     //   partodConcat += "&utm_content=" + utmContent.value;
     // }
 
-
     // if(emailSegmentCheckbox.checked) {
     //   partodConcat += "&es=" + emailSegment.value;
     // }
-    
+
     // if(giftStringCheckbox.checked) {
     //   partodConcat += "gs=" + giftString.value;
     // }
@@ -409,8 +405,7 @@ getEmailSendAudience.addEventListener('change', function() {
     // }
 
     return partodConcat;
-
-  }
+  };
 
   // Check for white space(s) in input fields
   function checkWhiteSpace(str) {
@@ -497,59 +492,63 @@ getEmailSendAudience.addEventListener('change', function() {
   }
 
   // Auto populate MS-Campaign
-  const populateSingleUTMCampaign = function() {
-  getMS_Campaign.addEventListener("change", function () {
-    let getCampaignField = document.querySelector("#ms-campaign");
-    const getOptGroup = document.querySelector("#adsets");
-    const getMsCampaignText =
-      getMS_Campaign.options[getMS_Campaign.selectedIndex].text;
-    // const optGroupLabel = getDropDown.options[getDropDown.selectedIndex].parentElement.label;
-    const getUTMCampaignField = document.querySelector("#utm-campaign");
-    const dataType = getOptGroup.options[getOptGroup.selectedIndex].getAttribute('data-type');
+  const populateSingleUTMCampaign = function () {
+    getMS_Campaign.addEventListener("change", function () {
+      let getCampaignField = document.querySelector("#ms-campaign");
+      const getOptGroup = document.querySelector("#adsets");
+      const getMsCampaignText =
+        getMS_Campaign.options[getMS_Campaign.selectedIndex].text;
+      // const optGroupLabel = getDropDown.options[getDropDown.selectedIndex].parentElement.label;
+      const getUTMCampaignField = document.querySelector("#utm-campaign");
+      const dataType =
+        getOptGroup.options[getOptGroup.selectedIndex].getAttribute(
+          "data-type"
+        );
 
-    getCampaignField.value = fiscalYear + "_" + getMS_Campaign.value;
-    hiddenInputValidate(getCampaignField);
+      getCampaignField.value = fiscalYear + "_" + getMS_Campaign.value;
+      hiddenInputValidate(getCampaignField);
 
-    if (getMsCampaignText === "Custom Input") {
-      getCampaignField.value = fiscalYear + "_" + "";
-      getCampaignField.setAttribute("type", "text");
-      getCampaignField.setAttribute("required", "");
-      getCampaignField.style.marginTop = "20px";
-      if (getCampaignField.classList.contains("valid")) {
-        getCampaignField.classList.remove("valid");
+      if (getMsCampaignText === "Custom Input") {
+        getCampaignField.value = fiscalYear + "_" + "";
+        getCampaignField.setAttribute("type", "text");
+        getCampaignField.setAttribute("required", "");
+        getCampaignField.style.marginTop = "20px";
+        if (getCampaignField.classList.contains("valid")) {
+          getCampaignField.classList.remove("valid");
+        }
+      } else {
+        getCampaignField.setAttribute("type", "hidden");
+        getCampaignField.style.marginTop = "0";
       }
-    } else {
-      getCampaignField.setAttribute("type", "hidden");
-      getCampaignField.style.marginTop = "0";
-    }
 
-    // auto populate UTM Campagin
-    if (
-      dataType === "autoPopulate"
-    ) {
-      getUTMCampaignField.value = getCampaignField.value;
-      getUTMCampaignField.classList.add("valid");
-    } else {
-      if (
-        getMS_Campaign.options[getMS_Campaign.selectedIndex].text !==
-        "Custom Input"
-      ) {
-        getUTMCampaignField.value = "";
-        getUTMCampaignField.classList.remove("valid");
+      // auto populate UTM Campagin
+      if (dataType === "autoPopulate") {
+        getUTMCampaignField.value = getCampaignField.value;
+        getUTMCampaignField.classList.add("valid");
+      } else {
+        if (
+          getMS_Campaign.options[getMS_Campaign.selectedIndex].text !==
+          "Custom Input"
+        ) {
+          getUTMCampaignField.value = "";
+          getUTMCampaignField.classList.remove("valid");
+        }
       }
-    }
-  });
-}
+    });
+  };
 
   // MS Campaign custom input
   getMsCampaignInputField.addEventListener("input", function () {
     const getUTMfield = document.querySelector("#utm-campaign");
-    const getAdsets = document.querySelector('#adsets');
+    const getAdsets = document.querySelector("#adsets");
     // let getText = getAdsets.options[getAdsets.selectedIndex].text;
     let getSelectedOption = getAdsets.options[getAdsets.selectedIndex];
     let getOptGroup = getSelectedOption.parentElement;
 
-    if((getOptGroup.label != 'Email Campaigns Tracking') && (getOptGroup.label != 'Onsite Elements - links on the communications site')) {
+    if (
+      getOptGroup.label != "Email Campaigns Tracking" &&
+      getOptGroup.label != "Onsite Elements - links on the communications site"
+    ) {
       getUTMfield.value = getMsCampaignInputField.value;
     }
     // getUTMfield.value = getMsCampaignInputField.value;
@@ -647,30 +646,35 @@ getEmailSendAudience.addEventListener('change', function() {
       let optionGroupLabelValue =
         getDropDown.options[getDropDown.selectedIndex].parentElement.label;
       let UTMCampaignField = document.querySelector("#utm-campaign");
-      const dataType = getDropDown.options[getDropDown.selectedIndex].getAttribute('data-type');
-      let getUTMMedium = document.querySelector('#utm-medium-list');
-      let getUTMSource = document.querySelector('#utm-source');
-      let getUTMContent = document.querySelector('#utm-content');
+      const dataType =
+        getDropDown.options[getDropDown.selectedIndex].getAttribute(
+          "data-type"
+        );
+      let getUTMMedium = document.querySelector("#utm-medium-list");
+      let getUTMSource = document.querySelector("#utm-source");
+      let getUTMContent = document.querySelector("#utm-content");
 
-     if(urlType === 'Single') {
-        if(optionGroupLabelValue === 'Onsite Elements - links on the communications site') {
-          
+      if (urlType === "Single") {
+        if (
+          optionGroupLabelValue ===
+          "Onsite Elements - links on the communications site"
+        ) {
           getUTMMedium.disabled = true;
-          UTMCampaignField.value = '';
-          UTMCampaignField.setAttribute('readonly', 'readonly');
-          getUTMSource.setAttribute('readonly', 'readonly');
-          getUTMContent.setAttribute('readonly', 'readonly');
-        } else{
+          UTMCampaignField.value = "";
+          UTMCampaignField.setAttribute("readonly", "readonly");
+          getUTMSource.setAttribute("readonly", "readonly");
+          getUTMContent.setAttribute("readonly", "readonly");
+        } else {
           getUTMMedium.disabled = false;
-          UTMCampaignField.removeAttribute('readonly');
-          getUTMSource.removeAttribute('readonly');
-          getUTMContent.removeAttribute('readonly');
+          UTMCampaignField.removeAttribute("readonly");
+          getUTMSource.removeAttribute("readonly");
+          getUTMContent.removeAttribute("readonly");
         }
 
-        if(optionGroupLabelValue === 'Email Campaigns Tracking') {
-          UTMCampaignField.value = '';
+        if (optionGroupLabelValue === "Email Campaigns Tracking") {
+          UTMCampaignField.value = "";
         }
-     }
+      }
 
       const populateMSCode = () => {
         getMsCode.setAttribute("value", optionValue);
@@ -695,9 +699,7 @@ getEmailSendAudience.addEventListener('change', function() {
       }
 
       // Check MS Campaign / UTM Campaign
-      if (
-      dataType === "autoPopulate"
-      ) {
+      if (dataType === "autoPopulate") {
         if (msCampaignField.value) {
           UTMCampaignField.value = msCampaignField.value;
           // UTMCampaignField.setAttribute('readonly','yes');
@@ -766,67 +768,68 @@ getEmailSendAudience.addEventListener('change', function() {
     });
   };
 
-  const populateBulkUTMCampaign = function() {
-      const getMSCampaignDropDown = document.querySelector('#ms-campaign-list');
-      const getUTMCampaignTextArea = document.querySelector('#utm-campaign');
-      getMSCampaignDropDown.addEventListener("change", function() {
-          getMSCodeList = document.querySelector('#ms-codes');
-          // console.log(getMSCodeList.value);
-          if(!getMSCodeList.value) {
-              console.log('None');
-          } else {
-              const getAdSetsDropDown = document.querySelector('#adsets');
-              let len = getAdSetsDropDown.options.length;
-              // let selectedOptionsUTMCampaign = {};
-              let selectedOpt;
-              let UTMvalues = '';
-              for(let i = 0; i < len; i++) {
-                  
-                  selectedOpt = getAdSetsDropDown[i];
-                  if(selectedOpt.selected) {
-                      const keyName = selectedOpt.value;
-                      if(selectedOpt.getAttribute('data-type') === 'autoPopulate') {
-                          selectedOptionsUTMCampaign[keyName] = fiscalYear + "_" + getMSCampaignDropDown.options[getMSCampaignDropDown.selectedIndex].text;
-                      } else {
-                          selectedOptionsUTMCampaign[keyName] = 'Leave Blank';
-                      }
-                  }
-              }
-             
-
-              for (const property in selectedOptionsUTMCampaign) {
-                  UTMvalues += `${property} : ${selectedOptionsUTMCampaign[property]} \n`;
-              }
-
-              getUTMCampaignTextArea.value = UTMvalues;
+  const populateBulkUTMCampaign = function () {
+    const getMSCampaignDropDown = document.querySelector("#ms-campaign-list");
+    const getUTMCampaignTextArea = document.querySelector("#utm-campaign");
+    getMSCampaignDropDown.addEventListener("change", function () {
+      getMSCodeList = document.querySelector("#ms-codes");
+      // console.log(getMSCodeList.value);
+      if (!getMSCodeList.value) {
+        console.log("None");
+      } else {
+        const getAdSetsDropDown = document.querySelector("#adsets");
+        let len = getAdSetsDropDown.options.length;
+        // let selectedOptionsUTMCampaign = {};
+        let selectedOpt;
+        let UTMvalues = "";
+        for (let i = 0; i < len; i++) {
+          selectedOpt = getAdSetsDropDown[i];
+          if (selectedOpt.selected) {
+            const keyName = selectedOpt.value;
+            if (selectedOpt.getAttribute("data-type") === "autoPopulate") {
+              selectedOptionsUTMCampaign[keyName] =
+                fiscalYear +
+                "_" +
+                getMSCampaignDropDown.options[
+                  getMSCampaignDropDown.selectedIndex
+                ].text;
+            } else {
+              selectedOptionsUTMCampaign[keyName] = "Leave Blank";
+            }
           }
-      });
-  }
+        }
 
-  
+        for (const property in selectedOptionsUTMCampaign) {
+          UTMvalues += `${property} : ${selectedOptionsUTMCampaign[property]} \n`;
+        }
 
-  const resetMSandAdset = function () {
-      const getUTMCampaignTextArea = document.querySelector('#utm-campaign');
-      const getMSCampaignDropDown = document.querySelector('#ms-campaign-list');
-      const getMSCampaignField = document.querySelector('#ms-campaign');
-      getMSCampaignDropDown.selectedIndex = 0;
-      getUTMCampaignTextArea.value = "";
-      getMSCampaignField.value = '';
-      getMsCode.value = "";
-      getDropDown.selectedIndex = 0;
+        getUTMCampaignTextArea.value = UTMvalues;
+      }
+    });
   };
 
-  const resetUTMCampaign = function() {
-      selectedOptionsUTMCampaign = {};
-  }
+  const resetMSandAdset = function () {
+    const getUTMCampaignTextArea = document.querySelector("#utm-campaign");
+    const getMSCampaignDropDown = document.querySelector("#ms-campaign-list");
+    const getMSCampaignField = document.querySelector("#ms-campaign");
+    getMSCampaignDropDown.selectedIndex = 0;
+    getUTMCampaignTextArea.value = "";
+    getMSCampaignField.value = "";
+    getMsCode.value = "";
+    getDropDown.selectedIndex = 0;
+  };
+
+  const resetUTMCampaign = function () {
+    selectedOptionsUTMCampaign = {};
+  };
 
   populateSingleMsCode();
   populateSingleUTMCampaign();
 
   bulkUrl.addEventListener("change", function () {
-      bulkUTMCampaign = document.querySelector('#utm-campaign');
-      const getUtmSource = document.querySelector('#utm-source');
-      const getUtmMedium = document.querySelector('#utm-medium-list');
+    bulkUTMCampaign = document.querySelector("#utm-campaign");
+    const getUtmSource = document.querySelector("#utm-source");
+    const getUtmMedium = document.querySelector("#utm-medium-list");
     if (bulkUrl.checked) {
       getField.setAttribute("rows", "10");
       getDropDown.setAttribute("multiple", "");
@@ -836,7 +839,7 @@ getEmailSendAudience.addEventListener('change', function() {
       getBulkGenerateBtn.classList.remove("noShow");
       // getUtmSource.setAttribute("readonly", "readonly");
       getUtmSource.setAttribute("disabled", "disabled");
-      getUtmMedium.setAttribute('disabled', 'disabled');
+      getUtmMedium.setAttribute("disabled", "disabled");
 
       // For UTM Campaign
       bulkUTMCampaign.setAttribute("rows", "10");
@@ -870,14 +873,14 @@ getEmailSendAudience.addEventListener('change', function() {
       getButton.classList.remove("noShow");
       getBulkGenerateBtn.classList.add("noShow");
       // getUtmSource.removeAttribute('readonly');
-      getUtmSource.removeAttribute('disabled');
-      getUtmMedium.removeAttribute('disabled');
+      getUtmSource.removeAttribute("disabled");
+      getUtmMedium.removeAttribute("disabled");
 
       // For UTM Campaign
       bulkUTMCampaign.setAttribute("rows", "2");
       bulkUTMCampaign.removeAttribute("multiple");
       bulkUTMCampaign.removeAttribute("style");
-      bulkUTMCampaign.removeAttribute('readonly');
+      bulkUTMCampaign.removeAttribute("readonly");
 
       getMsCode.setAttribute("required", "");
       if (getMsCode.classList.contains("valid")) {
@@ -920,25 +923,22 @@ getEmailSendAudience.addEventListener('change', function() {
   const singleMsCodeData = document.querySelector("#ms_code_data");
   getButton.addEventListener("click", function () {
     let result = "";
-    let getAdset = document.querySelector('#adsets');
+    let getAdset = document.querySelector("#adsets");
     let dropDownText = getAdset.options[getAdset.selectedIndex].text;
 
     if (validateRequired()) {
       if (validateAll()) {
+        if (dropDownText == "Pardot Email add link with tracking") {
+          let getEmailSeries = document.querySelector("#email_in_series");
 
-        if(dropDownText == 'Pardot Email add link with tracking') {
-          let getEmailSeries = document.querySelector('#email_in_series');
-
-          if(getEmailSeries.hasAttribute('required')) {
+          if (getEmailSeries.hasAttribute("required")) {
             getEmailSeries.nextElementSibling.innerHTML = errorMsg2;
-            getEmailSeries.nextElementSibling.style.display = 'block';
+            getEmailSeries.nextElementSibling.style.display = "block";
             getEmailSeries.focus();
             return;
           } else {
             result = calcPardotResult();
           }
-
-          
         } else {
           result = calcResult(getInputFields);
         }
@@ -1003,7 +1003,7 @@ getEmailSendAudience.addEventListener('change', function() {
   //   }
   // };
 
-   // concatenation formula for bulk URLs
+  // concatenation formula for bulk URLs
   const calcBulkResult = function (fieldValues, alt, alt2, source, medium) {
     for (let i = 0; i < fieldValues.length; i++) {
       concat =
@@ -1019,18 +1019,18 @@ getEmailSendAudience.addEventListener('change', function() {
         fieldValues[2].value +
         fieldValues[3].value;
 
-      if (medium !== 'blank' && medium !== 'custom') {
+      if (medium !== "blank" && medium !== "custom") {
         concat += "&utm_medium=" + fieldValues[4].value + medium;
       }
 
-      if (source !== 'blank' && source !== 'custom') {
+      if (source !== "blank" && source !== "custom") {
         concat += "&utm_source=" + fieldValues[5].value + source;
       }
       if (fieldValues[6].value) {
-          if(alt2 !== 'Leave Blank') {
-              concat += "&utm_campaign=" + alt2;
-          }
-      //   concat += "&utm_campaign=" + fieldValues[6].value;
+        if (alt2 !== "Leave Blank") {
+          concat += "&utm_campaign=" + alt2;
+        }
+        //   concat += "&utm_campaign=" + fieldValues[6].value;
       }
       if (fieldValues[7].value) {
         concat += "&utm_content=" + fieldValues[7].value;
@@ -1053,7 +1053,7 @@ getEmailSendAudience.addEventListener('change', function() {
   getBulkGenerateBtn.addEventListener("click", function () {
     if (validateRequired()) {
       if (validateAll()) {
-      //   msCodeValues = getBulkMsCodes();
+        //   msCodeValues = getBulkMsCodes();
 
         const bulkUrls = function () {
           let allUrls = [];
@@ -1062,8 +1062,8 @@ getEmailSendAudience.addEventListener('change', function() {
           //   allUrls.push(calcBulkResult(getInputFields, msCodeValues[i]));
           // }
 
-          let source = '';
-          let medium = '';
+          let source = "";
+          let medium = "";
 
           for (let key in selectedOptionsUTMCampaign) {
             const getAdsetsDropDown = document.querySelector("#adsets");
@@ -1072,14 +1072,21 @@ getEmailSendAudience.addEventListener('change', function() {
             for (let i = 0; i < len; i++) {
               opt = getAdsetsDropDown.options[i];
               if (opt.selected) {
-                if(opt.value === key) {
-                  source = opt.getAttribute('data-source');
-                  medium = opt.getAttribute('data-medium');
+                if (opt.value === key) {
+                  source = opt.getAttribute("data-source");
+                  medium = opt.getAttribute("data-medium");
                 }
-                
               }
             }
-              allUrls.push(calcBulkResult(getInputFields, key, selectedOptionsUTMCampaign[key], source, medium));
+            allUrls.push(
+              calcBulkResult(
+                getInputFields,
+                key,
+                selectedOptionsUTMCampaign[key],
+                source,
+                medium
+              )
+            );
           }
 
           return allUrls;
@@ -1201,16 +1208,23 @@ getEmailSendAudience.addEventListener('change', function() {
 
   function stimulateNavClick() {
     const urlAddress = window.location.href;
-    const emailGenString = 'emailUrlGenPage';
-    const everGreenString = 'sectionB';
+    const emailGenString = "emailUrlGenPage";
+    const smsGenString = "smsUrlGenPage";
+    const everGreenString = "sectionB";
 
-    const emailGen = document.querySelector('#emailUrlGenerator');
-    const everyGreen = document.querySelector('#everGreen');
-    if(urlAddress.includes(emailGenString)) {
+    const emailGen = document.querySelector("#emailUrlGenerator");
+    const smsGen = document.querySelector("#smsUrlGenerator");
+    const everyGreen = document.querySelector("#everGreen");
+
+    if (urlAddress.includes(smsGenString)) {
+      smsGen.click();
+    }
+
+    if (urlAddress.includes(emailGenString)) {
       emailGen.click();
     }
 
-    if(urlAddress.includes(everGreenString)) {
+    if (urlAddress.includes(everGreenString)) {
       everyGreen.click();
     }
   }
