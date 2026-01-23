@@ -1,683 +1,1518 @@
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
-        <title>Campaign URL Builder</title>
-        <link rel="stylesheet" href="index.css">
-        <script src="index.js"></script>
-        <link rel="shortcut icon" href="https://help.rescue.org/files/irc/irc-favicon_0.ico" type="image/vnd.microsoft.icon" />
-    </head>
-    <body>
-        <div class="main">
-            <div class="container">
-                <div class="left-panel">
-                    <div class="logo">
-                        <a href="index.html"><img src="images/irc-logo.png" alt="The International Rescue Committee"></a>
-                    </div>
-                    <div class="sidebar">
-                        <a class="navlink active" id="campaignUrlBuilder" href='index.html'>Campaign URL Builder</a>
-                        <a class="navlink" id="emailUrlGenerator" href='#emailUrlGenPage'>Email URL Generator</a>
-                        <a class="navlink" id="everGreen" href="#sectionB">Evergreen campaign snippets</a>
-                    </div>
-                    <div class="saved-urls">
-                        <p>Campaign Saved URLs</p>
-                        <div class="saved-urls-links">
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=542648270" target="_blank">Germany Campaign URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=392797233" target="_blank">MM-US Campaign URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=1282499658" target="_blank">Remote-Market Campaign URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=1208132541" target="_blank">South Korea Campaign URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=3835636" target="_blank">Sweden Campaign URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?pli=1&gid=531581871#gid=531581871" target="_blank">UK Campaign URLs</a>
-                        </div>
-                        <p>Email Saved URLs</p>
-                        <div class="saved-urls-links">
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=375311038#gid=375311038" target="_blank">Germany Email URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=265544906#gid=265544906" target="_blank">MM-US Email URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=2000654644#gid=2000654644" target="_blank">Remote-Market Email URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=1084260793#gid=1084260793" target="_blank">South Korea Email URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=179818538#gid=179818538" target="_blank">Sweden Email URLs</a>
-                            <a class="saved-links" href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=1557720131#gid=1557720131" target="_blank">UK Email URLs</a>
-                        </div>
-                    </div>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5"
+    />
+    <title>Campaign URL Builder</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js"></script>
+    <link
+      rel="shortcut icon"
+      href="https://help.rescue.org/files/irc/irc-favicon_0.ico"
+      type="image/vnd.microsoft.icon"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <div class="left-panel">
+          <div class="logo">
+            <a href="index.html"
+              ><img
+                src="images/irc-logo.png"
+                alt="The International Rescue Committee"
+            /></a>
+          </div>
+          <div class="sidebar">
+            <a class="navlink active" id="campaignUrlBuilder" href="index.html"
+              >Campaign URL Builder</a
+            >
+            <a class="navlink" id="emailUrlGenerator" href="#emailUrlGenPage"
+              >Email URL Generator</a
+            >
+            <a class="navlink" id="smsUrlGenerator" href="#smsUrlGenPage"
+              >SMS URL Generator</a
+            >
+            <a class="navlink" id="everGreen" href="#sectionB"
+              >Evergreen campaign snippets</a
+            >
+          </div>
+          <div class="saved-urls">
+            <p>Campaign Saved URLs</p>
+            <div class="saved-urls-links">
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=542648270"
+                target="_blank"
+                >Germany Campaign URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=392797233"
+                target="_blank"
+                >MM-US Campaign URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=1282499658"
+                target="_blank"
+                >Remote-Market Campaign URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=1208132541"
+                target="_blank"
+                >South Korea Campaign URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit#gid=3835636"
+                target="_blank"
+                >Sweden Campaign URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?pli=1&gid=531581871#gid=531581871"
+                target="_blank"
+                >UK Campaign URLs</a
+              >
+            </div>
+            <p>Email Saved URLs</p>
+            <div class="saved-urls-links">
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=375311038#gid=375311038"
+                target="_blank"
+                >Germany Email URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=265544906#gid=265544906"
+                target="_blank"
+                >MM-US Email URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=2000654644#gid=2000654644"
+                target="_blank"
+                >Remote-Market Email URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=1084260793#gid=1084260793"
+                target="_blank"
+                >South Korea Email URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=179818538#gid=179818538"
+                target="_blank"
+                >Sweden Email URLs</a
+              >
+              <a
+                class="saved-links"
+                href="https://docs.google.com/spreadsheets/d/1HfyVv0t5eMnpeJIENbuq46HQpNpvOopmiC5GRsuqmtk/edit?gid=1557720131#gid=1557720131"
+                target="_blank"
+                >UK Email URLs</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="right-panel">
+          <div id="campaignUrlBuilderPage">
+            <!-- <h1>Campaign URL Builder</h1> -->
+            <div id="sectionA" class="builder tab-content showContent">
+              <h1>Campaign URL Builder</h1>
+              <h2>Enter the website URL and campaign information</h2>
+              <p>
+                Fill out all fields marked with an asterisk (*), and the
+                campaign URL will be generated for you.
+              </p>
+              <div class="bulk">
+                <span>Select checkbox to generate bulk URLs</span>
+                <input
+                  class="bulk-url"
+                  type="checkbox"
+                  name="bulk-url"
+                  id="bulk-url"
+                />
+              </div>
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="adsets"
+                    >Select Platform <sup class="required">*</sup></label
+                  >
+                  <select
+                    name="form-type"
+                    id="formPlatform"
+                    class="adset-options"
+                  >
+                    <!-- <option disabled selected value="default" data-type="nonPopulate"> -- Select an option -- </option> -->
+                    <option value="springboard">Springboard</option>
+                    <option value="digitalist">Digitalist (Sweden)</option>
+                    <option value="fru">FRU (US Only)</option>
+                  </select>
+                  <p class="helper-text" id="website-url-helper-text">
+                    Select Destination Link Platform
+                  </p>
                 </div>
-                <div class="right-panel">
-                    <div id="campaignUrlBuilderPage">
-                    <!-- <h1>Campaign URL Builder</h1> -->
-                    <div id="sectionA" class="builder tab-content showContent">
-                        <h1>Campaign URL Builder</h1>
-                        <h2>Enter the website URL and campaign information</h2>
-                        <p>Fill out all fields marked with an asterisk (*), and the campaign URL will be generated for you.</p>
-                        <div class="bulk">
-                            <span>Select checkbox to generate bulk URLs</span>
-                            <input class="bulk-url" type="checkbox" name="bulk-url" id="bulk-url">
-                        </div>
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="adsets">Select Platform <sup class="required">*</sup></label>
-                                <select name="form-type" id="formPlatform" class="adset-options">
-                                    <!-- <option disabled selected value="default" data-type="nonPopulate"> -- Select an option -- </option> -->
-                                    <option value="springboard">Springboard</option>
-                                    <option value="digitalist">Digitalist (Sweden)</option>
-                                    <option value="fru">FRU (US Only)</option>
-                                </select>
-                                <p class="helper-text" id="website-url-helper-text">Select Destination Link Platform</p>
-                            </div>
-                        </div>
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="adsets">Ad Set & Channels</label>
-                                <select name="adset_channel" id="adsets" class="adset-options">
-                                    <option disabled selected value="default" data-type="nonPopulate"> -- Select an option -- </option>
-                                    <optgroup label="Paid Display & Search">
-                                        <option value="gs_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Paid Adwords</option>
-                                        <option value="gs_se_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Gmail Sponsored email</option>
-                                        <option value="gd_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Google Display Network GDN</option>
-                                        <option value="gd_da_" data-type="nonPopulate" data-source="blank" data-medium="blank">Google Discovery Ads</option>
-                                        <option value="gg_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Google Grant</option>
-                                        <option value="yt_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Google You Tube</option>
-                                        <option value="bg_ppc_" data-type="nonPopulate" data-source="blank" data-medium="blank">Bing</option>
-                                        <option value="ad_ppc_miq_" data-type="autoPopulate" data-source="mediaiq" data-medium="display">MediaIQ</option>
-                                        <option value="eb_ppc_miq_" data-type="autoPopulate" data-source="ebay" data-medium="display">eBay</option>
-                                        <option value="spot_ppc_" data-type="autoPopulate" data-source="spotify" data-medium="display">Spotify</option>
-                                        <option value="mj_email_" data-type="autoPopulate" data-source="motherjones" data-medium="display">Mother Jones</option>
-                                        <option value="nyt_aud_" data-type="autoPopulate" data-source="nyt" data-medium="audio">NYT Podcasts</option>
-                                        <option value="gs_pmax_" data-type="autoPopulate" data-source="blank" data-medium="blank">Google - Performance Max</option>
-                                        <option value="yh_ppc_" data-type="autoPopulate" data-source="yahoo" data-medium="display">Yahoo - Display</option>
-                                        <option value="yh_vid_" data-type="autoPopulate" data-source="yahoo" data-medium="video">Yahoo - Video</option>
-                                        <option value="viant_ctv_" data-type="autoPopulate" data-source="ctv" data-medium="display">Viant - CTV</option>
-                                        <option value="viant_ppc_" data-type="autoPopulate" data-source="viant" data-medium="display">Viant - Display</option>
-                                        <option value="pan_aud_" data-type="autoPopulate" data-source="pandora" data-medium="audio">Pandora - Audio Ads</option>
-                                        <option value="al_ppc_" data-type="autoPopulate" data-source="adlib" data-medium="display">Ad Lib</option>
-                                        <option value="at_ppc_" data-type="autoPopulate" data-source="adtheorent" data-medium="display">AdTheorent</option>
-                                        <option value="jvx_ppc" data-type="autoPopulate" data-source="jivox" data-medium="display">Jivox</option>
-                                        <option value="tap_ppc_" data-type="autoPopulate" data-source="tapjoy" data-medium="display">Tapjoy</option>
-                                    </optgroup>
-                                    <!-- <optgroup label="Advocacy">
+              </div>
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="adsets">Ad Set & Channels</label>
+                  <select
+                    name="adset_channel"
+                    id="adsets"
+                    class="adset-options"
+                  >
+                    <option
+                      disabled
+                      selected
+                      value="default"
+                      data-type="nonPopulate"
+                    >
+                      -- Select an option --
+                    </option>
+                    <optgroup label="Paid Display & Search">
+                      <option
+                        value="gs_ppc_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Paid Adwords
+                      </option>
+                      <option
+                        value="gs_se_ppc_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Gmail Sponsored email
+                      </option>
+                      <option
+                        value="gd_ppc_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Google Display Network GDN
+                      </option>
+                      <option
+                        value="gd_da_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Google Discovery Ads
+                      </option>
+                      <option
+                        value="gg_ppc_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Google Grant
+                      </option>
+                      <option
+                        value="yt_ppc_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Google You Tube
+                      </option>
+                      <option
+                        value="bg_ppc_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Bing
+                      </option>
+                      <option
+                        value="ad_ppc_miq_"
+                        data-type="autoPopulate"
+                        data-source="mediaiq"
+                        data-medium="display"
+                      >
+                        MediaIQ
+                      </option>
+                      <option
+                        value="eb_ppc_miq_"
+                        data-type="autoPopulate"
+                        data-source="ebay"
+                        data-medium="display"
+                      >
+                        eBay
+                      </option>
+                      <option
+                        value="spot_ppc_"
+                        data-type="autoPopulate"
+                        data-source="spotify"
+                        data-medium="display"
+                      >
+                        Spotify
+                      </option>
+                      <option
+                        value="mj_email_"
+                        data-type="autoPopulate"
+                        data-source="motherjones"
+                        data-medium="display"
+                      >
+                        Mother Jones
+                      </option>
+                      <option
+                        value="nyt_aud_"
+                        data-type="autoPopulate"
+                        data-source="nyt"
+                        data-medium="audio"
+                      >
+                        NYT Podcasts
+                      </option>
+                      <option
+                        value="gs_pmax_"
+                        data-type="autoPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Google - Performance Max
+                      </option>
+                      <option
+                        value="yh_ppc_"
+                        data-type="autoPopulate"
+                        data-source="yahoo"
+                        data-medium="display"
+                      >
+                        Yahoo - Display
+                      </option>
+                      <option
+                        value="yh_vid_"
+                        data-type="autoPopulate"
+                        data-source="yahoo"
+                        data-medium="video"
+                      >
+                        Yahoo - Video
+                      </option>
+                      <option
+                        value="viant_ctv_"
+                        data-type="autoPopulate"
+                        data-source="ctv"
+                        data-medium="display"
+                      >
+                        Viant - CTV
+                      </option>
+                      <option
+                        value="viant_ppc_"
+                        data-type="autoPopulate"
+                        data-source="viant"
+                        data-medium="display"
+                      >
+                        Viant - Display
+                      </option>
+                      <option
+                        value="pan_aud_"
+                        data-type="autoPopulate"
+                        data-source="pandora"
+                        data-medium="audio"
+                      >
+                        Pandora - Audio Ads
+                      </option>
+                      <option
+                        value="al_ppc_"
+                        data-type="autoPopulate"
+                        data-source="adlib"
+                        data-medium="display"
+                      >
+                        Ad Lib
+                      </option>
+                      <option
+                        value="at_ppc_"
+                        data-type="autoPopulate"
+                        data-source="adtheorent"
+                        data-medium="display"
+                      >
+                        AdTheorent
+                      </option>
+                      <option
+                        value="jvx_ppc"
+                        data-type="autoPopulate"
+                        data-source="jivox"
+                        data-medium="display"
+                      >
+                        Jivox
+                      </option>
+                      <option
+                        value="tap_ppc_"
+                        data-type="autoPopulate"
+                        data-source="tapjoy"
+                        data-medium="display"
+                      >
+                        Tapjoy
+                      </option>
+                    </optgroup>
+                    <!-- <optgroup label="Advocacy">
                                         <option value="txt_" data-type="nonPopulate" data-source="blank" data-medium="blank">SMS</option>
                                     </optgroup> -->
-                                    <optgroup label="SMS">
-                                        <option value="txt_" data-type="nonPopulate" data-source="blank" data-medium="blank">Standard SMS</option>
-                                        <option value="grs_txt_" data-type="nonPopulate" data-source="blank" data-medium="blank">Grassroots Analytics</option>
-                                    </optgroup>
-                                    <optgroup label="Offline">
-                                        <option value="dm_furl_" data-type="nonPopulate" data-source="direct_mail" data-medium="print">Direct Mail</option>
-                                    </optgroup>
-                                    <optgroup label="Email Campaigns Tracking">
-                                        <option value="em_" data-type="nonPopulate" data-source="pardot" data-medium="email">Pardot Email add link with tracking</option>
-                                    </optgroup>
-                                    <optgroup label="Paid Social">
-                                        <option value="af_ctv_" data-type="autoPopulate" data-source="adformctv" data-medium="display">Adform - CTV </option>
-                                        <option value="af_ctx_" data-type="autoPopulate" data-source="adformctx" data-medium="display">Adform- Contextual </option>
-                                        <option value="af_prog_rt_" data-type="autoPopulate" data-source="adformrt" data-medium="display">Adform - Programmatic Retargeting </option>
-                                        <option value="fb_ppc_" data-type="autoPopulate" data-source="facebook" data-medium="display">Facebook</option>
-                                        <option value="pn_ppc_" data-type="autoPopulate" data-source="pinterest" data-medium="display">Pinterest</option>
-                                        <option value="tw_ppc_" data-type="autoPopulate" data-source="twitter" data-medium="display">Twitter</option>
-                                        <option value="in_ppc_" data-type="autoPopulate" data-source="instagram" data-medium="display">Instagram</option>
-                                        <option value="tt_ppc_" data-type="autoPopulate" data-source="tiktok" data-medium="display">TikTok</option>
-                                        <option value="li_ppc_" data-type="autoPopulate" data-source="linkedin" data-medium="display">LinkedIn</option>
-                                        <option value="rd_ppc_" data-type="autoPopulate" data-source="reddit" data-medium="display">Reddit</option>
-                                    </optgroup>
-                                    <optgroup label="Onsite Elements - links on the communications site">
-                                        <option value="ws_hero_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Donation Hero</option>
-                                        <option value="ws_banr_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Banner</option>
-                                        <option value="ws_modl_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Modal</option>
-                                        <option value="ws_ftr_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Sticky Footer</option>
-                                        <option value="ws_crisis_page_" data-type="nonPopulate" data-source="blank" data-medium="blank">Topic page (white button RedBanner)</option>
-                                        <!-- <option value="ws_unga_women_" data-type="autoPopulate">Onsite CTA bottom of article</option> -->
-                                        <option value="ws_article_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite CTA Article</option>
-                                        <!-- <option value="ws_article_h2h_">Onsite CTA - How to Help article</option> -->
-                                        <option value="ws_resq_top_nav_btn_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Top Nav</option>
-                                        <option value="ws_resq_stat_ftr_btn_" data-type="nonPopulate" data-source="blank" data-medium="blank">Onsite Static Footer</option>
-                                    </optgroup>
-                                    <optgroup label="Social Post URLs for Comms External Push">
-                                        <option value="fb_post_" data-type="autoPopulate" data-source="facebook" data-medium="social">Facebook Post</option>
-                                        <option value="tw_post_" data-type="autoPopulate" data-source="twitter" data-medium="social">Twitter Post</option>
-                                        <option value="in_post_" data-type="autoPopulate" data-source="instagram" data-medium="social">Instagram Post</option>
-                                        <option value="tt_post" data-type="autoPopulate" data-source="tiktok" data-medium="social">TikTok</option>
-                                    </optgroup>
-                                    <optgroup label="Celebrity Endorsements — 'IRC Voices'">
-                                        <option value="fb_post_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">FB Post IRC Voices</option>
-                                        <option value="tw_post_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">TW Post IRC Voices</option>
-                                        <option value="in_post_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">IG Post IRC Voices</option>
-                                        <option value="li_post_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">LI Post IRC Voices</option>
-                                        <option value="ss_irc_voices_mitchell_" data-type="nonPopulate" data-source="custom" data-medium="custom">Generic IRC Share Toolkit</option>
-                                        <option value="ss_irc_voices_" data-type="autoPopulate" data-source="custom" data-medium="custom">Ukraine Celeb Social Share</option>
-                                    </optgroup>
-                                    <optgroup label="Corporate Partners">
-                                        <option value="ref_bloomberg_" data-type="autoPopulate" data-source="custom" data-medium="custom">Bloomberg</option>
-                                        <option value="ref_tripadvisor_" data-type="autoPopulate" data-source="custom" data-medium="custom">Trip advisor</option>
-                                    </optgroup>
+                    <optgroup label="SMS">
+                      <option
+                        value="txt_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Standard SMS
+                      </option>
+                      <option
+                        value="grs_txt_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Grassroots Analytics
+                      </option>
+                    </optgroup>
+                    <optgroup label="Offline">
+                      <option
+                        value="dm_furl_"
+                        data-type="nonPopulate"
+                        data-source="direct_mail"
+                        data-medium="print"
+                      >
+                        Direct Mail
+                      </option>
+                    </optgroup>
+                    <optgroup label="Email Campaigns Tracking">
+                      <option
+                        value="em_"
+                        data-type="nonPopulate"
+                        data-source="pardot"
+                        data-medium="email"
+                      >
+                        Pardot Email add link with tracking
+                      </option>
+                    </optgroup>
+                    <optgroup label="Paid Social">
+                      <option
+                        value="af_ctv_"
+                        data-type="autoPopulate"
+                        data-source="adformctv"
+                        data-medium="display"
+                      >
+                        Adform - CTV
+                      </option>
+                      <option
+                        value="af_ctx_"
+                        data-type="autoPopulate"
+                        data-source="adformctx"
+                        data-medium="display"
+                      >
+                        Adform- Contextual
+                      </option>
+                      <option
+                        value="af_prog_rt_"
+                        data-type="autoPopulate"
+                        data-source="adformrt"
+                        data-medium="display"
+                      >
+                        Adform - Programmatic Retargeting
+                      </option>
+                      <option
+                        value="fb_ppc_"
+                        data-type="autoPopulate"
+                        data-source="facebook"
+                        data-medium="display"
+                      >
+                        Facebook
+                      </option>
+                      <option
+                        value="pn_ppc_"
+                        data-type="autoPopulate"
+                        data-source="pinterest"
+                        data-medium="display"
+                      >
+                        Pinterest
+                      </option>
+                      <option
+                        value="tw_ppc_"
+                        data-type="autoPopulate"
+                        data-source="twitter"
+                        data-medium="display"
+                      >
+                        Twitter
+                      </option>
+                      <option
+                        value="in_ppc_"
+                        data-type="autoPopulate"
+                        data-source="instagram"
+                        data-medium="display"
+                      >
+                        Instagram
+                      </option>
+                      <option
+                        value="tt_ppc_"
+                        data-type="autoPopulate"
+                        data-source="tiktok"
+                        data-medium="display"
+                      >
+                        TikTok
+                      </option>
+                      <option
+                        value="li_ppc_"
+                        data-type="autoPopulate"
+                        data-source="linkedin"
+                        data-medium="display"
+                      >
+                        LinkedIn
+                      </option>
+                      <option
+                        value="rd_ppc_"
+                        data-type="autoPopulate"
+                        data-source="reddit"
+                        data-medium="display"
+                      >
+                        Reddit
+                      </option>
+                    </optgroup>
+                    <optgroup
+                      label="Onsite Elements - links on the communications site"
+                    >
+                      <option
+                        value="ws_hero_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Onsite Donation Hero
+                      </option>
+                      <option
+                        value="ws_banr_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Onsite Banner
+                      </option>
+                      <option
+                        value="ws_modl_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Onsite Modal
+                      </option>
+                      <option
+                        value="ws_ftr_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Onsite Sticky Footer
+                      </option>
+                      <option
+                        value="ws_crisis_page_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Topic page (white button RedBanner)
+                      </option>
+                      <!-- <option value="ws_unga_women_" data-type="autoPopulate">Onsite CTA bottom of article</option> -->
+                      <option
+                        value="ws_article_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Onsite CTA Article
+                      </option>
+                      <!-- <option value="ws_article_h2h_">Onsite CTA - How to Help article</option> -->
+                      <option
+                        value="ws_resq_top_nav_btn_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Onsite Top Nav
+                      </option>
+                      <option
+                        value="ws_resq_stat_ftr_btn_"
+                        data-type="nonPopulate"
+                        data-source="blank"
+                        data-medium="blank"
+                      >
+                        Onsite Static Footer
+                      </option>
+                    </optgroup>
+                    <optgroup label="Social Post URLs for Comms External Push">
+                      <option
+                        value="fb_post_"
+                        data-type="autoPopulate"
+                        data-source="facebook"
+                        data-medium="social"
+                      >
+                        Facebook Post
+                      </option>
+                      <option
+                        value="tw_post_"
+                        data-type="autoPopulate"
+                        data-source="twitter"
+                        data-medium="social"
+                      >
+                        Twitter Post
+                      </option>
+                      <option
+                        value="in_post_"
+                        data-type="autoPopulate"
+                        data-source="instagram"
+                        data-medium="social"
+                      >
+                        Instagram Post
+                      </option>
+                      <option
+                        value="tt_post"
+                        data-type="autoPopulate"
+                        data-source="tiktok"
+                        data-medium="social"
+                      >
+                        TikTok
+                      </option>
+                    </optgroup>
+                    <optgroup label="Celebrity Endorsements — 'IRC Voices'">
+                      <option
+                        value="fb_post_voices_"
+                        data-type="autoPopulate"
+                        data-source="custom"
+                        data-medium="custom"
+                      >
+                        FB Post IRC Voices
+                      </option>
+                      <option
+                        value="tw_post_voices_"
+                        data-type="autoPopulate"
+                        data-source="custom"
+                        data-medium="custom"
+                      >
+                        TW Post IRC Voices
+                      </option>
+                      <option
+                        value="in_post_voices_"
+                        data-type="autoPopulate"
+                        data-source="custom"
+                        data-medium="custom"
+                      >
+                        IG Post IRC Voices
+                      </option>
+                      <option
+                        value="li_post_voices_"
+                        data-type="autoPopulate"
+                        data-source="custom"
+                        data-medium="custom"
+                      >
+                        LI Post IRC Voices
+                      </option>
+                      <option
+                        value="ss_irc_voices_mitchell_"
+                        data-type="nonPopulate"
+                        data-source="custom"
+                        data-medium="custom"
+                      >
+                        Generic IRC Share Toolkit
+                      </option>
+                      <option
+                        value="ss_irc_voices_"
+                        data-type="autoPopulate"
+                        data-source="custom"
+                        data-medium="custom"
+                      >
+                        Ukraine Celeb Social Share
+                      </option>
+                    </optgroup>
+                    <optgroup label="Corporate Partners">
+                      <option
+                        value="ref_bloomberg_"
+                        data-type="autoPopulate"
+                        data-source="custom"
+                        data-medium="custom"
+                      >
+                        Bloomberg
+                      </option>
+                      <option
+                        value="ref_tripadvisor_"
+                        data-type="autoPopulate"
+                        data-source="custom"
+                        data-medium="custom"
+                      >
+                        Trip advisor
+                      </option>
+                    </optgroup>
 
-                                    <optgroup label="Others">
-                                        <option value="" data-type="nonPopulate">Custom mscode</option>
-                                    </optgroup>
-                                </select>
-                                <p class="helper-text" id="website-url-helper-text">Select desired Ad set & Channel</p>
-                                <ul class="bulk-select-instructions" id="bulk-select-instructions">
-                                    <li>To select multiple options on Windows, press Ctrl + Alt + the channel.</li>
-                                    <li>To select multiple options on Mac, press Command + the channel.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="website-url">Website URL<sup class="required">*</sup></label>
-                                <input class="multi-input" type="text" id="website-url" value="" required>
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="website-url-helper-text">The full website URL (e.g. https://help.rescue.org or https://www.rescue.org)</p>
-                            </div>
-                        </div>
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="ms-codes">MS-Codes<sup class="required">*</sup></label>
-                                <!-- <input class="multi-input" type="text" id="ms-codes" name="ms-codes" value="" required readonly> -->
-                                <textarea class="multi-input" rows="2" id="ms-codes" name="ms-codes[]" required readonly></textarea>
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="ms-codes-helper-text">The ads ms-code.</p>
-                            </div>
-                        </div>
-                        <div class="builder-content pardot-only">
-                            <div class="multi-field">
-                                <label for="email_in_series"># of Email in Series<sup class="required">*</sup></label>
-                                <select name="email-series" id="email_in_series_list" class="adset-options">
-                                    <option disabled selected value=""> -- Select Series -- </option>
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30">30</option>
-                                    <option value="31">31</option>
-                                    <option value="32">32</option>
-                                    <option value="33">33</option>
-                                    <option value="34">34</option>
-                                    <option value="35">35</option>
-                                    <option value="36">36</option>
-                                    <option value="37">37</option>
-                                    <option value="38">38</option>
-                                    <option value="39">39</option>
-                                    <option value="40">40</option>
-                                    <option value="41">41</option>
-                                    <option value="42">42</option>
-                                    <option value="43">43</option>
-                                    <option value="44">44</option>
-                                    <option value="45">45</option>
-                                    <option value="46">46</option>
-                                    <option value="47">47</option>
-                                    <option value="48">48</option>
-                                    <option value="49">49</option>
-                                    <option value="50">50</option>
-                                    <option value="51">51</option>
-                                    <option value="52">52</option>
-                                    <option value="53">53</option>
-                                    <option value="54">54</option>
-                                    <option value="55">55</option>
-                                    <option value="56">56</option>
-                                    <option value="57">57</option>
-                                    <option value="58">58</option>
-                                    <option value="59">59</option>
-                                    <option value="60">60</option>
-                                    <option value="61">61</option>
-                                    <option value="62">62</option>
-                                    <option value="63">63</option>
-                                    <option value="64">64</option>
-                                    <option value="65">65</option>
-                                    <option value="66">66</option>
-                                    <option value="67">67</option>
-                                    <option value="68">68</option>
-                                    <option value="69">69</option>
-                                    <option value="70">70</option>
-                                    <option value="71">71</option>
-                                    <option value="72">72</option>
-                                    <option value="73">73</option>
-                                    <option value="74">74</option>
-                                    <option value="75">75</option>
-                                    <option value="76">76</option>
-                                    <option value="77">77</option>
-                                    <option value="78">78</option>
-                                    <option value="79">79</option>
-                                    <option value="80">80</option>
-                                    <option value="81">81</option>
-                                    <option value="82">82</option>
-                                    <option value="83">83</option>
-                                    <option value="84">84</option>
-                                    <option value="85">85</option>
-                                    <option value="86">86</option>
-                                    <option value="87">87</option>
-                                    <option value="88">88</option>
-                                    <option value="89">89</option>
-                                    <option value="90">90</option>
-                                    <option value="91">91</option>
-                                    <option value="92">92</option>
-                                    <option value="93">93</option>
-                                    <option value="94">94</option>
-                                    <option value="95">95</option>
-                                    <option value="96">96</option>
-                                    <option value="97">97</option>
-                                    <option value="98">98</option>
-                                    <option value="99">99</option>
-                                </select>
-                                <input class="special-input" type="hidden" id="email_in_series" value="" required>
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="email-series-helper-text">Number of Email in Series.</p>
-                            </div>
-                        </div>
-                        <div class="builder-content pardot-only">
-                            <div class="multi-field">
-                                <label for="email-audience">Email Send Audience</label>
-                                <select name="email-audience" id="email_audience_list" class="adset-options">
-                                    <option disabled selected value=""> -- Select Audience -- </option>
-                                    <option value="a">a</option>
-                                    <option value="b">b</option>
-                                    <option value="c">c</option>
-                                    <option value="d">d</option>
-                                    <option value="e">e</option>
-                                    <option value="f">f</option>
-                                    <option value="g">g</option>
-                                    <option value="h">h</option>
-                                    <option value="i">i</option>
-                                    <option value="j">j</option>
-                                    <option value="k">k</option>
-                                    <option value="l">l</option>
-                                    <option value="m">m</option>
-                                    <option value="n">n</option>
-                                    <option value="o">o</option>
-                                    <option value="p">p</option>
-                                    <option value="q">q</option>
-                                    <option value="r">r</option>
-                                    <option value="s">s</option>
-                                    <option value="t">t</option>
-                                    <option value="u">u</option>
-                                    <option value="v">v</option>
-                                    <option value="w">w</option>
-                                    <option value="x">x</option>
-                                    <option value="y">y</option>
-                                    <option value="z">z</option>
-                                </select>
-                                <input class="special-input" type="hidden" id="email_audience" value="">
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="email-audience-helper-text">Email Send Audience.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="ms-campaign">MS-Campaign (Ad set & Channels)<sup class="required">*</sup></label>
-                                <select name="ms-campaign" id="ms-campaign-list" class="adset-options">
-                                    <option disabled selected value=""> -- Select Campaign -- </option>
-                                    <option value="afghanistan">afghanistan</option>
-                                    <option value="afghanwinter">afghanwinter</option>
-                                    <option value="africa">africa</option>
-                                    <option value="armenia">armenia</option>
-                                    <option value="asylum">asylum</option>
-                                    <option value="bangladesh">bangladesh</option>
-                                    <option value="belarus">belarus</option>
-                                    <option value="childsurvival">childsurvival</option>
-                                    <option value="covid19">covid19</option>
-                                    <option value="dec">dec</option>
-                                    <option value="dinner">dinner</option>
-                                    <option value="election">election</option>
-                                    <option value="election1x">election1x</option>
-                                    <option value="ethiopia">ethiopia</option>
-                                    <option value="eoy">eoy</option>
-                                    <option value="eoy_celeb">eoy_celeb</option>
-                                    <option value="eoy_givingTuesday">eoy_givingTuesday</option>
-                                    <option value="eoy_match">eoy_match</option>
-                                    <option value="eoy_rg">eoy_rg</option>
-                                    <option value="eoy_winter">eoy_winter</option>
-                                    <option value="family">family</option>
-                                    <option value="fathersday">fathersday</option>
-                                    <option value="gaza">gaza</option>
-                                    <option value="gen_unres">general unrestricted</option>
-                                    <option value="givTues_covid19">givTues_covid19</option>
-                                    <option value="globalcitizen">globalcitizen</option>
-                                    <option value="lebanon">lebanon</option>
-                                    <option value="myanmar">myanmar</option>
-                                    <option value="mothersday">mothersday</option>
-                                    <option value="ramadan">ramadan</option>
-                                    <option value="sustainer">sustainer</option>
-                                    <option value="syria">syria</option>
-                                    <!-- <option value="syria">syria</option> -->
-                                    <option value="ukraine">ukraine</option>
-                                    <option value="women">women</option>
-                                    <!-- <option value="women">women</option> -->
-                                    <option value="wrd">wrd</option>
-                                    <option value="yemen">yemen</option>
-                                    <!-- <option value="yemen">yemen</option> -->
-                                    <option value="">Custom Input</option>
-                                </select>
-                                <input class="multi-input" type="hidden" id="ms-campaign" value="" required>
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="ms-campaign-helper-text">The ads ms campaign id. <strong>Note: The fiscal year will be automatically added</strong> </p>
-                            </div>
-                        </div>
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="market-month">Market & Month<sup class="required">*</sup></label>
-                                <div class="market_month">
-                                    <select name="market_month" id="mktmth" class="adset-options">
-                                        <option disabled selected value=""> -- Market -- </option>
-                                        <option value="_mmus">US</option>
-                                        <option value="_demk">DE</option>
-                                        <option value="_rm">RM</option>
-                                        <option value="_ukmk">UK</option>
-                                        <option value="_semk">SE</option>
-                                        <option value="_mmsk">SK</option>
-                                    </select>
-                                    <select name="market_month" id="market_month" class="adset-options">
-                                        <option disabled selected value=""> -- Month -- </option>
-                                        <option value="jan">Jan</option>
-                                        <option value="feb">Feb</option>
-                                        <option value="mar">Mar</option>
-                                        <option value="apr">Apr</option>
-                                        <option value="may">May</option>
-                                        <option value="jun">Jun</option>
-                                        <option value="jul">Jul</option>
-                                        <option value="aug">Aug</option>
-                                        <option value="sep">Sep</option>
-                                        <option value="oct">Oct</option>
-                                        <option value="nov">Nov</option>
-                                        <option value="dec">Dec</option>
-                                    </select>
-                                </div>
-                                <input class="multi-input" type="hidden" id="market-month" value="" required>
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="market-month-helper-text">Market and month (3 character month). <strong>Note: Kindly use the month that you are launching URL in</strong></p>
-                            </div>
-                        </div>
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="utm-medium">UTM Medium</label>
-                                <select name="utm-medium" id="utm-medium-list" class="adset-options">
-                                    <option disabled selected value=""> -- Select Medium -- </option>
-                                    <option value="">Leave Blank</option>
-                                    <option value="audio">audio</option>
-                                    <option value="display">display</option>
-                                    <option value="email">email</option>
-                                    <option value="social">social</option>
-                                    <option value="referral">referral</option>
-                                    <option value="website">website</option>
-                                    <option value="telethon">telethon</option>
-                                    <option value="video">video</option>
-                                </select>
-                                <input class="dm-input" type="text" placeholder="" id="utm-medium-dm" readonly value="">
-                                <input class="multi-input" type="hidden" placeholder="Enter Custom UTM Medium" id="utm-medium" value="">
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="utm-source-helper-text">Leave blank for google search + bing adwords auto-tag.</p>
-                            </div>
-                        </div>
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="utm-source">UTM Source</label>
-                                <input class="multi-input" type="text" id="utm-source" value="">
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="utm-source-helper-text">Leave blank for google search + bing adwords auto-tag.</p>
-                            </div>
-                        </div>
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="utm-campaign">UTM Campaign</label>
-                                <!-- <input class="multi-input" type="text" id="utm-campaign" value=""> -->
-                                <textarea class="multi-input" rows="2" id="utm-campaign" name="utm-campaign[]"></textarea>
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="utm-campaign-helper-text">fy21_campaign Name. Leave blank for google search + bing adwords auto-tag</p>
-                            </div>
-                        </div>
-                        <div class="builder-content">
-                            <div class="multi-field">
-                                <label for="utm-content">UTM Content</label>
-                                <input class="multi-input" type="text" id="utm-content" value="">
-                                <p class="error_msg"></p>
-                                <p class="helper-text" id="utm-content-helper-text">What ad, theme or segment was used.</p>
-                            </div>
-                        </div>
+                    <optgroup label="Others">
+                      <option value="" data-type="nonPopulate">
+                        Custom mscode
+                      </option>
+                    </optgroup>
+                  </select>
+                  <p class="helper-text" id="website-url-helper-text">
+                    Select desired Ad set & Channel
+                  </p>
+                  <ul
+                    class="bulk-select-instructions"
+                    id="bulk-select-instructions"
+                  >
+                    <li>
+                      To select multiple options on Windows, press Ctrl + Alt +
+                      the channel.
+                    </li>
+                    <li>
+                      To select multiple options on Mac, press Command + the
+                      channel.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="website-url"
+                    >Website URL<sup class="required">*</sup></label
+                  >
+                  <input
+                    class="multi-input"
+                    type="text"
+                    id="website-url"
+                    value=""
+                    required
+                  />
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="website-url-helper-text">
+                    The full website URL (e.g. https://help.rescue.org or
+                    https://www.rescue.org)
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="ms-codes"
+                    >MS-Codes<sup class="required">*</sup></label
+                  >
+                  <!-- <input class="multi-input" type="text" id="ms-codes" name="ms-codes" value="" required readonly> -->
+                  <textarea
+                    class="multi-input"
+                    rows="2"
+                    id="ms-codes"
+                    name="ms-codes[]"
+                    required
+                    readonly
+                  ></textarea>
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="ms-codes-helper-text">
+                    The ads ms-code.
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content pardot-only">
+                <div class="multi-field">
+                  <label for="email_in_series"
+                    ># of Email in Series<sup class="required">*</sup></label
+                  >
+                  <select
+                    name="email-series"
+                    id="email_in_series_list"
+                    class="adset-options"
+                  >
+                    <option disabled selected value="">
+                      -- Select Series --
+                    </option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                    <option value="49">49</option>
+                    <option value="50">50</option>
+                    <option value="51">51</option>
+                    <option value="52">52</option>
+                    <option value="53">53</option>
+                    <option value="54">54</option>
+                    <option value="55">55</option>
+                    <option value="56">56</option>
+                    <option value="57">57</option>
+                    <option value="58">58</option>
+                    <option value="59">59</option>
+                    <option value="60">60</option>
+                    <option value="61">61</option>
+                    <option value="62">62</option>
+                    <option value="63">63</option>
+                    <option value="64">64</option>
+                    <option value="65">65</option>
+                    <option value="66">66</option>
+                    <option value="67">67</option>
+                    <option value="68">68</option>
+                    <option value="69">69</option>
+                    <option value="70">70</option>
+                    <option value="71">71</option>
+                    <option value="72">72</option>
+                    <option value="73">73</option>
+                    <option value="74">74</option>
+                    <option value="75">75</option>
+                    <option value="76">76</option>
+                    <option value="77">77</option>
+                    <option value="78">78</option>
+                    <option value="79">79</option>
+                    <option value="80">80</option>
+                    <option value="81">81</option>
+                    <option value="82">82</option>
+                    <option value="83">83</option>
+                    <option value="84">84</option>
+                    <option value="85">85</option>
+                    <option value="86">86</option>
+                    <option value="87">87</option>
+                    <option value="88">88</option>
+                    <option value="89">89</option>
+                    <option value="90">90</option>
+                    <option value="91">91</option>
+                    <option value="92">92</option>
+                    <option value="93">93</option>
+                    <option value="94">94</option>
+                    <option value="95">95</option>
+                    <option value="96">96</option>
+                    <option value="97">97</option>
+                    <option value="98">98</option>
+                    <option value="99">99</option>
+                  </select>
+                  <input
+                    class="special-input"
+                    type="hidden"
+                    id="email_in_series"
+                    value=""
+                    required
+                  />
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="email-series-helper-text">
+                    Number of Email in Series.
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content pardot-only">
+                <div class="multi-field">
+                  <label for="email-audience">Email Send Audience</label>
+                  <select
+                    name="email-audience"
+                    id="email_audience_list"
+                    class="adset-options"
+                  >
+                    <option disabled selected value="">
+                      -- Select Audience --
+                    </option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                    <option value="d">d</option>
+                    <option value="e">e</option>
+                    <option value="f">f</option>
+                    <option value="g">g</option>
+                    <option value="h">h</option>
+                    <option value="i">i</option>
+                    <option value="j">j</option>
+                    <option value="k">k</option>
+                    <option value="l">l</option>
+                    <option value="m">m</option>
+                    <option value="n">n</option>
+                    <option value="o">o</option>
+                    <option value="p">p</option>
+                    <option value="q">q</option>
+                    <option value="r">r</option>
+                    <option value="s">s</option>
+                    <option value="t">t</option>
+                    <option value="u">u</option>
+                    <option value="v">v</option>
+                    <option value="w">w</option>
+                    <option value="x">x</option>
+                    <option value="y">y</option>
+                    <option value="z">z</option>
+                  </select>
+                  <input
+                    class="special-input"
+                    type="hidden"
+                    id="email_audience"
+                    value=""
+                  />
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="email-audience-helper-text">
+                    Email Send Audience.
+                  </p>
+                </div>
+              </div>
 
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="ms-campaign"
+                    >MS-Campaign (Ad set & Channels)<sup class="required"
+                      >*</sup
+                    ></label
+                  >
+                  <select
+                    name="ms-campaign"
+                    id="ms-campaign-list"
+                    class="adset-options"
+                  >
+                    <option disabled selected value="">
+                      -- Select Campaign --
+                    </option>
+                    <option value="afghanistan">afghanistan</option>
+                    <option value="afghanwinter">afghanwinter</option>
+                    <option value="africa">africa</option>
+                    <option value="armenia">armenia</option>
+                    <option value="asylum">asylum</option>
+                    <option value="bangladesh">bangladesh</option>
+                    <option value="belarus">belarus</option>
+                    <option value="childsurvival">childsurvival</option>
+                    <option value="covid19">covid19</option>
+                    <option value="dec">dec</option>
+                    <option value="dinner">dinner</option>
+                    <option value="election">election</option>
+                    <option value="election1x">election1x</option>
+                    <option value="ethiopia">ethiopia</option>
+                    <option value="eoy">eoy</option>
+                    <option value="eoy_celeb">eoy_celeb</option>
+                    <option value="eoy_givingTuesday">eoy_givingTuesday</option>
+                    <option value="eoy_match">eoy_match</option>
+                    <option value="eoy_rg">eoy_rg</option>
+                    <option value="eoy_winter">eoy_winter</option>
+                    <option value="family">family</option>
+                    <option value="fathersday">fathersday</option>
+                    <option value="gaza">gaza</option>
+                    <option value="gen_unres">general unrestricted</option>
+                    <option value="givTues_covid19">givTues_covid19</option>
+                    <option value="globalcitizen">globalcitizen</option>
+                    <option value="lebanon">lebanon</option>
+                    <option value="myanmar">myanmar</option>
+                    <option value="mothersday">mothersday</option>
+                    <option value="ramadan">ramadan</option>
+                    <option value="sustainer">sustainer</option>
+                    <option value="syria">syria</option>
+                    <!-- <option value="syria">syria</option> -->
+                    <option value="ukraine">ukraine</option>
+                    <option value="women">women</option>
+                    <!-- <option value="women">women</option> -->
+                    <option value="wrd">wrd</option>
+                    <option value="yemen">yemen</option>
+                    <!-- <option value="yemen">yemen</option> -->
+                    <option value="">Custom Input</option>
+                  </select>
+                  <input
+                    class="multi-input"
+                    type="hidden"
+                    id="ms-campaign"
+                    value=""
+                    required
+                  />
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="ms-campaign-helper-text">
+                    The ads ms campaign id.
+                    <strong
+                      >Note: The fiscal year will be automatically added</strong
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="market-month"
+                    >Market & Month<sup class="required">*</sup></label
+                  >
+                  <div class="market_month">
+                    <select
+                      name="market_month"
+                      id="mktmth"
+                      class="adset-options"
+                    >
+                      <option disabled selected value="">-- Market --</option>
+                      <option value="_mmus">US</option>
+                      <option value="_demk">DE</option>
+                      <option value="_rm">RM</option>
+                      <option value="_ukmk">UK</option>
+                      <option value="_semk">SE</option>
+                      <option value="_mmsk">SK</option>
+                    </select>
+                    <select
+                      name="market_month"
+                      id="market_month"
+                      class="adset-options"
+                    >
+                      <option disabled selected value="">-- Month --</option>
+                      <option value="jan">Jan</option>
+                      <option value="feb">Feb</option>
+                      <option value="mar">Mar</option>
+                      <option value="apr">Apr</option>
+                      <option value="may">May</option>
+                      <option value="jun">Jun</option>
+                      <option value="jul">Jul</option>
+                      <option value="aug">Aug</option>
+                      <option value="sep">Sep</option>
+                      <option value="oct">Oct</option>
+                      <option value="nov">Nov</option>
+                      <option value="dec">Dec</option>
+                    </select>
+                  </div>
+                  <input
+                    class="multi-input"
+                    type="hidden"
+                    id="market-month"
+                    value=""
+                    required
+                  />
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="market-month-helper-text">
+                    Market and month (3 character month).
+                    <strong
+                      >Note: Kindly use the month that you are launching URL
+                      in</strong
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="utm-medium">UTM Medium</label>
+                  <select
+                    name="utm-medium"
+                    id="utm-medium-list"
+                    class="adset-options"
+                  >
+                    <option disabled selected value="">
+                      -- Select Medium --
+                    </option>
+                    <option value="">Leave Blank</option>
+                    <option value="audio">audio</option>
+                    <option value="display">display</option>
+                    <option value="email">email</option>
+                    <option value="social">social</option>
+                    <option value="referral">referral</option>
+                    <option value="website">website</option>
+                    <option value="telethon">telethon</option>
+                    <option value="video">video</option>
+                  </select>
+                  <input
+                    class="dm-input"
+                    type="text"
+                    placeholder=""
+                    id="utm-medium-dm"
+                    readonly
+                    value=""
+                  />
+                  <input
+                    class="multi-input"
+                    type="hidden"
+                    placeholder="Enter Custom UTM Medium"
+                    id="utm-medium"
+                    value=""
+                  />
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="utm-source-helper-text">
+                    Leave blank for google search + bing adwords auto-tag.
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="utm-source">UTM Source</label>
+                  <input
+                    class="multi-input"
+                    type="text"
+                    id="utm-source"
+                    value=""
+                  />
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="utm-source-helper-text">
+                    Leave blank for google search + bing adwords auto-tag.
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="utm-campaign">UTM Campaign</label>
+                  <!-- <input class="multi-input" type="text" id="utm-campaign" value=""> -->
+                  <textarea
+                    class="multi-input"
+                    rows="2"
+                    id="utm-campaign"
+                    name="utm-campaign[]"
+                  ></textarea>
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="utm-campaign-helper-text">
+                    fy21_campaign Name. Leave blank for google search + bing
+                    adwords auto-tag
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content">
+                <div class="multi-field">
+                  <label for="utm-content">UTM Content</label>
+                  <input
+                    class="multi-input"
+                    type="text"
+                    id="utm-content"
+                    value=""
+                  />
+                  <p class="error_msg"></p>
+                  <p class="helper-text" id="utm-content-helper-text">
+                    What ad, theme or segment was used.
+                  </p>
+                </div>
+              </div>
 
-                        <div class="builder-content pardot-only">
-                            <div class="multi-field">
-                                <label for="email_segment">Email Segment (US only)</label>
-                               <div class="pardot-check">
-                                    <span>Select checkbox to include to URL.</span>
-                                    <input class="email-segment" type="checkbox" name="email-segment" id="email-segment-checkbox">
-                               </div>
-                                <input class="special-input" type="text" id="email_segment" value="{{{Recipient.Email_Segment__c}}}" readonly>
-                                <p class="helper-text" id="email-segment-helper-text">Email Segment (US only).</p>
-                            </div>
-                        </div>
-                        <div class="builder-content pardot-only">
-                            <div class="multi-field">
-                                <label for="gift-string">Gift String Encrypted</label>
-                               <div class="pardot-check">
-                                    <span>Select checkbox to include to URL.</span>
-                                    <input class="gift-string" type="checkbox" name="gift-string" id="gift-string-checkbox">
-                               </div>
-                                <input class="special-input" type="text" id="gift-string" value="{{Recipient.Account.Gift_String_Encrypted__c}}" readonly>
-                                <p class="helper-text" id="gift-string-helper-text">Gift String Encrypted.</p>
-                            </div>
-                        </div>
-                        <div class="builder-content pardot-only">
-                            <div class="multi-field">
-                                <label for="form-string">Form String Encrypted</label>
-                               <div class="pardot-check">
-                                    <span>Select checkbox to include to URL.</span>
-                                    <input class="form-string" type="checkbox" name="form-string" id="form-string-checkbox">
-                               </div>
-                                <input class="special-input" type="text" id="form-string" value="{{{Recipient.Form_String_Encrypted__c}}}" readonly>
-                                <p class="helper-text" id="form-string-helper-text">Gift String Encrypted.</p>
-                            </div>
-                        </div>
+              <div class="builder-content pardot-only">
+                <div class="multi-field">
+                  <label for="email_segment">Email Segment (US only)</label>
+                  <div class="pardot-check">
+                    <span>Select checkbox to include to URL.</span>
+                    <input
+                      class="email-segment"
+                      type="checkbox"
+                      name="email-segment"
+                      id="email-segment-checkbox"
+                    />
+                  </div>
+                  <input
+                    class="special-input"
+                    type="text"
+                    id="email_segment"
+                    value="{{{Recipient.Email_Segment__c}}}"
+                    readonly
+                  />
+                  <p class="helper-text" id="email-segment-helper-text">
+                    Email Segment (US only).
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content pardot-only">
+                <div class="multi-field">
+                  <label for="gift-string">Gift String Encrypted</label>
+                  <div class="pardot-check">
+                    <span>Select checkbox to include to URL.</span>
+                    <input
+                      class="gift-string"
+                      type="checkbox"
+                      name="gift-string"
+                      id="gift-string-checkbox"
+                    />
+                  </div>
+                  <input
+                    class="special-input"
+                    type="text"
+                    id="gift-string"
+                    value="{{Recipient.Account.Gift_String_Encrypted__c}}"
+                    readonly
+                  />
+                  <p class="helper-text" id="gift-string-helper-text">
+                    Gift String Encrypted.
+                  </p>
+                </div>
+              </div>
+              <div class="builder-content pardot-only">
+                <div class="multi-field">
+                  <label for="form-string">Form String Encrypted</label>
+                  <div class="pardot-check">
+                    <span>Select checkbox to include to URL.</span>
+                    <input
+                      class="form-string"
+                      type="checkbox"
+                      name="form-string"
+                      id="form-string-checkbox"
+                    />
+                  </div>
+                  <input
+                    class="special-input"
+                    type="text"
+                    id="form-string"
+                    value="{{{Recipient.Form_String_Encrypted__c}}}"
+                    readonly
+                  />
+                  <p class="helper-text" id="form-string-helper-text">
+                    Gift String Encrypted.
+                  </p>
+                </div>
+              </div>
 
-                        <form name="submit-to-google-sheet" id="submit-to-google-sheet">
-                        <div class="result">
-                            <textarea name="Link" id="url_codes" readonly>Fill out required fields above and click "Generate URL" button.</textarea>
-                            <!-- <button class="copy-text" id="copy-text">Copy</button> -->
-                        </div>
-                        <!-- <button class="copy-text" id="copy-text">Copy</button> -->
-                        <p class="url-save-note">Enter a name and click on the save button to save URL</p>
-                        <input class="save-input" id="save-input-name" name="Name" required>
-                        <input id="ms_campaign_data" name="Ms_Campaign" hidden value="">
-                        <input id="ms_code_data" name="Ms_Code" hidden value="">
-                        <p id="url_saved_message"></p>
-                        <button class="save-btn" id="save-button">Save</button>
-                        
-                        </form>
-                        <form name="submit-bulk-to-google-sheet" id="submit-bulk-to-google-sheet">
-                            <p class="url-save-bulk-note">Enter a name and click on the "Save all URL's" button to save URLs</p>
-                            <input class="save-input" id="save-bulk-input" name="Name" required>
-                            <select id="generated-bulk-urls" hidden></select>
-                            <input id="ms_campaign_bulk_data" name="Ms_Campaign" hidden value="">
-                            <input id="ms_code_bulk_data" name="Ms_Code" hidden value="">
-                            <input id="bulkLink" name="Link" hidden value="">
-                            <button class="save-bulk-button" id="save-bulk-button">Save all URL's</button>
-                        </form>
-                        <p class="reset-note">Note: form will reset automatically when save is complete</p>
-                        <button class="copy-text" id="copy-text">Copy</button>
-                        <div class="builder-btn">
-                            <button class="generate-btn" id="generate-button">Generate URL</button>
-                            <button class="generate-btn noShow" id="bulk-generate-button">Generate Bulk URLs</button>
-                        </div>
-                        <div id="gen_error_msg"></div>
+              <form name="submit-to-google-sheet" id="submit-to-google-sheet">
+                <div class="result">
+                  <textarea name="Link" id="url_codes" readonly>
+Fill out required fields above and click "Generate URL" button.</textarea
+                  >
+                  <!-- <button class="copy-text" id="copy-text">Copy</button> -->
+                </div>
+                <!-- <button class="copy-text" id="copy-text">Copy</button> -->
+                <p class="url-save-note">
+                  Enter a name and click on the save button to save URL
+                </p>
+                <input
+                  class="save-input"
+                  id="save-input-name"
+                  name="Name"
+                  required
+                />
+                <input
+                  id="ms_campaign_data"
+                  name="Ms_Campaign"
+                  hidden
+                  value=""
+                />
+                <input id="ms_code_data" name="Ms_Code" hidden value="" />
+                <p id="url_saved_message"></p>
+                <button class="save-btn" id="save-button">Save</button>
+              </form>
+              <form
+                name="submit-bulk-to-google-sheet"
+                id="submit-bulk-to-google-sheet"
+              >
+                <p class="url-save-bulk-note">
+                  Enter a name and click on the "Save all URL's" button to save
+                  URLs
+                </p>
+                <input
+                  class="save-input"
+                  id="save-bulk-input"
+                  name="Name"
+                  required
+                />
+                <select id="generated-bulk-urls" hidden></select>
+                <input
+                  id="ms_campaign_bulk_data"
+                  name="Ms_Campaign"
+                  hidden
+                  value=""
+                />
+                <input id="ms_code_bulk_data" name="Ms_Code" hidden value="" />
+                <input id="bulkLink" name="Link" hidden value="" />
+                <button class="save-bulk-button" id="save-bulk-button">
+                  Save all URL's
+                </button>
+              </form>
+              <p class="reset-note">
+                Note: form will reset automatically when save is complete
+              </p>
+              <button class="copy-text" id="copy-text">Copy</button>
+              <div class="builder-btn">
+                <button class="generate-btn" id="generate-button">
+                  Generate URL
+                </button>
+                <button class="generate-btn noShow" id="bulk-generate-button">
+                  Generate Bulk URLs
+                </button>
+              </div>
+              <div id="gen_error_msg"></div>
+            </div>
 
-                    </div>
-                    
-                    <div id="sectionB" class="tab-content">
-                        <div class="section-content">
-                            <h2>FY Campaign Snippets</h2>
-                            <div class="adsetsChannels">
-                                <div class="adsets_main">
-                                    <span class="adsets_header">Evergreen UTM_Campaign</span>
-                                    <span class="adsets_header_description">Description</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>women</span>
-                                    <span class="adset_description">Women and girls themed fundraising/messaging</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>family</span>
-                                    <span class="adset_description">'reunite refugee families'  — Not US border Child Separation
-                                    </span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>asylum</span>
-                                    <span class="adset_description">"Resist" aka TRUMP Policy campaigns: Exec Orders,  US Mexico border, Immigration and Child Separation  Family Separation.</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>africa</span>
-                                    <span class="adset_description">Africa related add theme to give more context Example:   "_famine"   "_ebola"  "_congo" etc.</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>myanmar</span>
-                                    <span class="adset_description">Myanmar and/or Rohyngia related</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>yemen</span>
-                                    <span class="adset_description">Yemen related</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>syria</span>
-                                    <span class="adset_description">Syria related — add region to give more context. Example:  fy19_syria_aleppo  or fy19_syria_ghouta</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>covid19</span>
-                                    <span class="adset_description">coronavirus</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>mothersday</span>
-                                    <span class="adset_description">Mother's Day 2020</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>givTues_covid19</span>
-                                    <span class="adset_description">Giving Tuesday Now in response to Covid-19</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>fathersday</span>
-                                    <span class="adset_description"></span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>bangladesh</span>
-                                    <span class="adset_description"></span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>globalcitizen</span>
-                                    <span class="adset_description">Global Citizen Live website link</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>sustainer</span>
-                                    <span class="adset_description">Sustainer campaign. Add theme to determine track. Example: "_covid19" "_mission".</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>wrd</span>
-                                    <span class="adset_description"></span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>childsurvival</span>
-                                    <span class="adset_description">Child Survival Campaign. </span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>ethiopia</span>
-                                    <span class="adset_description">Ethiopia Emergency</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>lebanon</span>
-                                    <span class="adset_description">Explosion Response</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>election</span>
-                                    <span class="adset_description">US election</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>armenia</span>
-                                    <span class="adset_description">Armenia/Azerbaijan conflict</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>election1x</span>
-                                    <span class="adset_description">Us election 1 time giving default</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>dinner</span>
-                                    <span class="adset_description">Rescue Dinner Virtual Event</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>ramadan</span>
-                                    <span class="adset_description">Ramadan</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>afghanistan</span>
-                                    <span class="adset_description">Afghanistan</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>belarus</span>
-                                    <span class="adset_description">Belarus Emergency</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>afghanwinter</span>
-                                    <span class="adset_description">Afghanistan Winter Effort</span>
-                                </div>
-                                <div class="adsets_child last-element">
-                                    <span class="adset_word"><span class="fiscal-year"></span>ukraine</span>
-                                    <span class="adset_description"></span>
-                                </div>
-                                <div class="adsets_eoy">
-                                    <span>EOY Specific UTM_Campaing values for End of Year</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>eoy</span>
-                                    <span class="adset_description">End of Year</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>eoy_givingTuesday</span>
-                                    <span class="adset_description">Giving Tuesday</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>eoy_match</span>
-                                    <span class="adset_description">End of Year Match</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>eoy_rg</span>
-                                    <span class="adset_description">Rescue Gifts</span>
-                                </div>
-                                <div class="adsets_child">
-                                    <span class="adset_word"><span class="fiscal-year"></span>eoy_winter</span>
-                                    <span class="adset_description"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="backtotop">
+            <div id="sectionB" class="tab-content">
+              <div class="section-content">
+                <h2>FY Campaign Snippets</h2>
+                <div class="adsetsChannels">
+                  <div class="adsets_main">
+                    <span class="adsets_header">Evergreen UTM_Campaign</span>
+                    <span class="adsets_header_description">Description</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>women</span
+                    >
+                    <span class="adset_description"
+                      >Women and girls themed fundraising/messaging</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>family</span
+                    >
+                    <span class="adset_description"
+                      >'reunite refugee families' — Not US border Child
+                      Separation
+                    </span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>asylum</span
+                    >
+                    <span class="adset_description"
+                      >"Resist" aka TRUMP Policy campaigns: Exec Orders, US
+                      Mexico border, Immigration and Child Separation Family
+                      Separation.</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>africa</span
+                    >
+                    <span class="adset_description"
+                      >Africa related add theme to give more context Example:
+                      "_famine" "_ebola" "_congo" etc.</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>myanmar</span
+                    >
+                    <span class="adset_description"
+                      >Myanmar and/or Rohyngia related</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>yemen</span
+                    >
+                    <span class="adset_description">Yemen related</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>syria</span
+                    >
+                    <span class="adset_description"
+                      >Syria related — add region to give more context. Example:
+                      fy19_syria_aleppo or fy19_syria_ghouta</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>covid19</span
+                    >
+                    <span class="adset_description">coronavirus</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>mothersday</span
+                    >
+                    <span class="adset_description">Mother's Day 2020</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>givTues_covid19</span
+                    >
+                    <span class="adset_description"
+                      >Giving Tuesday Now in response to Covid-19</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>fathersday</span
+                    >
+                    <span class="adset_description"></span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>bangladesh</span
+                    >
+                    <span class="adset_description"></span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>globalcitizen</span
+                    >
+                    <span class="adset_description"
+                      >Global Citizen Live website link</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>sustainer</span
+                    >
+                    <span class="adset_description"
+                      >Sustainer campaign. Add theme to determine track.
+                      Example: "_covid19" "_mission".</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>wrd</span
+                    >
+                    <span class="adset_description"></span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>childsurvival</span
+                    >
+                    <span class="adset_description"
+                      >Child Survival Campaign.
+                    </span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>ethiopia</span
+                    >
+                    <span class="adset_description">Ethiopia Emergency</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>lebanon</span
+                    >
+                    <span class="adset_description">Explosion Response</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>election</span
+                    >
+                    <span class="adset_description">US election</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>armenia</span
+                    >
+                    <span class="adset_description"
+                      >Armenia/Azerbaijan conflict</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>election1x</span
+                    >
+                    <span class="adset_description"
+                      >Us election 1 time giving default</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>dinner</span
+                    >
+                    <span class="adset_description"
+                      >Rescue Dinner Virtual Event</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>ramadan</span
+                    >
+                    <span class="adset_description">Ramadan</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>afghanistan</span
+                    >
+                    <span class="adset_description">Afghanistan</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>belarus</span
+                    >
+                    <span class="adset_description">Belarus Emergency</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>afghanwinter</span
+                    >
+                    <span class="adset_description"
+                      >Afghanistan Winter Effort</span
+                    >
+                  </div>
+                  <div class="adsets_child last-element">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>ukraine</span
+                    >
+                    <span class="adset_description"></span>
+                  </div>
+                  <div class="adsets_eoy">
+                    <span
+                      >EOY Specific UTM_Campaing values for End of Year</span
+                    >
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>eoy</span
+                    >
+                    <span class="adset_description">End of Year</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>eoy_givingTuesday</span
+                    >
+                    <span class="adset_description">Giving Tuesday</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>eoy_match</span
+                    >
+                    <span class="adset_description">End of Year Match</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>eoy_rg</span
+                    >
+                    <span class="adset_description">Rescue Gifts</span>
+                  </div>
+                  <div class="adsets_child">
+                    <span class="adset_word"
+                      ><span class="fiscal-year"></span>eoy_winter</span
+                    >
+                    <span class="adset_description"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="backtotop">
                         <button id="backToTop">Back to Top &#8593;</button>
                     </div> -->
 
-                    <div id="emailUrlGenPage" class="tab-content">
-                        <iframe src="./email-url-gen/index.html" width="100%" height="100%" frameborder="0"></iframe>
-                    </div>
-                   
-                </div>
-
-                </div>
+            <div id="emailUrlGenPage" class="tab-content">
+              <iframe
+                src="./email-url-gen/index.html"
+                width="100%"
+                height="100%"
+                frameborder="0"
+              ></iframe>
             </div>
+            <div id="smsUrlGenPage" class="tab-content">
+              <iframe
+                src="./sms-url-gen/index.html"
+                width="100%"
+                height="100%"
+                frameborder="0"
+              ></iframe>
+            </div>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+  </body>
 </html>
