@@ -193,6 +193,36 @@ window.onload = function () {
         }
       }
 
+      if (
+        selectedPlatform === "FRU (Campaign)"
+      ) {
+        concat =
+          fieldValues[0].value +
+          "?" +
+          "ms=" +
+          fieldValues[1].value +
+          fieldValues[2].value +
+          fieldValues[3].value;
+        // "&" +
+        // "initialms=" +
+        // fieldValues[1].value +
+        // fieldValues[2].value +
+        // fieldValues[3].value;
+
+        if (fieldValues[4].value) {
+          concat += "&utm_medium=" + fieldValues[4].value;
+        }
+        if (fieldValues[5].value) {
+          concat += "&utm_source=" + fieldValues[5].value;
+        }
+        if (fieldValues[6].value) {
+          concat += "&utm_campaign=" + fieldValues[6].value;
+        }
+        if (fieldValues[7].value) {
+          concat += "&utm_content=" + fieldValues[7].value;
+        }
+      }
+
       if (selectedPlatform === "FRU (US Only)") {
         concat =
           fieldValues[0].value +
@@ -200,12 +230,12 @@ window.onload = function () {
           "ms=" +
           fieldValues[1].value +
           fieldValues[2].value +
-          fieldValues[3].value +
-          "&" +
-          "initialms=" +
-          fieldValues[1].value +
-          fieldValues[2].value +
           fieldValues[3].value;
+        // "&" +
+        // "initialms=" +
+        // fieldValues[1].value +
+        // fieldValues[2].value +
+        // fieldValues[3].value;
 
         if (fieldValues[4].value) {
           concat += "&utm_medium=" + fieldValues[4].value;

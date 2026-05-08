@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -30,6 +30,8 @@
             <option value="mobile_coms">Mobile Commons</option>
             <option value="mogli">Mogli</option>
             <option value="grassroots_analytics">Grassroots Analytics</option>
+            <option value="ripple">Ripple</option>
+            <option value="textify">Textify</option>
           </select>
           <p class="error_msg"></p>
           <!-- <input type="text" class="fieldValue" value="" id="sms_platform" hidden> -->
@@ -444,6 +446,27 @@
           />
           <p class="error_msg"></p>
           <input type="text" class="fieldValue" id="utm_content_value" hidden />
+        </div>
+
+        <div class="text-input utm-campaign-section">
+          <label for="utm_campaign" class="e-label"
+            >UTM Campaign&nbsp;&nbsp;&nbsp;&nbsp;(White space not allowed,
+            Dashes will be auto-replaced with an underscore. Underscores are
+            allowed)</label
+          >
+          <input
+            class="input-text req"
+            type="text"
+            id="utm_campaign"
+            placeholder=""
+          />
+          <p class="error_msg"></p>
+          <input
+            type="text"
+            class="fieldValue"
+            id="utm_campaign_value"
+            hidden
+          />
         </div>
 
         <!-- <div class="text-input">

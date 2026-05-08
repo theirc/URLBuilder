@@ -44,6 +44,10 @@ window.onload = function () {
   const getUtmContent = document.querySelector("#utm_content");
   const getUtmContentInput = document.querySelector("#utm_content_value");
 
+  const getUtmCampaignSection = document.querySelector(".utm-campaign-section");
+  const getUtmCampaign = document.querySelector("#utm_campaign");
+  const getUtmCampaignInput = document.querySelector("#utm_campaign_value");
+
   // const getEmailSegment = document.querySelector('#email_segment');
   // const getEmailSegment = document.querySelector('#email_segment');
   // const getEmailSegmentCheckbox = document.querySelector('#email-segment-checkbox');
@@ -72,6 +76,8 @@ window.onload = function () {
     mobile_coms: ["MMUS"],
     mogli: ["SE"],
     grassroots_analytics: ["MMUS"],
+    ripple: ["MMUS"],
+    textify: ["MMUS"],
   };
 
   getSmsPlatform.addEventListener("change", function () {
@@ -90,18 +96,43 @@ window.onload = function () {
         marketDropdown.value = "mmus";
         getMarketInput.value = marketDropdown.value;
         utmSource = "mobile_commons";
+        if (getUtmCampaignSection.classList.contains("showElement")) {
+          getUtmCampaignSection.classList.remove("showElement");
+          getUtmCampaign.value = "";
+          getUtmCampaignInput.value = "";
+        }
       }
 
       if (platformSelected === "mogli") {
         marketDropdown.value = "se";
         getMarketInput.value = marketDropdown.value;
         utmSource = "mogli";
+        if (getUtmCampaignSection.classList.contains("showElement")) {
+          getUtmCampaignSection.classList.remove("showElement");
+          getUtmCampaign.value = "";
+          getUtmCampaignInput.value = "";
+        }
       }
 
       if (platformSelected == "grassroots_analytics") {
         marketDropdown.value = "mmus";
         getMarketInput.value = marketDropdown.value;
         utmSource = "grassroots_analytics";
+        getUtmCampaignSection.classList.add("showElement");
+      }
+
+      if (platformSelected == "ripple") {
+        marketDropdown.value = "mmus";
+        getMarketInput.value = marketDropdown.value;
+        utmSource = "ripple";
+        getUtmCampaignSection.classList.add("showElement");
+      }
+
+      if (platformSelected == "textify") {
+        marketDropdown.value = "mmus";
+        getMarketInput.value = marketDropdown.value;
+        utmSource = "textify";
+        getUtmCampaignSection.classList.add("showElement");
       }
 
       if (
@@ -294,23 +325,40 @@ window.onload = function () {
     }
   });
 
+  // Prevent dashes in UTM Campaign
+  getUtmCampaign.addEventListener("input", function () {
+    let fieldValue = getUtmCampaign.value;
+    let NewUpdatedValue = "";
+    if (fieldValue.includes("-")) {
+      NewUpdatedValue = fieldValue.replace(/-/g, "_");
+      getUtmCampaign.value = NewUpdatedValue;
+      getUtmCampaign.nextElementSibling.innerHTML =
+        "Caution: Dashes are not allowed in this field and will be automatically replaced by an underscore";
+      getUtmCampaign.nextElementSibling.style.display = "block";
+      setTimeout(() => {
+        getUtmCampaign.nextElementSibling.innerHTML = "";
+        getUtmCampaign.nextElementSibling.style.display = "none";
+      }, 3000);
+    }
+  });
+
   // Prevent dashes in Custom MS-Campaign
   getMSCampaignCustomInput
     ? getMSCampaignCustomInput.addEventListener("input", function () {
-        let fieldValue = getMSCampaignCustomInput.value;
-        let NewUpdatedValue = "";
-        if (fieldValue.includes("-")) {
-          NewUpdatedValue = fieldValue.replace(/-/g, "_");
-          getMSCampaignCustomInput.value = NewUpdatedValue;
-          getMSCampaignCustomInput.nextElementSibling.innerHTML =
-            "Caution: Dashes are not allowed in this field and will be automatically replaced by an underscore";
-          getMSCampaignCustomInput.nextElementSibling.style.display = "block";
-          setTimeout(() => {
-            getMSCampaignCustomInput.nextElementSibling.innerHTML = "";
-            getMSCampaignCustomInput.nextElementSibling.style.display = "none";
-          }, 3000);
-        }
-      })
+      let fieldValue = getMSCampaignCustomInput.value;
+      let NewUpdatedValue = "";
+      if (fieldValue.includes("-")) {
+        NewUpdatedValue = fieldValue.replace(/-/g, "_");
+        getMSCampaignCustomInput.value = NewUpdatedValue;
+        getMSCampaignCustomInput.nextElementSibling.innerHTML =
+          "Caution: Dashes are not allowed in this field and will be automatically replaced by an underscore";
+        getMSCampaignCustomInput.nextElementSibling.style.display = "block";
+        setTimeout(() => {
+          getMSCampaignCustomInput.nextElementSibling.innerHTML = "";
+          getMSCampaignCustomInput.nextElementSibling.style.display = "none";
+        }, 3000);
+      }
+    })
     : "";
 
   // Validation for required drop down options
@@ -378,6 +426,8 @@ window.onload = function () {
 
   populateTextInputValue(getUtmContent, getUtmContentInput);
 
+  populateTextInputValue(getUtmCampaign, getUtmCampaignInput);
+
   populateDropDownValue(getMonth, getMonthInput);
 
   populateDropDownValue(getEmailVersion, getEmailVersionInput);
@@ -405,6 +455,17 @@ window.onload = function () {
       newValue = fsYearValue.replace("sms_", "grs_txt_");
       getFiscalYearInput.value = newValue;
     }
+
+    if (platformSelected == "ripple") {
+      newValue = fsYearValue.replace("sms_", "rpl_txt_");
+      getFiscalYearInput.value = newValue;
+    }
+
+    if (platformSelected == "textify") {
+      newValue = fsYearValue.replace("sms_", "tfy_txt");
+      getFiscalYearInput.value = newValue;
+    }
+
   });
 
   getSmsPlatform.addEventListener("change", function () {
@@ -414,13 +475,49 @@ window.onload = function () {
     fsYearValue = fsValue.value;
     const valueSelected = getSmsPlatform.value;
     if (valueSelected === "grassroots_analytics") {
-      newValue = fsYearValue.replace("sms_", "grs_txt_");
+      if (fsYearValue.includes('rpl_txt')) {
+        newValue = fsYearValue.replace("rpl_txt_", "grs_txt_");
+      } else if (fsYearValue.includes('tfy_txt')) {
+        newValue = fsYearValue.replace("tfy_txt_", "grs_txt_");
+      } else if (fsYearValue.includes('sms_')) {
+        newValue = fsYearValue.replace("sms_", "grs_txt_");
+      }
+      // newValue = fsYearValue.replace("sms_", "grs_txt_");
       getFiscalYearInput.value = newValue;
-    } else {
+    }
+    else if (valueSelected === "ripple") {
+      if (fsYearValue.includes('grs_txt')) {
+        newValue = fsYearValue.replace("grs_txt_", "rpl_txt_");
+      } else if (fsYearValue.includes('tfy_txt')) {
+        newValue = fsYearValue.replace("tfy_txt_", "rpl_txt_");
+      } else if (fsYearValue.includes('sms_')) {
+        newValue = fsYearValue.replace("sms_", "rpl_txt_");
+      }
+      // newValue = fsYearValue.replace("sms_", "rpl_txt_");
+      getFiscalYearInput.value = newValue;
+    }
+    else if (valueSelected === "textify") {
+      if (fsYearValue.includes('grs_txt')) {
+        newValue = fsYearValue.replace("grs_txt_", "tfy_txt_");
+      } else if (fsYearValue.includes('rpl_txt')) {
+        newValue = fsYearValue.replace("rpl_txt_", "tfy_txt_");
+      } else if (fsYearValue.includes('sms_')) {
+        newValue = fsYearValue.replace("sms_", "tfy_txt_");
+      }
+      // newValue = fsYearValue.replace("sms_", "rpl_txt_");
+      getFiscalYearInput.value = newValue;
+    }
+    // if (valueSelected === "grassroots_analytics") {
+
+    // }
+    else {
       const getYear = document.querySelector("#fsyear");
       const selectedValue = getYear.value;
       fsValue.value = selectedValue;
     }
+
+
+
   });
 
   // validate custom MS-Campaign field
@@ -459,8 +556,28 @@ window.onload = function () {
         fields[7].value +
         fields[8].value;
 
-      let rightSection =
-        "&" + "utm_medium=sms" + "&" + `utm_source=${utmSource}`;
+      // let rightSection =
+      //   "&" + "utm_medium=sms" + "&" + `utm_source=${utmSource}`;
+
+      let rightSection;
+      if (getSmsPlatform.value == "grassroots_analytics") {
+        rightSection =
+          "&" + "utm_medium=display" + "&" + `utm_source=${utmSource}`;
+      }
+      else if (getSmsPlatform.value == "ripple") {
+        rightSection =
+          "&" + "utm_medium=display" + "&" + `utm_source=${utmSource}`;
+      }
+      else if (getSmsPlatform.value == "textify") {
+        rightSection =
+          "&" + "utm_medium=display" + "&" + `utm_source=${utmSource}`;
+      }
+      else {
+        rightSection =
+          "&" + "utm_medium=sms" + "&" + `utm_source=${utmSource}`;
+      }
+
+
 
       //   let rightSection = "&" +
       //     "utm_medium=sms" +
@@ -476,6 +593,10 @@ window.onload = function () {
 
       if (fields[10].value) {
         rightSection += "&" + "utm_content=" + fields[10].value;
+      }
+
+      if (fields[11].value) {
+        rightSection += "&" + "utm_campaign=" + fields[11].value;
       }
 
       // Email Segment only
