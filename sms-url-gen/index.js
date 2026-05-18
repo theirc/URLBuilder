@@ -131,7 +131,8 @@ window.onload = function () {
       if (platformSelected == "textify") {
         marketDropdown.value = "mmus";
         getMarketInput.value = marketDropdown.value;
-        utmSource = "textify";
+        // utmSource = "textify";
+        utmSource = "tfy";
         getUtmCampaignSection.classList.add("showElement");
       }
 
