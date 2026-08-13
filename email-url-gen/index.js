@@ -1,66 +1,66 @@
-window.onload = function() {
-    const getFullUrl = document.querySelector('#full-url');
-    let getURLInput = document.querySelector('#main-url');
+window.onload = function () {
+  const getFullUrl = document.querySelector('#full-url');
+  let getURLInput = document.querySelector('#main-url');
 
-    const getFiscalYear = document.querySelector('#fsyear');
-    let getFiscalYearInput = document.querySelector('#fiscal_year');
+  const getFiscalYear = document.querySelector('#fsyear');
+  let getFiscalYearInput = document.querySelector('#fiscal_year');
 
-    const getMarketSourceCode = document.querySelector('#market-source-code');
-    let getMarketSourceCodeInput = document.querySelector('#marketSourceCode');
+  const getMarketSourceCode = document.querySelector('#market-source-code');
+  let getMarketSourceCodeInput = document.querySelector('#marketSourceCode');
 
-    const getMarket = document.querySelector('#mkt');
-    let getMarketInput = document.querySelector('#marketfield');
+  const getMarket = document.querySelector('#mkt');
+  let getMarketInput = document.querySelector('#marketfield');
 
-    const getEmailType = document.querySelector('#emailType');
-    let getEmailTypeInput = document.querySelector('#email_type');
+  const getEmailType = document.querySelector('#emailType');
+  let getEmailTypeInput = document.querySelector('#email_type');
 
-    const getNameOfCreative = document.querySelector('#name_of_creative');
-    let getNameofCreativeInput = document.querySelector('#creative_name');
+  const getNameOfCreative = document.querySelector('#name_of_creative');
+  let getNameofCreativeInput = document.querySelector('#creative_name');
 
-    const getMonth = document.querySelector('#month');
-    let getMonthInput = document.querySelector('#gen_month');
+  const getMonth = document.querySelector('#month');
+  let getMonthInput = document.querySelector('#gen_month');
 
-    const getEmailVersion = document.querySelector('#email_version');
-    let getEmailVersionInput = document.querySelector('#emailVersion');
+  const getEmailVersion = document.querySelector('#email_version');
+  let getEmailVersionInput = document.querySelector('#emailVersion');
 
-    const getAudienceSegment = document.querySelector('#audience_segment');
-    const getAudienceSegmentInput = document.querySelector('#audienceSegment');
+  const getAudienceSegment = document.querySelector('#audience_segment');
+  const getAudienceSegmentInput = document.querySelector('#audienceSegment');
 
-    const getATV = document.querySelector('#additional_testing_variants');
-    let getATVInput = document.querySelector('#adv');
+  const getATV = document.querySelector('#additional_testing_variants');
+  let getATVInput = document.querySelector('#adv');
 
-    const getGenBtn = document.querySelector('#btn_generate_url');
+  const getGenBtn = document.querySelector('#btn_generate_url');
 
-    const getInputfields = document.querySelectorAll('.fieldValue');
+  const getInputfields = document.querySelectorAll('.fieldValue');
 
-    const getMainInput = document.querySelectorAll('.input-text');
+  const getMainInput = document.querySelectorAll('.input-text');
 
-    const getPickLists = document.querySelectorAll('.pick-list');
+  const getPickLists = document.querySelectorAll('.pick-list');
 
-    const getAllInputEl = document.querySelectorAll('.req');
+  const getAllInputEl = document.querySelectorAll('.req');
 
-    const getGenErr = document.querySelector("#gen_error_msg");
+  const getGenErr = document.querySelector("#gen_error_msg");
 
-    const getUtmContent = document.querySelector('#utm_content');
-    const getUtmContentInput = document.querySelector('#utm_content_value');
+  const getUtmContent = document.querySelector('#utm_content');
+  const getUtmContentInput = document.querySelector('#utm_content_value');
 
-    // const getEmailSegment = document.querySelector('#email_segment');
-    const getEmailSegment = document.querySelector('#email_segment');
-    const getEmailSegmentCheckbox = document.querySelector('#email-segment-checkbox');
-    const getEmailSegmentInput = document.querySelector('#email_segment_value');
+  // const getEmailSegment = document.querySelector('#email_segment');
+  const getEmailSegment = document.querySelector('#email_segment');
+  const getEmailSegmentCheckbox = document.querySelector('#email-segment-checkbox');
+  const getEmailSegmentInput = document.querySelector('#email_segment_value');
 
-    const getGiftString = document.querySelector('#gift-string');
-    const getGiftStringCheckbox = document.querySelector('#gift-string-checkbox');
-    const getGiftStringInput = document.querySelector('#gift-string_value');
+  const getGiftString = document.querySelector('#gift-string');
+  const getGiftStringCheckbox = document.querySelector('#gift-string-checkbox');
+  const getGiftStringInput = document.querySelector('#gift-string_value');
 
-    const getFormString = document.querySelector('#form-string');
-    const getFormStringCheckbox = document.querySelector('#form-string-checkbox');
-    const getFormStringInput = document.querySelector('#form-string_value');
+  const getFormString = document.querySelector('#form-string');
+  const getFormStringCheckbox = document.querySelector('#form-string-checkbox');
+  const getFormStringInput = document.querySelector('#form-string_value');
 
-    const getMSCampaignCustomInput = document.querySelector('#CustomMarketSourceCode');
-     
+  const getMSCampaignCustomInput = document.querySelector('#CustomMarketSourceCode');
 
-    
+
+
   let errorMsg = "whitespace not allowed";
   let errorMsg2 = "This field is required";
   let errorMsg3 = 'Please fix all error(s) and click on "Generate URL" button';
@@ -73,34 +73,34 @@ window.onload = function() {
 
   //Back to top button
   const backToTop = document.querySelector('#backToTop');
-  
-  window.addEventListener('scroll', function() {
-    if(window.scrollY > 20) {
-    // if(document.body.scrollTop > 2 || document.documentElement.scrollTop > 2) {
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 20) {
+      // if(document.body.scrollTop > 2 || document.documentElement.scrollTop > 2) {
       backToTop.style.display = 'block';
     } else {
       backToTop.style.display = 'none';
     }
   });
 
-  backToTop.addEventListener('click', function() {
+  backToTop.addEventListener('click', function () {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
   });
 
-// Check for white space(s) in input fields
-function checkWhiteSpace(str) {
+  // Check for white space(s) in input fields
+  function checkWhiteSpace(str) {
     return /\s/.test(str);
-}
+  }
 
-// Check for white space(s) in input fields
-// function checkWhiteSpace(str) {
-// return /\s/.test(str);
-// }
+  // Check for white space(s) in input fields
+  // function checkWhiteSpace(str) {
+  // return /\s/.test(str);
+  // }
 
-// Input validation(s)
+  // Input validation(s)
   const inputInvalid = function (el) {
     el.nextElementSibling.style.display = "block";
     if (el.classList.contains("valid")) {
@@ -139,7 +139,7 @@ function checkWhiteSpace(str) {
     }
   };
 
-    // Required fields validation
+  // Required fields validation
   const validateRequired = function () {
     let empty = 0;
     for (let i = 0; i < getAllInputEl.length; i++) {
@@ -155,8 +155,8 @@ function checkWhiteSpace(str) {
     } else {
       for (let i = 0; i < getAllInputEl.length; i++) {
         if (
-            getAllInputEl[i].hasAttribute("required") &&
-            getAllInputEl[i].value == ""
+          getAllInputEl[i].hasAttribute("required") &&
+          getAllInputEl[i].value == ""
         ) {
           inputInvalid(getAllInputEl[i]);
           getAllInputEl[i].nextElementSibling.innerHTML = errorMsg2;
@@ -165,15 +165,15 @@ function checkWhiteSpace(str) {
     }
   };
 
- 
 
-  
+
+
   for (let i = 0; i < getMainInput.length; i++) {
     getMainInput[i].addEventListener("input", function () {
       const getValue = getMainInput[i].value;
       const getSibling = getMainInput[i].nextElementSibling;
 
-      if(getMainInput[i].getAttribute('id') == 'name_of_creative') {
+      if (getMainInput[i].getAttribute('id') == 'name_of_creative') {
         return;
       }
 
@@ -192,25 +192,25 @@ function checkWhiteSpace(str) {
     });
   }
 
-  getNameOfCreative.addEventListener('input', function() {
+  getNameOfCreative.addEventListener('input', function () {
     let fieldValue = getNameOfCreative.value;
-    if(fieldValue || fieldValue !== null || fieldValue !== '') {
-        if(getNameOfCreative.classList.contains('invalid')) {
-            getNameOfCreative.classList.remove('invalid');
-            getNameOfCreative.classList.add('valid');
-            getNameOfCreative.nextElementSibling.innerHTML = '';
-            getNameOfCreative.nextElementSibling.style.display = 'none';
-        } else {
-          getNameOfCreative.classList.add('valid');
-        }
+    if (fieldValue || fieldValue !== null || fieldValue !== '') {
+      if (getNameOfCreative.classList.contains('invalid')) {
+        getNameOfCreative.classList.remove('invalid');
+        getNameOfCreative.classList.add('valid');
+        getNameOfCreative.nextElementSibling.innerHTML = '';
+        getNameOfCreative.nextElementSibling.style.display = 'none';
+      } else {
+        getNameOfCreative.classList.add('valid');
+      }
     }
   });
 
   // Prevent dashes in Name of Creative field
-  getNameOfCreative.addEventListener('input', function() {
+  getNameOfCreative.addEventListener('input', function () {
     let fieldValue = getNameOfCreative.value;
     let NewfieldValue = '';
-    if(fieldValue.includes('-')) {
+    if (fieldValue.includes('-')) {
       NewfieldValue = fieldValue.replace(/-/g, ' ');
       getNameOfCreative.value = NewfieldValue;
       getNameOfCreative.nextElementSibling.innerHTML = 'Caution: Dashes are not allowed in this field and will be automatically replaced by a space';
@@ -223,10 +223,10 @@ function checkWhiteSpace(str) {
   });
 
   // Prevent dashes in UTM Content
-  getUtmContent.addEventListener('input', function() {
+  getUtmContent.addEventListener('input', function () {
     let fieldValue = getUtmContent.value;
     let NewUpdatedValue = '';
-    if(fieldValue.includes('-')) {
+    if (fieldValue.includes('-')) {
       NewUpdatedValue = fieldValue.replace(/-/g, '_');
       getUtmContent.value = NewUpdatedValue;
       getUtmContent.nextElementSibling.innerHTML = 'Caution: Dashes are not allowed in this field and will be automatically replaced by an underscore';
@@ -240,10 +240,10 @@ function checkWhiteSpace(str) {
   })
 
   // Prevent dashes in Custom MS-Campaign
-  getMSCampaignCustomInput ? getMSCampaignCustomInput.addEventListener('input', function() {
+  getMSCampaignCustomInput ? getMSCampaignCustomInput.addEventListener('input', function () {
     let fieldValue = getMSCampaignCustomInput.value;
     let NewUpdatedValue = '';
-    if(fieldValue.includes('-')) {
+    if (fieldValue.includes('-')) {
       NewUpdatedValue = fieldValue.replace(/-/g, '_');
       getMSCampaignCustomInput.value = NewUpdatedValue;
       getMSCampaignCustomInput.nextElementSibling.innerHTML = 'Caution: Dashes are not allowed in this field and will be automatically replaced by an underscore';
@@ -257,93 +257,215 @@ function checkWhiteSpace(str) {
   }) : '';
 
   // Validation for required drop down options
-  for(let i = 0; i < getPickLists.length; i++) {
-    getPickLists[i].addEventListener('change', function(event) {
-        let selectedValue = event.target.value;
-        let getSiblingElement = getPickLists[i].nextElementSibling;
-        let getID = getPickLists[i].getAttribute('id');
-        if(getID !== 'additional_testing_variants') {
-            if(selectedValue === '') {
-                inputInvalid(getPickLists[i]);
-                getSiblingElement.innerHTML = errorMsg2;
-    
-            }
-    
-            if(selectedValue !== '') {
-                inputValid(getPickLists[i]);
-                getSiblingElement.innerHTML = '';
-            }
+  for (let i = 0; i < getPickLists.length; i++) {
+    getPickLists[i].addEventListener('change', function (event) {
+      let selectedValue = event.target.value;
+      let getSiblingElement = getPickLists[i].nextElementSibling;
+      let getID = getPickLists[i].getAttribute('id');
+      if (getID !== 'additional_testing_variants') {
+        if (selectedValue === '') {
+          inputInvalid(getPickLists[i]);
+          getSiblingElement.innerHTML = errorMsg2;
+
         }
-         
+
+        if (selectedValue !== '') {
+          inputValid(getPickLists[i]);
+          getSiblingElement.innerHTML = '';
+        }
+      }
+
 
     })
   }
 
 
-    // Populate input fields
-    const populateTextInputValue = function(p1, p2) {
-        p1.addEventListener('input', function() {
-            p2.value = p1.value;
-        });
-    };
-
-
-   const populateDropDownValue = function(p1, p2) {
-    p1.addEventListener('change', function(event) {
-        const selectedValue = event.target.value;
-        if(selectedValue || selectedValue !== null || selectedValue !== '' || selectedValue !== 'custom') {
-            p2.value = selectedValue
-        }
+  // Populate input fields
+  const populateTextInputValue = function (p1, p2) {
+    p1.addEventListener('input', function () {
+      p2.value = p1.value;
     });
-   }
+  };
 
-   const populateCheckboxValue = function(p1, p2, p3) {
-    p1.addEventListener('change', function() {
-      if(p1.checked) {
+
+  const populateDropDownValue = function (p1, p2) {
+    p1.addEventListener('change', function (event) {
+      const selectedValue = event.target.value;
+      if (selectedValue || selectedValue !== null || selectedValue !== '' || selectedValue !== 'custom') {
+        p2.value = selectedValue
+      }
+    });
+  }
+
+  const populateCheckboxValue = function (p1, p2, p3) {
+    p1.addEventListener('change', function () {
+      if (p1.checked) {
         p3.value = p2.value;
       } else {
         p3.value = '';
       }
     });
-   }
+  }
 
 
-    populateTextInputValue(getFullUrl, getURLInput);
+  populateTextInputValue(getFullUrl, getURLInput);
 
-    populateDropDownValue(getFiscalYear, getFiscalYearInput);
+  populateDropDownValue(getFiscalYear, getFiscalYearInput);
 
-    populateDropDownValue(getMarketSourceCode, getMarketSourceCodeInput);
+  populateDropDownValue(getMarketSourceCode, getMarketSourceCodeInput);
 
-    populateDropDownValue(getMarket, getMarketInput);
+  populateDropDownValue(getMarket, getMarketInput);
 
-    populateDropDownValue(getEmailType, getEmailTypeInput);
+  populateDropDownValue(getEmailType, getEmailTypeInput);
 
-    populateTextInputValue(getNameOfCreative, getNameofCreativeInput);
+  populateTextInputValue(getNameOfCreative, getNameofCreativeInput);
 
-    populateTextInputValue(getUtmContent, getUtmContentInput);
+  populateTextInputValue(getUtmContent, getUtmContentInput);
 
-    populateDropDownValue(getMonth, getMonthInput);
+  populateDropDownValue(getMonth, getMonthInput);
 
-    populateDropDownValue(getEmailVersion, getEmailVersionInput);
+  populateDropDownValue(getEmailVersion, getEmailVersionInput);
 
-    populateDropDownValue(getAudienceSegment, getAudienceSegmentInput);
+  populateDropDownValue(getAudienceSegment, getAudienceSegmentInput);
 
-    populateDropDownValue(getATV, getATVInput);
+  populateDropDownValue(getATV, getATVInput);
 
-    populateCheckboxValue(getEmailSegmentCheckbox, getEmailSegment, getEmailSegmentInput);
+  populateCheckboxValue(getEmailSegmentCheckbox, getEmailSegment, getEmailSegmentInput);
 
-    populateCheckboxValue(getGiftStringCheckbox, getGiftString, getGiftStringInput);
+  populateCheckboxValue(getGiftStringCheckbox, getGiftString, getGiftStringInput);
 
-    populateCheckboxValue(getFormStringCheckbox, getFormString, getFormStringInput);
+  populateCheckboxValue(getFormStringCheckbox, getFormString, getFormStringInput);
+
+
+  // Audience segment dropdown
+
+  const optionsData = {
+    others: [
+      { value: "STM", text: "Standard Mailable (STM)" },
+      { value: "STN", text: "Standard Nonmailable (STN)" },
+      { value: "STE", text: "Standard Emergency (STE)" },
+      { value: "STU", text: "Standard Ukraine (STU)" },
+      { value: "STA", text: "Standard Active (STA)" },
+      { value: "STL", text: "Standard Lapsed (STL)" },
+      { value: "STX", text: "Standard Mix (STX)" },
+      { value: "STT", text: "Standard Total (STT)" },
+      { value: "PRO", text: "Prospect (PRO)" },
+      { value: "PGD", text: "Planned Giving Donors (PGD)" },
+      { value: "PGP", text: "Planned Giving Prospects (PGP)" },
+      { value: "MLM", text: "Mid-Level Mailable (MLM)" },
+      { value: "MLN", text: "Mid-Level Nonmailable (MLN)" },
+      { value: "MLE", text: "Mid-Level Emergency (MLE)" },
+      { value: "MLU", text: "Mid-Level Ukraine (MLU)" },
+      { value: "MLA", text: "Mid-Level Active (MLA)" },
+      { value: "MLL", text: "Mid-Level Lapsed (MLL)" },
+      { value: "MLP", text: "Mid-Level Prospect (MLP)" },
+      { value: "MLX", text: "Mid-Level Mix (MLX)" },
+      { value: "MLT", text: "Mid-Level Total (MLT)" },
+      { value: "RGM", text: "Sustainer Mailable (RGM)" },
+      { value: "RGN", text: "Sustainer Nonmailable (RGN)" },
+      { value: "RGE", text: "Sustainer Emergency (RGE)" },
+      { value: "RGU", text: "Sustainer Ukraine (RGU)" },
+      { value: "RGA", text: "Sustainer Active (RGA)" },
+      { value: "RG1", text: "Sustainer Lapsing 1 (RG1)" },
+      { value: "RG2", text: "Sustainer Lapsing 2 (RG2)" },
+      { value: "RGL", text: "Sustainer Lapsed Total (RGL)" },
+      { value: "RGR", text: "Sustainer Reactivation (RGR)" },
+      { value: "RGX", text: "Sustainer Mix (RGX)" },
+      { value: "RGT", text: "Sustainer Total (RGT)" },
+      { value: "AEM", text: "All Engaged Mailable (AEM)" },
+      { value: "AEN", text: "All Engaged Nonmailable (AEN)" },
+      { value: "AET", text: "All Engaged Total (AET)" },
+      { value: "BRM", text: "Bridge Mailable (BRM)" },
+      { value: "BRN", text: "Bridge Nonmailable (BRN)" },
+      { value: "BRE", text: "Bridge Emergency (BRE)" },
+      { value: "BRU", text: "Bridge Ukraine (BRU)" },
+      { value: "BRA", text: "Bridge Active (BRA)" },
+      { value: "BRL", text: "Bridge Lapsed (BRL)" },
+      { value: "BRX", text: "Bridge Mix (BRX)" },
+      { value: "BRT", text: "Bridge Total (BRT)" },
+      { value: "RIM", text: "RAI Mailable (RIM)" },
+      { value: "RIN", text: "RaI Nonmailable (RIN)" },
+      { value: "RIA", text: "RAI Active (RIA)" },
+      { value: "RIL", text: "RAI Lapsed (RIL)" },
+      { value: "RIX", text: "RAI Mix (RIX)" },
+      { value: "RIT", text: "RAI Total (RIT)" },
+      { value: "ALL", text: "All (ALL)" },
+      { value: "MIX", text: "Mixed (MIX)" }
+    ],
+    rai: [
+      { value: "NJS", text: "NJ Subscribers (ALL)" },
+      { value: "NYS", text: "NY Subscribers (ALL)" },
+      { value: "NOR", text: "Norcal (ALL)" },
+      { value: "SPK", text: "Spokane (ALL)" },
+      { value: "TLH", text: "Tallahassee (ALL)" },
+      { value: "TUR", text: "Turlock (ALL)" },
+      { value: "VIR", text: "Virginia (ALL)" },
+      { value: "LAX", text: "Los Angeles (ALL)" },
+      { value: "DEN", text: "Denver (ALL)" },
+      { value: "MIA", text: "Miami (ALL)" },
+      { value: "MSO", text: "Missoula (ALL)" },
+      { value: "NNJ", text: "NYNJ Subscribers (ALL)" },
+      { value: "ICT", text: "Wichita (ALL)" },
+      { value: "TUS", text: "Tucson (ALL)" },
+      { value: "SEA", text: "Seattle (ALL)" },
+      { value: "SLC", text: "Salt Lake City (ALL)" },
+      { value: "SJC", text: "San Jose (ALL)" },
+      { value: "SAN", text: "San Diego (ALL)" },
+      { value: "SAC", text: "Sacramento  (ALL)" },
+      { value: "OAK", text: "Oakland (ALL)" },
+      { value: "DAL", text: "Dallas (ALL)" },
+      { value: "ABI", text: "Abilene  (ALL)" },
+      { value: "RIC", text: "Richmond  (ALL)" },
+      { value: "CHO", text: "Charlottesville  (ALL)" },
+      { value: "BOI", text: "Boise  (ALL)" },
+      { value: "ATL", text: "Atlanta  (ALL)" },
+      { value: "SIL", text: "Silver Spring  (ALL)" },
+      { value: "BWI", text: "Baltimore  (ALL)" },
+      { value: "PHX", text: "Phoenix  (ALL)" },
+      { value: "LOU", text: "Louisville (ALL)" },
+      { value: "IOW", text: "Iowa (ALL)" }
+    ]
+  };
+
+  getMarket.addEventListener('change', function () {
+    const getMarketValue = document.querySelector('#marketfield');
+    const audienceSegment = document.querySelector('#audience_segment');
+    let selectedValue = this.value;
+
+
+    audienceSegment.innerHTML = '<option value="" selected>Select Audience Segment</option>';
+
+    if ((selectedValue == "us") || (selectedValue == "de") || (selectedValue == "uk") || (selectedValue == "se") || (selectedValue == "sk") || (selectedValue == "rm")) {
+      selectedValue = "others"
+    }
+    if (getMarketValue.value.trim() !== "") {
+
+      if (selectedValue && optionsData[selectedValue]) {
+
+        audienceSegment.disabled = false;
+        optionsData[selectedValue].forEach(item => {
+
+          const newOption = document.createElement("option");
+          newOption.value = item.value;
+          newOption.textContent = item.text;
+          audienceSegment.appendChild(newOption);
+        })
+      } else {
+        audienceSegment.disabled = true;
+      }
+
+    }
+
+  })
 
 
 
   // validate custom MS-Campaign field
-  getMarketSourceCode.addEventListener('change', function(event) {
+  getMarketSourceCode.addEventListener('change', function (event) {
     const selectedValue = event.target.value;
-    let getCustomSection= document.querySelector('#custom-input-mscampaign');
+    let getCustomSection = document.querySelector('#custom-input-mscampaign');
     let getCustomInput = document.querySelector('#CustomMarketSourceCode');
-    if(selectedValue === 'custom') {
+    if (selectedValue === 'custom') {
       getCustomSection.style.display = 'block';
       getCustomInput.setAttribute('required', 'required');
       getMarketSourceCode.classList.remove('valid');
@@ -354,283 +476,283 @@ function checkWhiteSpace(str) {
     }
   });
 
-    // Get input fields
-    // const getInputfields = document.querySelectorAll('.fieldValue');
+  // Get input fields
+  // const getInputfields = document.querySelectorAll('.fieldValue');
 
-    const calcUrlResults = function(fields) {
-      let concat;
-        for(let i = 0; i < fields.length; i++) {
+  const calcUrlResults = function (fields) {
+    let concat;
+    for (let i = 0; i < fields.length; i++) {
 
-          let leftSection = fields[0].value +
-            "?" +
-            "ms=" +
-            fields[1].value +
-            "_" +
-            fields[2].value +
-            "_" +
-            fields[3].value +
-            "_" +
-            fields[6].value +
-            fields[7].value +
-            fields[8].value;
+      let leftSection = fields[0].value +
+        "?" +
+        "ms=" +
+        fields[1].value +
+        "_" +
+        fields[2].value +
+        "_" +
+        fields[3].value +
+        "_" +
+        fields[6].value +
+        fields[7].value +
+        fields[8].value;
 
-          let rightSection = "&" +
-            "utm_medium=email" +
-            "&" +
-            "utm_source=pardot" +
-            "&" +
-            "utm_campaign=" +
-            fields[2].value;
+      let rightSection = "&" +
+        "utm_medium=email" +
+        "&" +
+        "utm_source=pardot" +
+        "&" +
+        "utm_campaign=" +
+        fields[2].value;
 
 
-            if(fields[9].value) {
-              leftSection += fields[9].value;
-            }
+      if (fields[9].value) {
+        leftSection += fields[9].value;
+      }
 
-            if(fields[10].value) {
-              rightSection += "&" + "utm_content=" + fields[10].value;
-            }
+      if (fields[10].value) {
+        rightSection += "&" + "utm_content=" + fields[10].value;
+      }
 
-            // Email Segment only
-            if(fields[11].value && !fields[12].value && !fields[13].value) {
-              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "ms=" +
-              fields[1].value +
-              "_" +
-              fields[2].value +
-              "_" +
-              fields[3].value +
-              "_" +
-              fields[6].value +
-              fields[7].value +
-              fields[8].value;
+      // Email Segment only
+      if (fields[11].value && !fields[12].value && !fields[13].value) {
+        leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "ms=" +
+          fields[1].value +
+          "_" +
+          fields[2].value +
+          "_" +
+          fields[3].value +
+          "_" +
+          fields[6].value +
+          fields[7].value +
+          fields[8].value;
 
-              if(fields[9].value) {
-                leftSection += fields[9].value;
-              }
-            }
-            // Gift String only
-            if(!fields[11].value && fields[12].value && !fields[13].value) {
-              leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "ms=" +
-              fields[1].value +
-              "_" +
-              fields[2].value +
-              "_" +
-              fields[3].value +
-              "_" +
-              fields[6].value +
-              fields[7].value +
-              fields[8].value;
-
-              if(fields[9].value) {
-                leftSection += fields[9].value;
-              }
-            }
-            // Form String only
-            if(!fields[11].value && !fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "af=" + fields[13].value + "&" + "ms=" +
-              fields[1].value +
-              "_" +
-              fields[2].value +
-              "_" +
-              fields[3].value +
-              "_" +
-              fields[6].value +
-              fields[7].value +
-              fields[8].value;
-
-              if(fields[9].value) {
-                leftSection += fields[9].value;
-              }
-            }
-            // Email Segment and Gift String only
-            if(fields[11].value && fields[12].value && !fields[13].value) {
-              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs" + fields[12].value + "&" + "ms=" +
-              fields[1].value +
-              "_" +
-              fields[2].value +
-              "_" +
-              fields[3].value +
-              "_" +
-              fields[6].value +
-              fields[7].value +
-              fields[8].value;
-
-              if(fields[9].value) {
-                leftSection += fields[9].value;
-              }
-            }
-            // Email Segment and Form String only
-            if(fields[11].value && !fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
-              fields[1].value +
-              "_" +
-              fields[2].value +
-              "_" +
-              fields[3].value +
-              "_" +
-              fields[6].value +
-              fields[7].value +
-              fields[8].value;
-
-              if(fields[9].value) {
-                leftSection += fields[9].value;
-              }
-            }
-            // Gift String and Form String only
-            if(!fields[11].value && fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
-              fields[1].value +
-              "_" +
-              fields[2].value +
-              "_" +
-              fields[3].value +
-              "_" +
-              fields[6].value +
-              fields[7].value +
-              fields[8].value;
-
-              if(fields[9].value) {
-                leftSection += fields[9].value;
-              }
-            }
-            // All 3
-            if(fields[11].value && fields[12].value && fields[13].value) {
-              leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
-              fields[1].value +
-              "_" +
-              fields[2].value +
-              "_" +
-              fields[3].value +
-              "_" +
-              fields[6].value +
-              fields[7].value +
-              fields[8].value;
-
-              if(fields[9].value) {
-                leftSection += fields[9].value;
-              }
-            }
-
-            concat = leftSection + rightSection;
-            return concat;
+        if (fields[9].value) {
+          leftSection += fields[9].value;
         }
+      }
+      // Gift String only
+      if (!fields[11].value && fields[12].value && !fields[13].value) {
+        leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "ms=" +
+          fields[1].value +
+          "_" +
+          fields[2].value +
+          "_" +
+          fields[3].value +
+          "_" +
+          fields[6].value +
+          fields[7].value +
+          fields[8].value;
+
+        if (fields[9].value) {
+          leftSection += fields[9].value;
+        }
+      }
+      // Form String only
+      if (!fields[11].value && !fields[12].value && fields[13].value) {
+        leftSection = fields[0].value + "?" + "af=" + fields[13].value + "&" + "ms=" +
+          fields[1].value +
+          "_" +
+          fields[2].value +
+          "_" +
+          fields[3].value +
+          "_" +
+          fields[6].value +
+          fields[7].value +
+          fields[8].value;
+
+        if (fields[9].value) {
+          leftSection += fields[9].value;
+        }
+      }
+      // Email Segment and Gift String only
+      if (fields[11].value && fields[12].value && !fields[13].value) {
+        leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs" + fields[12].value + "&" + "ms=" +
+          fields[1].value +
+          "_" +
+          fields[2].value +
+          "_" +
+          fields[3].value +
+          "_" +
+          fields[6].value +
+          fields[7].value +
+          fields[8].value;
+
+        if (fields[9].value) {
+          leftSection += fields[9].value;
+        }
+      }
+      // Email Segment and Form String only
+      if (fields[11].value && !fields[12].value && fields[13].value) {
+        leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+          fields[1].value +
+          "_" +
+          fields[2].value +
+          "_" +
+          fields[3].value +
+          "_" +
+          fields[6].value +
+          fields[7].value +
+          fields[8].value;
+
+        if (fields[9].value) {
+          leftSection += fields[9].value;
+        }
+      }
+      // Gift String and Form String only
+      if (!fields[11].value && fields[12].value && fields[13].value) {
+        leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+          fields[1].value +
+          "_" +
+          fields[2].value +
+          "_" +
+          fields[3].value +
+          "_" +
+          fields[6].value +
+          fields[7].value +
+          fields[8].value;
+
+        if (fields[9].value) {
+          leftSection += fields[9].value;
+        }
+      }
+      // All 3
+      if (fields[11].value && fields[12].value && fields[13].value) {
+        leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+          fields[1].value +
+          "_" +
+          fields[2].value +
+          "_" +
+          fields[3].value +
+          "_" +
+          fields[6].value +
+          fields[7].value +
+          fields[8].value;
+
+        if (fields[9].value) {
+          leftSection += fields[9].value;
+        }
+      }
+
+      concat = leftSection + rightSection;
+      return concat;
+    }
+  }
+
+  const calcEmailResults = function (fields) {
+    const getFY = document.querySelector('#fsyear');
+    const getSelectedIndex = getFY.selectedIndex;
+    const getSelectedOption = getFY.options[getSelectedIndex];
+    const getSelectedText = getSelectedOption.text;
+    let concat;
+
+    for (let i = 0; i < fields.length; i++) {
+      concat =
+        getSelectedText +
+        " - " +
+        fields[6].value +
+        fields[7].value +
+        fields[8].value +
+        " - " +
+        fields[4].value +
+        " - " +
+        fields[5].value;
+
+      if (fields[9].value) {
+        // concat += " - " + fields[9].value;
+        concat =
+          getSelectedText +
+          " - " +
+          fields[6].value +
+          fields[7].value +
+          fields[8].value +
+          fields[9].value +
+          " - " +
+          fields[4].value +
+          " - " +
+          fields[5].value;
+      }
+      return concat;
+    }
+  }
+
+  let getUrlResult = document.querySelector('#urloutput');
+  let getEmailResult = document.querySelector('#emailoutput');
+  let getUrlNote = document.querySelector('.url-save-note');
+  let saveButton = document.querySelector("#save-button");
+  let getInputName = document.querySelector('#save-input-name');
+  let getResetNote = document.querySelector('.reset-note');
+  let getCopyBtn = document.querySelector('#copy-text');
+  let getCopyBtn2 = document.querySelector('#emailnameCopy');
+
+  getGenBtn.addEventListener('click', function () {
+    let urlResult = '';
+    let emailResult = '';
+    if (validateRequired()) {
+      urlResult = calcUrlResults(getInputfields);
+      emailResult = calcEmailResults(getInputfields);
+
+      // console.log(urlResult);
+      getUrlResult.value = urlResult;
+      getEmailResult.value = emailResult;
+      getUrlNote.style.display = "block";
+      saveButton.style.display = 'block';
+      getInputName.style.display = 'block';
+      getResetNote.style.display = 'block';
+      getCopyBtn.style.display = 'block';
+      getCopyBtn2.style.display = 'block';
+      getUrlResult.focus();
+
+    } else {
+      // alert('error');
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      getGenErr.innerHTML = errorMsg3;
     }
 
-    const calcEmailResults = function(fields) {
-        const getFY = document.querySelector('#fsyear');
-        const getSelectedIndex = getFY.selectedIndex;
-        const getSelectedOption = getFY.options[getSelectedIndex];
-        const getSelectedText = getSelectedOption.text;
-        let concat;
 
-        for(let i = 0; i < fields.length; i++) {
-            concat = 
-            getSelectedText +
-            " - " +
-            fields[6].value +
-            fields[7].value +
-            fields[8].value +
-            " - " +
-            fields[4].value +
-            " - " +
-            fields[5].value;
+  });
+  // calcResults(getInputfields);
 
-            if(fields[9].value) {
-                // concat += " - " + fields[9].value;
-                concat = 
-                getSelectedText +
-                " - " +
-                fields[6].value +
-                fields[7].value +
-                fields[8].value +
-                fields[9].value +
-                " - " +
-                fields[4].value +
-                " - " +
-                fields[5].value;
-            }
-            return concat;
-        }
+
+  //URL validation
+  function isValidURL(string) {
+    var res = string.match(
+      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+    );
+    return res !== null;
+  }
+
+
+  getFullUrl.addEventListener("input", function () {
+    let getUrlValue = getFullUrl.value;
+
+    if (isValidURL(getUrlValue) == true) {
+      if (getFullUrl.classList.contains("invalid")) {
+        getFullUrl.classList.remove("invalid");
+      }
+
+      if (!getFullUrl.classList.contains("valid")) {
+        getFullUrl.classList.add("invalid");
+      }
     }
 
-    let getUrlResult = document.querySelector('#urloutput');
-    let getEmailResult = document.querySelector('#emailoutput');
-    let getUrlNote = document.querySelector('.url-save-note');
-    let saveButton = document.querySelector("#save-button");
-    let getInputName = document.querySelector('#save-input-name');
-    let getResetNote = document.querySelector('.reset-note');
-    let getCopyBtn = document.querySelector('#copy-text');
-    let getCopyBtn2 = document.querySelector('#emailnameCopy');
-
-    getGenBtn.addEventListener('click', function() {
-        let urlResult = '';
-        let emailResult = '';
-        if(validateRequired()) {
-            urlResult = calcUrlResults(getInputfields);
-            emailResult = calcEmailResults(getInputfields);
-
-            // console.log(urlResult);
-            getUrlResult.value = urlResult;
-            getEmailResult.value = emailResult;
-            getUrlNote.style.display = "block";
-            saveButton.style.display = 'block';
-            getInputName.style.display = 'block';
-            getResetNote.style.display = 'block';
-            getCopyBtn.style.display = 'block';
-            getCopyBtn2.style.display = 'block';
-            getUrlResult.focus();
-
-        } else {
-            // alert('error');
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-          getGenErr.innerHTML = errorMsg3;
-        }
-        
-
-    });
-    // calcResults(getInputfields);
-
-
-    //URL validation
-    function isValidURL(string) {
-        var res = string.match(
-        /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
-        );
-        return res !== null;
+    if (isValidURL(getUrlValue) !== true) {
+      if (getFullUrl.classList.contains("valid")) {
+        getFullUrl.classList.remove("valid");
+        getFullUrl.classList.add("invalid");
+        getFullUrl.nextElementSibling.innerHTML =
+          "The website URL provided is not a valid URL.";
+        getFullUrl.nextElementSibling.style.display = "block";
+      }
     }
-    
-
-    getFullUrl.addEventListener("input", function () {
-        let getUrlValue = getFullUrl.value;
-    
-        if (isValidURL(getUrlValue) == true) {
-          if (getFullUrl.classList.contains("invalid")) {
-            getFullUrl.classList.remove("invalid");
-          }
-    
-          if (!getFullUrl.classList.contains("valid")) {
-            getFullUrl.classList.add("invalid");
-          }
-        }
-    
-        if (isValidURL(getUrlValue) !== true) {
-          if (getFullUrl.classList.contains("valid")) {
-            getFullUrl.classList.remove("valid");
-            getFullUrl.classList.add("invalid");
-            getFullUrl.nextElementSibling.innerHTML =
-              "The website URL provided is not a valid URL.";
-              getFullUrl.nextElementSibling.style.display = "block";
-          }
-        }
-    });
+  });
 
 
-    // Copy generated link
+  // Copy generated link
 
-    getCopyBtn.addEventListener("click", function () {
+  getCopyBtn.addEventListener("click", function () {
     const initialText = "Copy URL for Email";
     getUrlResult.select();
     getUrlResult.setSelectionRange(0, 999999); //For mobile devices
@@ -661,9 +783,9 @@ function checkWhiteSpace(str) {
   });
 
 
-    // Copy Pardot Email Name
+  // Copy Pardot Email Name
 
-    getCopyBtn2.addEventListener("click", function () {
+  getCopyBtn2.addEventListener("click", function () {
     const initialText = "Copy Pardot Email Name";
     getEmailResult.select();
     getEmailResult.setSelectionRange(0, 999999); //For mobile devices
@@ -693,125 +815,125 @@ function checkWhiteSpace(str) {
     }
   });
 
-    const scriptURL_MMUS = "https://script.google.com/macros/s/AKfycbzTVSI115lpjR2dTpy5HOcrzX31AADmFncgKE9Jq76Pr03VH9NRXGEILee3O-IgG1OM0A/exec";
-    const scriptURL_UK = "https://script.google.com/macros/s/AKfycbymlyKNYy1Ru9XSkp1n-qhY3OH2rztv0xFq5x4iQKUxAC-KXi9ZwVoKH8WIaCss2gMu8g/exec";
-    const scriptURL_SK = "https://script.google.com/macros/s/AKfycbwOsNTpHU1-sDjASV2MYUTdYKzYPT0Kbn9AhbvYfvd8qN1wzYzZMVaViMG05LdQRvDoZg/exec";
-    const scriptURL_RM = "https://script.google.com/macros/s/AKfycbwb9BT5n7o970p2rMd4XbWh7rSz0d5FcQysP1YgLcUzc7Daln3YFogGrfHFYKP41yH9jQ/exec";
-    const scriptURL_DE = "https://script.google.com/macros/s/AKfycbzuT-fdusmmzJU66NUce0D2yT0rnxvoIePsJLz3vTmSLMEXOjXxdypBnpbIp_vL3x68hw/exec";
-    const scriptURL_SE = "https://script.google.com/macros/s/AKfycbwHi4Xwtja69aPN02JI_OhKTRJPURUIQ7QVd2Hu2UV9Koax77wDf76CqWgeA1ir4s7JvA/exec";
-    const form = document.querySelector("#submit-to-google-sheet");
-    const getlabel = document.querySelector("#url_saved_message");
-    // const getMarketEmail = document.querySelector("#mkt");
-    
+  const scriptURL_MMUS = "https://script.google.com/macros/s/AKfycbzTVSI115lpjR2dTpy5HOcrzX31AADmFncgKE9Jq76Pr03VH9NRXGEILee3O-IgG1OM0A/exec";
+  const scriptURL_UK = "https://script.google.com/macros/s/AKfycbymlyKNYy1Ru9XSkp1n-qhY3OH2rztv0xFq5x4iQKUxAC-KXi9ZwVoKH8WIaCss2gMu8g/exec";
+  const scriptURL_SK = "https://script.google.com/macros/s/AKfycbwOsNTpHU1-sDjASV2MYUTdYKzYPT0Kbn9AhbvYfvd8qN1wzYzZMVaViMG05LdQRvDoZg/exec";
+  const scriptURL_RM = "https://script.google.com/macros/s/AKfycbwb9BT5n7o970p2rMd4XbWh7rSz0d5FcQysP1YgLcUzc7Daln3YFogGrfHFYKP41yH9jQ/exec";
+  const scriptURL_DE = "https://script.google.com/macros/s/AKfycbzuT-fdusmmzJU66NUce0D2yT0rnxvoIePsJLz3vTmSLMEXOjXxdypBnpbIp_vL3x68hw/exec";
+  const scriptURL_SE = "https://script.google.com/macros/s/AKfycbwHi4Xwtja69aPN02JI_OhKTRJPURUIQ7QVd2Hu2UV9Koax77wDf76CqWgeA1ir4s7JvA/exec";
+  const form = document.querySelector("#submit-to-google-sheet");
+  const getlabel = document.querySelector("#url_saved_message");
+  // const getMarketEmail = document.querySelector("#mkt");
 
 
-    form.addEventListener("submit", (e) => {
-      saveButton.disabled = true;
-      e.preventDefault();
-      const getMarketEmail = document.querySelector("#mkt");
-      if (getMarketEmail.value == "us") {
-        fetch(scriptURL_MMUS, { method: "POST", body: new FormData(form) })
-          .then((response) => {
-            saveButton.disabled = false;
-            getlabel.innerHTML = savedUrlMsg;
-            setTimeout(() => {
-              getlabel.style.display = "none";
-            }, 5000);
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
-          })
-          .catch((error) => {
-            console.error("Error", error.message);
-            saveButton.disabled = false;
-          });
-      } 
-      else if (getMarket.value == "uk") {
-        fetch(scriptURL_UK, { method: "POST", body: new FormData(form) })
-          .then((response) => {
-            saveButton.disabled = false;
-            getlabel.innerHTML = savedUrlMsg;
-            setTimeout(() => {
-              getlabel.style.display = "none";
-            }, 5000);
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
-          })
-          .catch((error) => {
-            console.error("Error", error.message);
-            saveButton.disabled = false;
-          });
-      } 
-      else if (getMarket.value == "sk") {
-        fetch(scriptURL_SK, { method: "POST", body: new FormData(form) })
-          .then((response) => {
-            saveButton.disabled = false;
-            getlabel.innerHTML = savedUrlMsg;
-            setTimeout(() => {
-              getlabel.style.display = "none";
-            }, 5000);
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
-          })
-          .catch((error) => {
-            console.error("Error", error.message);
-            saveButton.disabled = false;
-          });
-      } 
-      else if (getMarket.value == "rm") {
-        fetch(scriptURL_RM, { method: "POST", body: new FormData(form) })
-          .then((response) => {
-            saveButton.disabled = false;
-            getlabel.innerHTML = savedUrlMsg;
-            setTimeout(() => {
-              getlabel.style.display = "none";
-            }, 5000);
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
-          })
-          .catch((error) => {
-            console.error("Error", error.message);
-            saveButton.disabled = false;
-          });
-      } 
-      else if (getMarket.value == "de") {
-        fetch(scriptURL_DE, { method: "POST", body: new FormData(form) })
-          .then((response) => {
-            saveButton.disabled = false;
-            getlabel.innerHTML = savedUrlMsg;
-            setTimeout(() => {
-              getlabel.style.display = "none";
-            }, 5000);
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
-          })
-          .catch((error) => {
-            console.error("Error", error.message);
-            saveButton.disabled = false;
-          });
-      } 
-      else {
-        fetch(scriptURL_SE, { method: "POST", body: new FormData(form) })
-          .then((response) => {
-            saveButton.disabled = false;
-            getlabel.innerHTML = savedUrlMsg;
-            setTimeout(() => {
-              getlabel.style.display = "none";
-            }, 5000);
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
-          })
-          .catch((error) => {
-            console.error("Error", error.message);
-            saveButton.disabled = false;
-          });
-      }
-    });
+
+  form.addEventListener("submit", (e) => {
+    saveButton.disabled = true;
+    e.preventDefault();
+    const getMarketEmail = document.querySelector("#mkt");
+    if (getMarketEmail.value == "us") {
+      fetch(scriptURL_MMUS, { method: "POST", body: new FormData(form) })
+        .then((response) => {
+          saveButton.disabled = false;
+          getlabel.innerHTML = savedUrlMsg;
+          setTimeout(() => {
+            getlabel.style.display = "none";
+          }, 5000);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error("Error", error.message);
+          saveButton.disabled = false;
+        });
+    }
+    else if (getMarket.value == "uk") {
+      fetch(scriptURL_UK, { method: "POST", body: new FormData(form) })
+        .then((response) => {
+          saveButton.disabled = false;
+          getlabel.innerHTML = savedUrlMsg;
+          setTimeout(() => {
+            getlabel.style.display = "none";
+          }, 5000);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error("Error", error.message);
+          saveButton.disabled = false;
+        });
+    }
+    else if (getMarket.value == "sk") {
+      fetch(scriptURL_SK, { method: "POST", body: new FormData(form) })
+        .then((response) => {
+          saveButton.disabled = false;
+          getlabel.innerHTML = savedUrlMsg;
+          setTimeout(() => {
+            getlabel.style.display = "none";
+          }, 5000);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error("Error", error.message);
+          saveButton.disabled = false;
+        });
+    }
+    else if (getMarket.value == "rm") {
+      fetch(scriptURL_RM, { method: "POST", body: new FormData(form) })
+        .then((response) => {
+          saveButton.disabled = false;
+          getlabel.innerHTML = savedUrlMsg;
+          setTimeout(() => {
+            getlabel.style.display = "none";
+          }, 5000);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error("Error", error.message);
+          saveButton.disabled = false;
+        });
+    }
+    else if (getMarket.value == "de") {
+      fetch(scriptURL_DE, { method: "POST", body: new FormData(form) })
+        .then((response) => {
+          saveButton.disabled = false;
+          getlabel.innerHTML = savedUrlMsg;
+          setTimeout(() => {
+            getlabel.style.display = "none";
+          }, 5000);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error("Error", error.message);
+          saveButton.disabled = false;
+        });
+    }
+    else {
+      fetch(scriptURL_SE, { method: "POST", body: new FormData(form) })
+        .then((response) => {
+          saveButton.disabled = false;
+          getlabel.innerHTML = savedUrlMsg;
+          setTimeout(() => {
+            getlabel.style.display = "none";
+          }, 5000);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error("Error", error.message);
+          saveButton.disabled = false;
+        });
+    }
+  });
 };
 
 
