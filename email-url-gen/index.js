@@ -490,42 +490,185 @@ window.onload = function () {
   // const getInputfields = document.querySelectorAll('.fieldValue');
 
   const calcUrlResults = function (fields) {
+    const getMarkets = document.querySelector('#mkt');
+    const getSelectedMarketIndex = getMarkets.selectedIndex;
+    const getSelectedMarketOption = getMarkets.options[getSelectedMarketIndex];
+    const getSelectedMarketText = getSelectedMarketOption.text;
     let concat;
     for (let i = 0; i < fields.length; i++) {
 
-      let leftSection = fields[0].value +
-        "?" +
-        "ms=" +
-        fields[1].value +
-        "_" +
-        fields[2].value +
-        "_" +
-        fields[3].value +
-        "_" +
-        fields[6].value +
-        fields[7].value +
-        fields[8].value;
+      if (getSelectedMarketText == 'RAI') {
+        let leftSection = fields[0].value +
+          "?" +
+          "ms=" +
+          fields[1].value +
+          "_" +
+          fields[2].value +
+          "_" +
+          fields[3].value +
+          "_" +
+          fields[6].value +
+          fields[7].value +
+          'ALL' + "_" +
+          fields[8].value;
 
-      let rightSection = "&" +
-        "utm_medium=email" +
-        "&" +
-        "utm_source=pardot" +
-        "&" +
-        "utm_campaign=" +
-        fields[2].value;
+        let rightSection = "&" +
+          "utm_medium=email" +
+          "&" +
+          "utm_source=pardot" +
+          "&" +
+          "utm_campaign=" +
+          fields[2].value;
 
 
-      if (fields[9].value) {
-        leftSection += fields[9].value;
-      }
+        if (fields[9].value) {
+          // leftSection += fields[9].value;
+          leftSection = fields[0].value +
+            "?" +
+            "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            'ALL' +
+            fields[9].value +
+            "_" +
+            fields[8].value;
+        }
 
-      if (fields[10].value) {
-        rightSection += "&" + "utm_content=" + fields[10].value;
-      }
+        if (fields[10].value) {
+          rightSection += "&" + "utm_content=" + fields[10].value;
+        }
 
-      // Email Segment only
-      if (fields[11].value && !fields[12].value && !fields[13].value) {
-        leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "ms=" +
+        // Email Segment only
+        if (fields[11].value && !fields[12].value && !fields[13].value) {
+          leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        // Gift String only
+        if (!fields[11].value && fields[12].value && !fields[13].value) {
+          leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        // Form String only
+        if (!fields[11].value && !fields[12].value && fields[13].value) {
+          leftSection = fields[0].value + "?" + "af=" + fields[13].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        // Email Segment and Gift String only
+        if (fields[11].value && fields[12].value && !fields[13].value) {
+          leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs" + fields[12].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        // Email Segment and Form String only
+        if (fields[11].value && !fields[12].value && fields[13].value) {
+          leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        // Gift String and Form String only
+        if (!fields[11].value && fields[12].value && fields[13].value) {
+          leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        // All 3
+        if (fields[11].value && fields[12].value && fields[13].value) {
+          leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        concat = leftSection + rightSection;
+
+      } else {
+        let leftSection = fields[0].value +
+          "?" +
+          "ms=" +
           fields[1].value +
           "_" +
           fields[2].value +
@@ -536,153 +679,420 @@ window.onload = function () {
           fields[7].value +
           fields[8].value;
 
-        if (fields[9].value) {
-          leftSection += fields[9].value;
-        }
-      }
-      // Gift String only
-      if (!fields[11].value && fields[12].value && !fields[13].value) {
-        leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "ms=" +
-          fields[1].value +
-          "_" +
-          fields[2].value +
-          "_" +
-          fields[3].value +
-          "_" +
-          fields[6].value +
-          fields[7].value +
-          fields[8].value;
+        let rightSection = "&" +
+          "utm_medium=email" +
+          "&" +
+          "utm_source=pardot" +
+          "&" +
+          "utm_campaign=" +
+          fields[2].value;
+
 
         if (fields[9].value) {
           leftSection += fields[9].value;
         }
-      }
-      // Form String only
-      if (!fields[11].value && !fields[12].value && fields[13].value) {
-        leftSection = fields[0].value + "?" + "af=" + fields[13].value + "&" + "ms=" +
-          fields[1].value +
-          "_" +
-          fields[2].value +
-          "_" +
-          fields[3].value +
-          "_" +
-          fields[6].value +
-          fields[7].value +
-          fields[8].value;
 
-        if (fields[9].value) {
-          leftSection += fields[9].value;
+        if (fields[10].value) {
+          rightSection += "&" + "utm_content=" + fields[10].value;
         }
-      }
-      // Email Segment and Gift String only
-      if (fields[11].value && fields[12].value && !fields[13].value) {
-        leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs" + fields[12].value + "&" + "ms=" +
-          fields[1].value +
-          "_" +
-          fields[2].value +
-          "_" +
-          fields[3].value +
-          "_" +
-          fields[6].value +
-          fields[7].value +
-          fields[8].value;
 
-        if (fields[9].value) {
-          leftSection += fields[9].value;
+        // Email Segment only
+        if (fields[11].value && !fields[12].value && !fields[13].value) {
+          leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
         }
-      }
-      // Email Segment and Form String only
-      if (fields[11].value && !fields[12].value && fields[13].value) {
-        leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
-          fields[1].value +
-          "_" +
-          fields[2].value +
-          "_" +
-          fields[3].value +
-          "_" +
-          fields[6].value +
-          fields[7].value +
-          fields[8].value;
+        // Gift String only
+        if (!fields[11].value && fields[12].value && !fields[13].value) {
+          leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
 
-        if (fields[9].value) {
-          leftSection += fields[9].value;
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
         }
-      }
-      // Gift String and Form String only
-      if (!fields[11].value && fields[12].value && fields[13].value) {
-        leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
-          fields[1].value +
-          "_" +
-          fields[2].value +
-          "_" +
-          fields[3].value +
-          "_" +
-          fields[6].value +
-          fields[7].value +
-          fields[8].value;
+        // Form String only
+        if (!fields[11].value && !fields[12].value && fields[13].value) {
+          leftSection = fields[0].value + "?" + "af=" + fields[13].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
 
-        if (fields[9].value) {
-          leftSection += fields[9].value;
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
         }
-      }
-      // All 3
-      if (fields[11].value && fields[12].value && fields[13].value) {
-        leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
-          fields[1].value +
-          "_" +
-          fields[2].value +
-          "_" +
-          fields[3].value +
-          "_" +
-          fields[6].value +
-          fields[7].value +
-          fields[8].value;
+        // Email Segment and Gift String only
+        if (fields[11].value && fields[12].value && !fields[13].value) {
+          leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs" + fields[12].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
 
-        if (fields[9].value) {
-          leftSection += fields[9].value;
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
         }
+        // Email Segment and Form String only
+        if (fields[11].value && !fields[12].value && fields[13].value) {
+          leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        // Gift String and Form String only
+        if (!fields[11].value && fields[12].value && fields[13].value) {
+          leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        // All 3
+        if (fields[11].value && fields[12].value && fields[13].value) {
+          leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+            fields[1].value +
+            "_" +
+            fields[2].value +
+            "_" +
+            fields[3].value +
+            "_" +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value;
+
+          if (fields[9].value) {
+            leftSection += fields[9].value;
+          }
+        }
+        concat = leftSection + rightSection;
+
       }
 
-      concat = leftSection + rightSection;
+
+
       return concat;
     }
   }
+  // const calcUrlResults = function (fields) {
+  //   let concat;
+  //   for (let i = 0; i < fields.length; i++) {
+
+  //     let leftSection = fields[0].value +
+  //       "?" +
+  //       "ms=" +
+  //       fields[1].value +
+  //       "_" +
+  //       fields[2].value +
+  //       "_" +
+  //       fields[3].value +
+  //       "_" +
+  //       fields[6].value +
+  //       fields[7].value +
+  //       fields[8].value;
+
+  //     let rightSection = "&" +
+  //       "utm_medium=email" +
+  //       "&" +
+  //       "utm_source=pardot" +
+  //       "&" +
+  //       "utm_campaign=" +
+  //       fields[2].value;
+
+
+  //     if (fields[9].value) {
+  //       leftSection += fields[9].value;
+  //     }
+
+  //     if (fields[10].value) {
+  //       rightSection += "&" + "utm_content=" + fields[10].value;
+  //     }
+
+  //     // Email Segment only
+  //     if (fields[11].value && !fields[12].value && !fields[13].value) {
+  //       leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "ms=" +
+  //         fields[1].value +
+  //         "_" +
+  //         fields[2].value +
+  //         "_" +
+  //         fields[3].value +
+  //         "_" +
+  //         fields[6].value +
+  //         fields[7].value +
+  //         fields[8].value;
+
+  //       if (fields[9].value) {
+  //         leftSection += fields[9].value;
+  //       }
+  //     }
+  //     // Gift String only
+  //     if (!fields[11].value && fields[12].value && !fields[13].value) {
+  //       leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "ms=" +
+  //         fields[1].value +
+  //         "_" +
+  //         fields[2].value +
+  //         "_" +
+  //         fields[3].value +
+  //         "_" +
+  //         fields[6].value +
+  //         fields[7].value +
+  //         fields[8].value;
+
+  //       if (fields[9].value) {
+  //         leftSection += fields[9].value;
+  //       }
+  //     }
+  //     // Form String only
+  //     if (!fields[11].value && !fields[12].value && fields[13].value) {
+  //       leftSection = fields[0].value + "?" + "af=" + fields[13].value + "&" + "ms=" +
+  //         fields[1].value +
+  //         "_" +
+  //         fields[2].value +
+  //         "_" +
+  //         fields[3].value +
+  //         "_" +
+  //         fields[6].value +
+  //         fields[7].value +
+  //         fields[8].value;
+
+  //       if (fields[9].value) {
+  //         leftSection += fields[9].value;
+  //       }
+  //     }
+  //     // Email Segment and Gift String only
+  //     if (fields[11].value && fields[12].value && !fields[13].value) {
+  //       leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs" + fields[12].value + "&" + "ms=" +
+  //         fields[1].value +
+  //         "_" +
+  //         fields[2].value +
+  //         "_" +
+  //         fields[3].value +
+  //         "_" +
+  //         fields[6].value +
+  //         fields[7].value +
+  //         fields[8].value;
+
+  //       if (fields[9].value) {
+  //         leftSection += fields[9].value;
+  //       }
+  //     }
+  //     // Email Segment and Form String only
+  //     if (fields[11].value && !fields[12].value && fields[13].value) {
+  //       leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+  //         fields[1].value +
+  //         "_" +
+  //         fields[2].value +
+  //         "_" +
+  //         fields[3].value +
+  //         "_" +
+  //         fields[6].value +
+  //         fields[7].value +
+  //         fields[8].value;
+
+  //       if (fields[9].value) {
+  //         leftSection += fields[9].value;
+  //       }
+  //     }
+  //     // Gift String and Form String only
+  //     if (!fields[11].value && fields[12].value && fields[13].value) {
+  //       leftSection = fields[0].value + "?" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+  //         fields[1].value +
+  //         "_" +
+  //         fields[2].value +
+  //         "_" +
+  //         fields[3].value +
+  //         "_" +
+  //         fields[6].value +
+  //         fields[7].value +
+  //         fields[8].value;
+
+  //       if (fields[9].value) {
+  //         leftSection += fields[9].value;
+  //       }
+  //     }
+  //     // All 3
+  //     if (fields[11].value && fields[12].value && fields[13].value) {
+  //       leftSection = fields[0].value + "?" + "es=" + fields[11].value + "&" + "gs=" + fields[12].value + "&" + "af=" + fields[13].value + "&" + "ms=" +
+  //         fields[1].value +
+  //         "_" +
+  //         fields[2].value +
+  //         "_" +
+  //         fields[3].value +
+  //         "_" +
+  //         fields[6].value +
+  //         fields[7].value +
+  //         fields[8].value;
+
+  //       if (fields[9].value) {
+  //         leftSection += fields[9].value;
+  //       }
+  //     }
+
+  //     concat = leftSection + rightSection;
+  //     return concat;
+  //   }
+  // }
 
   const calcEmailResults = function (fields) {
     const getFY = document.querySelector('#fsyear');
     const getSelectedIndex = getFY.selectedIndex;
     const getSelectedOption = getFY.options[getSelectedIndex];
     const getSelectedText = getSelectedOption.text;
+    const getMarkets = document.querySelector('#mkt');
+    const getSelectedMarketIndex = getMarkets.selectedIndex;
+    const getSelectedMarketOption = getMarkets.options[getSelectedMarketIndex];
+    const getSelectedMarketText = getSelectedMarketOption.text;
+
+
+
+
     let concat;
 
     for (let i = 0; i < fields.length; i++) {
-      concat =
-        getSelectedText +
-        " - " +
-        fields[6].value +
-        fields[7].value +
-        fields[8].value +
-        " - " +
-        fields[4].value +
-        " - " +
-        fields[5].value;
 
-      if (fields[9].value) {
-        // concat += " - " + fields[9].value;
+      if (getSelectedMarketText == 'RAI') {
+        concat =
+          getSelectedText +
+          " - " +
+          fields[6].value +
+          fields[7].value +
+          "ALL" + " - " +
+          fields[8].value
+          +
+          " - " +
+          fields[4].value +
+          " - " +
+          fields[5].value;
+
+        if (fields[9].value) {
+          // concat += " - " + fields[9].value;
+          concat =
+            getSelectedText +
+            " - " +
+            fields[6].value +
+            fields[7].value +
+            "ALL" +
+            fields[9].value +
+            " - " +
+            fields[8].value
+            +
+            " - " +
+            fields[4].value +
+            " - " +
+            fields[5].value;
+        }
+
+      } else {
         concat =
           getSelectedText +
           " - " +
           fields[6].value +
           fields[7].value +
           fields[8].value +
-          fields[9].value +
           " - " +
           fields[4].value +
           " - " +
           fields[5].value;
+
+        if (fields[9].value) {
+          // concat += " - " + fields[9].value;
+          concat =
+            getSelectedText +
+            " - " +
+            fields[6].value +
+            fields[7].value +
+            fields[8].value +
+            fields[9].value +
+            " - " +
+            fields[4].value +
+            " - " +
+            fields[5].value;
+        }
       }
+
+
       return concat;
     }
+
+    // for (let i = 0; i < fields.length; i++) {
+
+    //   concat =
+    //     getSelectedText +
+    //     " - " +
+    //     fields[6].value +
+    //     fields[7].value +
+    //     fields[8].value +
+    //     " - " +
+    //     fields[4].value +
+    //     " - " +
+    //     fields[5].value;
+
+    //   if (fields[9].value) {
+    //     // concat += " - " + fields[9].value;
+    //     concat =
+    //       getSelectedText +
+    //       " - " +
+    //       fields[6].value +
+    //       fields[7].value +
+    //       fields[8].value +
+    //       fields[9].value +
+    //       " - " +
+    //       fields[4].value +
+    //       " - " +
+    //       fields[5].value;
+    //   }
+    //   return concat;
+    // }
   }
 
   let getUrlResult = document.querySelector('#urloutput');
