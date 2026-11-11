@@ -506,11 +506,12 @@ window.onload = function () {
           fields[2].value +
           "_" +
           fields[3].value +
+          "-" +
+          fields[8].value +
           "_" +
           fields[6].value +
           fields[7].value +
-          'ALL' + "_" +
-          fields[8].value;
+          'ALL';
 
         let rightSection = "&" +
           "utm_medium=email" +
@@ -522,22 +523,22 @@ window.onload = function () {
 
 
         if (fields[9].value) {
-          // leftSection += fields[9].value;
-          leftSection = fields[0].value +
-            "?" +
-            "ms=" +
-            fields[1].value +
-            "_" +
-            fields[2].value +
-            "_" +
-            fields[3].value +
-            "_" +
-            fields[6].value +
-            fields[7].value +
-            'ALL' +
-            fields[9].value +
-            "_" +
-            fields[8].value;
+          leftSection += fields[9].value;
+          // leftSection = fields[0].value +
+          //   "?" +
+          //   "ms=" +
+          //   fields[1].value +
+          //   "_" +
+          //   fields[2].value +
+          //   "_" +
+          //   fields[3].value +
+          //   "_" +
+          //   fields[6].value +
+          //   fields[7].value +
+          //   'ALL' +
+          //   fields[9].value +
+          //   "_" +
+          //   fields[8].value;
         }
 
         if (fields[10].value) {
